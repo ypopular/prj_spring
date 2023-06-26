@@ -47,8 +47,8 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/profile_img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Yoon InGi</a></h1>
+        <img src="resources/assets/img/profile_img.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="portfolio.html">Yoon InGi</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -95,7 +95,7 @@
          <a href="cgv.html">user</a>
         </div>
         <div id="go_admin_page" class="go_box">
-          <a href="cgv_master_page.html">admin</a>
+          <a href="master_login">admin</a>
         </div>
         <div class="row gy-4">
 
@@ -104,15 +104,15 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="assets/img/scr1.png" alt="">
+                  <img src="resources/assets/img/scr2.png" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="assets/img/scr2.png" alt="">
+                  <img src="resources/assets/img/scr3.png" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="assets/img/scr3.png" alt="">
+                  <img src="resources/assets/img/scr1.png" alt="">
                 </div>
 
               </div>
@@ -164,18 +164,18 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="resources/assets/vendor/aos/aos.js"></script>
+  <script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="resources/assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="resources/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="resources/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="resources/assets/js/main.js"></script>
 
 </body>
 

@@ -226,7 +226,7 @@
             <div class="portfolio-wrap">
               <img src="resources/assets/img/cgv.png" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="views/app/portfolio/portfolio_detail.jsp" title="More Details"><i class="bx bx-plus"></i></a>
+                <a href="portfolio_detail.html" title="More Details"><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>
