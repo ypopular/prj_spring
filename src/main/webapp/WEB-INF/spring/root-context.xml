@@ -12,8 +12,12 @@
 
 <!-- mysql s 2022.02.15 -->
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!-- 
 <property name="driverClassName" value="com.mysql.jdbc.Driver" />
 	<property name="url" value="jdbc:mysql://database-1.cm2g3wlhbknr.ap-northeast-2.rds.amazonaws.com:33061/cgv" />
+	 -->
+<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+	<property name="url" value="jdbc:log4jdbc:mysql://database-1.cm2g3wlhbknr.ap-northeast-2.rds.amazonaws.com:33061/cgv" />
 	<property name="username" value="admin" />
 	<property name="password" value="dbsdlsrl25" />
 </bean>

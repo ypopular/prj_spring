@@ -6,6 +6,11 @@
 
 <br>
 
+<form>
+	<input type='text' name='seq' placeholder='seq'>
+	<input type='text' name='name' placeholder='name'>
+	<button type='submit'>전송</button>
+	<br>
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
@@ -19,3 +24,5 @@
 		</c:forEach>
 	</c:otherwise>
 </c:choose>	
+	
+</form>

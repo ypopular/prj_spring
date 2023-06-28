@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -54,15 +58,15 @@
 
         <div id="master_page">
             <div id="master_search_wrap">
-                <form id="detail_search">
-                    <input type="text" placeholder="상영지점">
-                   <input type="text" placeholder="영화제목">
+                <form id="detail_search" name=form_list>
+                    <input  type="text" placeholder="상영지점">
+                   <input name="shKeyword" type="text" placeholder="영화제목">
                     <input  id="datepicker" type="text" placeholder="상영일">
-                   <select>
-                    <option selected disabled>상영관</option>
-                    <option value="1관">1관</option>
-                    <option value="2관">2관</option>
-                    <option value="3관">3관</option>
+                   <select name="shOption">
+                    <option selected disabled value="0">상영관</option>
+                    <option value="1">1관</option>
+                    <option value="2">2관</option>
+                    <option value="3">3관</option>
                    </select>
                    <select>
                     <option selected disabled>상영종류</option>
@@ -78,7 +82,7 @@
                     <option value="18:00">18:00~</option>
                    </select>
                  
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                    <button type="button" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                     <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
                 </form>
             </div>
@@ -196,7 +200,9 @@
                         <button type="submit" class="master_alter_button">등록</button>
                     </form>
                 </div>
+               
                 <div id="movie_alter_wrap">
+                 <form>
                     <div class="master_movie_form">
                         <div class="movie_title">영화이름</div>
                         <select class="movie_name">
@@ -273,7 +279,7 @@
             
             <div id="theater_alter_wrap">
                
-                <form >
+                <form>
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
                             <li>상영지점</li>
@@ -289,93 +295,32 @@
                             <li>3관</li>
                             <li>2DX</li>
                             <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
+                            <li><button type="button" class="list_alter_btn">변경</button></li>
                         </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><div class="list_alter_btn">변경</div></li>
-                        </ul>
+                        <c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<tr>
+							<td class="text-cneter" colspan="9">There is no data</td>
+					</tr>
+				</c:when>
+						<c:otherwise>
+				<c:forEach items="${list}" var="list" varStatus="status">
+							 <ul class="theater_alter_list">
+							<li><a href="master_form?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
+						   <li> <c:out value="${list.name}"></c:out></li>	
+						  <li> <c:out value="${list.delYN}"></c:out></li>
+						     <li><button type="button" class="list_alter_btn"><a href="master_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+			
+						 </ul>
+					</c:forEach>
+				</c:otherwise>
+					</c:choose>	
+                        
                     </div>
                         
 
                     </div>
-
+					 <button type="button" id="go_insert" onclick="location.href='master_form'">추가</button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button">메인으로</button>
                     <button type="submit" class="master_alter_button">등록</button>
                 </form>
@@ -398,7 +343,18 @@
             </div>
         </div>
     </div>
+<script>
+$("#master_search_btn").on("click",function(){
+	//자기 자신을 호출한다
+	$("form[name=form_list]").attr("action","/cgv_master_page").submit();
+	$("form[name=form_list]").attr("method","get");
+	
+});
 
+	
+
+	
+</script>
 </body>
 
 </html>

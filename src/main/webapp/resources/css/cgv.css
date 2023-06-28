@@ -2756,6 +2756,34 @@ video{
     border-radius: 2px;
     cursor: pointer;
 }
+#list_save_btn{
+    width: 40px;
+    height: 28px;
+    background-color: #474747;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#list_delete_btn{
+    width: 40px;
+    height: 28px;
+    background-color: #474747;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.list_save_btn a{
+	color:#fff;
+}
+.list_alter_btn a{
+	color:#fff;
+}
 #theater_alter_small_wrap ul {
     width: 700px;
     height: 30px;
@@ -2953,7 +2981,11 @@ video{
     width: 25px;
     height: 25px;
 }
-
+.form-control{
+	width:80px !important;
+	height:25px !important;
+	font-size:14px;
+}
 
 /* ---------------------chart----------------------------- */
 
@@ -3064,6 +3096,18 @@ video{
     font-weight: 700;
 }
 
-
+/*-----------------------------------------------------  */
+#go_insert{
+	 width: 100px;
+    height: 30px;
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    right: 32%;
+    bottom: 5%;
+    border-radius: 5px;
+}
 
 
