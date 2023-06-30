@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.app.codegroup.CodeGroupMapper">
+<mapper namespace="com.mycompany.app.infra.codegroup.CodeGroupMapper">
 
-    <resultMap id="resultMapObj" type="com.mycompany.app.codegroup.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.codegroup.CodeGroup"></resultMap>
     <!--     <sql id="abc">
     seq,
     name,
@@ -23,40 +23,54 @@
     	SELECT *
     	FROM
     		codeGroup
-    	WHERE 
+    	WHERE 1=1
+    	AND
     	 name LIKE CONCAT('%',#{shKeyword},'%')
     		
     
     </select>
-<select id="selectOne" resultMap="resultMapObj">
+    
+	<select id="selectOne" resultMap="resultMapObj">
 		SELECT *
 		FROM 
 			codeGroup
-		WHERE
+		WHERE 1=1
+		AND
 			seq = #{seq}
 	</select>
+	
 	<update id="update">
         UPDATE     codeGroup
-        SET     name = #{name}
-        WHERE     seq = #{seq}  
+        SET     name = #{name},
+				delYN=#{delYN}        	
+        WHERE  1=1
+        AND
+           seq = #{seq}  
     </update>
+    
     <delete id="delete">
     	DELETE 
     	FROM codeGroup
-    	WHERE seq = #{seq} 
+    	WHERE 1=1
+    	AND 
+    	seq = #{seq} 
     </delete>
+    
     <insert id="insert"> 
     INSERT
     INTO codeGroup
-    (name)
-    VALUE (#{name})
+    (name,
+    delYN)
+    VALUE (#{name},#{delYN})
     </insert>
+    
     <update id="uelete">
         UPDATE 
         	codeGroup
         SET 
         	delYN = #{delYN}
-        WHERE 
+        WHERE 1=1
+        AND
         	seq = #{seq}
     </update>
 

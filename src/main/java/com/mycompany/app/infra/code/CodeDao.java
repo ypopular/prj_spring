@@ -1,4 +1,4 @@
-package com.mycompany.app.infra.codegroup;
+package com.mycompany.app.infra.code;
 
 import java.util.List;
 
@@ -9,31 +9,31 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CodeGroupDao {
+public class CodeDao {
 
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.mycompany.app.infra.codegroup.CodeGroupMapper";
+	private static String namespace = "com.mycompany.app.infra.code.CodeMapper";
 	
-    public List<CodeGroup> selectList(CodeGroupVo vo){ 
+    public List<Code> selectList(CodeVo vo){ 
     	return sqlSession.selectList(namespace + ".selectList",vo); 
     	}
-    public CodeGroup selectOne(CodeGroupVo vo) { 
-		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOne", vo); 
-		return codeGroup;
+    public Code selectOne(CodeVo vo) { 
+		Code code = sqlSession.selectOne(namespace + ".selectOne", vo); 
+		return code;
 	}
-    public int update(CodeGroup dto) { 
+    public int update(Code dto) { 
     	return sqlSession.update(namespace + ".update", dto); 		 
 	}
-    public int delete(CodeGroup dto) { 
+    public int delete(Code dto) { 
     	return sqlSession.delete(namespace + ".delete", dto); 		 
 	}
-    public int insert(CodeGroup dto) { 
+    public int insert(Code dto) { 
     	return sqlSession.insert(namespace + ".insert", dto); 		 
 	}
-    public int uelete(CodeGroup dto) { 
+    public int uelete(Code dto) { 
     	return sqlSession.update(namespace + ".uelete", dto); }
 	
 //	public List<CodeGroup> selectList(){ 

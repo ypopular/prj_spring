@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>cgv_master_login_page</title>
+        <title>admin_login</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -46,7 +46,7 @@
                     <input type="text" title="아이디" id="master_id" name="user_id" data-title="아이디를" data-message="입력하세요." required="required">
                     <input type="password" title="패스워드" id="user_password" name="master_password" data-title="패스워드를" data-message="입력하세요"
                     required="required">
-                    <button type="submit" id="master_submit" title="로그인"><a href="cgv_master_page">로그인</a></button>
+                    <button type="submit" id="master_submit" title="로그인"><a href="admin_list">로그인</a></button>
                 </form>
             </div>
         </div>

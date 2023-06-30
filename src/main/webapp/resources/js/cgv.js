@@ -475,12 +475,11 @@ $(".sp_hover").mouseover(function(){
         $("#cinema_add_wrap").show();
     });
     $("#cinema_add_main_go").on("click",function(){
-        $("#master_search_wrap").hide();
-        $("#cinema_add_wrap").hide();
-        $("#master_wrap").hide();
-        $("#chart_big_wrap").show();
-      
-       
+        $("#chart_big_wrap").hide();
+        $("#theater_alter_wrap").siblings().hide();
+        $("#master_wrap").show();
+        $("#theater_alter_wrap").show();
+        $("#master_search_wrap").show();
     });
 
     $("#cinema_alter").on("click",function(){
@@ -492,9 +491,11 @@ $(".sp_hover").mouseover(function(){
         $("#cinema_alter_wrap").show();
     });
     $("#cinema_alter_main_go").on("click",function(){
-        $("#cinema_alter_wrap").hide();
-        $("#master_wrap").hide();
-        $("#chart_big_wrap").show();
+        $("#chart_big_wrap").hide();
+        $("#theater_alter_wrap").siblings().hide();
+        $("#master_wrap").show();
+        $("#theater_alter_wrap").show();
+        $("#master_search_wrap").show();
     });
 
     $("#movie_add").on("click",function(){
@@ -506,9 +507,11 @@ $(".sp_hover").mouseover(function(){
         $("#movie_add_wrap").show();
     });
     $("#movie_add_main_go").on("click",function(){
-        $("#movie_add_wrap").hide();
-        $("#master_wrap").hide();
-        $("#chart_big_wrap").show();
+        $("#chart_big_wrap").hide();
+        $("#theater_alter_wrap").siblings().hide();
+        $("#master_wrap").show();
+        $("#theater_alter_wrap").show();
+        $("#master_search_wrap").show();
     });
 
     $("#movie_alter").on("click",function(){
@@ -520,9 +523,11 @@ $(".sp_hover").mouseover(function(){
         $("#movie_alter_wrap").show();
     });
     $("#movie_alter_main_go").on("click",function(){
-        $("#movie_alter_wrap").hide();
-        $("#master_wrap").hide();
-        $("#chart_big_wrap").show();
+        $("#chart_big_wrap").hide();
+        $("#theater_alter_wrap").siblings().hide();
+        $("#master_wrap").show();
+        $("#theater_alter_wrap").show();
+        $("#master_search_wrap").show();
     });
 
     $("#theater_add").on("click",function(){
@@ -534,9 +539,11 @@ $(".sp_hover").mouseover(function(){
         $("#theater_add_wrap").show();
     });
     $("#theater_add_main_go").on("click",function(){
-        $("#theater_add_wrap").hide();
-        $("#master_wrap").hide();
-        $("#chart_big_wrap").show();
+        $("#chart_big_wrap").hide();
+        $("#theater_alter_wrap").siblings().hide();
+        $("#master_wrap").show();
+        $("#theater_alter_wrap").show();
+        $("#master_search_wrap").show();
     });
 
     $("#theater_alter").on("click",function(){
@@ -547,35 +554,33 @@ $(".sp_hover").mouseover(function(){
         $("#master_search_wrap").show();
     });
     $("#theater_alter_main_go").on("click",function(){
-        $("#theater_alter_wrap").hide();
-        $("#master_wrap").hide();
-        $("#chart_big_wrap").show();
-        $("#master_search_wrap").hide();
+      $("#chart_big_wrap").hide();
+        $("#theater_alter_wrap").siblings().hide();
+        $("#master_wrap").show();
+        $("#theater_alter_wrap").show();
+        $("#master_search_wrap").show();
     });
 
-    $("#go_chart").on("click",function(){
+   /* $("#go_chart").on("click",function(){
         $("#master_search_wrap").hide();
         $("#chart_big_wrap").css("display","block");
         $("#ticketing_chart_wrap").css("display","block")
         $("#chart_big_wrap").siblings().hide();
         $('#chart_big_wrap').show();
-    });
+    });*/
 
     $( function() {
         $( "#datepicker" ).datepicker();
       } );
 
 
-     $("master_submit a").on("click",function(){
-        $("#chart_big_wrap").hide();
-       
-     });
+     
     
      
     
         
 // --------------------------------------------------------------------------------donut_chart
-google.charts.load("current", {packages:["corechart"]});
+/*google.charts.load("current", {packages:["corechart"]});
 google.charts.setOnLoadCallback(drawChart3);
 
 function drawChart3() {
@@ -645,10 +650,8 @@ function drawChart()
     var chart = new google.visualization.PieChart(document.getElementById("employee_piechart"));
     chart.draw(data, options);
 }
+*/
 
-setTimeout(function() {
-    $("#theater_alter").trigger("click");
-  }, 80);
 
 
 });

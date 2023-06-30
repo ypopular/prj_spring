@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>cgv_master_page</title>
+        <title>admin_code</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -43,13 +43,13 @@
                     <li id="go_main">
                         <a href="cgv.html">CGV메인</a>
                     </li>
-                    <li id="go_chart">차트</li>
                     <li id="cinema_add">영화관 추가</li>
                     <li id="cinema_alter">영화관 수정</li>
                     <li id="movie_add">영화정보 추가</li>
                     <li id="movie_alter">영화정보 수정</li>
                     <li id="theater_add">상영정보 추가</li>
                     <li id="theater_alter">상영정보 수정 및 삭제</li>
+                     <li><a href="admin_code">code</a></li>
                 </ul>
             </div>
         </div>
@@ -298,19 +298,30 @@
                             <li>23.06.01 09:00</li>
                             <li><button type="button" class="list_alter_btn">변경</button></li>
                         </ul>
-                         <ul class="theater_alter_list">
-                <li>    <input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${itme.seq}"/>"></li>
- <li><input type="text" class="form-control" id="name" name="name" required value="<c:out value="${itme.name}"/>"></li>
- 			       <button type="button" id="list_save_btn">저장</button>
- 			         <button type="button" id="list_delete_btn">삭제</button>
- 			          <button type="button" id="list_del_check_btn">삭제확인</button>
-                        </ul>
+                         <c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<tr>
+							<td class="text-cneter" colspan="9">There is no data</td>
+					</tr>
+				</c:when>
+						<c:otherwise>
+				<c:forEach items="${list}" var="list" varStatus="status">
+							 <ul class="theater_alter_list">
+							<li><a href="master_form?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
+						   <li> <c:out value="${list.name}"></c:out></li>	
+ 						  <li> <c:out value="${list.codeGroup_seq}"></c:out></li>	
+						     <li><button type="button" class="list_alter_btn"><a href="admin_code_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+			
+						 </ul>
+					</c:forEach>
+				</c:otherwise>
+					</c:choose>	
                     </div>
                         
 
                     </div>
-
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button">메인으로</button>
+ 					<button type="button" id="go_insert" onclick="location.href='admin_code_form'">추가</button>
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_list">메인으로</a></button>
                     <button type="submit" class="master_alter_button">등록</button>
                 </form>
             </div>
@@ -333,16 +344,24 @@
         </div>
     </div>
 <script>
-
-$("#list_save_btn").on("click",function(){
-		$("form[name=form]").attr("action","/codeGroupUpdt").submit();
-		$("form[name=form]").attr("action","/codeGroupInsert").submit();
+$("#master_search_btn").on("click",function(){
+	//자기 자신을 호출한다
+	$("form[name=form_list]").attr("action","/admin_code").submit();
+	$("form[name=form_list]").attr("method","get");
+	
+});
+$("#list_save_btn2").on("click",function(){
+		$("form[name=form]").attr("action","/codeUpdt").submit();
+		
+});
+$("#list_insert_btn").on("click",function(){
+	$("form[name=form]").attr("action","/codeInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
-	$("form[name=form]").attr("action","/codeGroupDelete").submit();
+	$("form[name=form]").attr("action","/codeDelete").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-	$("form[name=form]").attr("action","/codeGroupUelete").submit();
+	$("form[name=form]").attr("action","/codeUelete").submit();
 });
 
 	

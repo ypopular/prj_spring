@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.app.infra.code.CodeMapper">
+
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.code.Code"></resultMap>
+   <select id="selectList" resultMap="resultMapObj">
+    	SELECT *
+    	FROM
+    		code
+    	WHERE 1=1
+    	AND
+    	 name LIKE CONCAT('%',#{shKeyword},'%')
+    		
+    
+    </select>
+    
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT *
+		FROM 
+			code
+		WHERE 1=1
+		AND
+			seq = #{seq}
+	</select>
+	
+	<update id="update">
+        UPDATE     code
+        SET     name = #{name},
+        	codeGroup_seq = #{codeGroup_seq}   	
+        WHERE  1=1
+        AND
+           seq = #{seq}  
+    </update>
+    
+    <delete id="delete">
+    	DELETE 
+    	FROM code
+    	WHERE 1=1
+    	AND 
+    	seq = #{seq} 
+    </delete>
+    
+    <insert id="insert"> 
+    INSERT
+    INTO code
+    (name,
+    codeGroup_seq)
+    VALUE (#{name},#{codeGroup_seq})
+    </insert>
+    
+    
+
+	
+</mapper>   

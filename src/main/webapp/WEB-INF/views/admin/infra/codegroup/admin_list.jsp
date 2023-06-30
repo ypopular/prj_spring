@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>cgv_master_page</title>
+        <title>admin_list</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -42,13 +42,14 @@
                     <li id="go_main">
                         <a href="cgv.html">CGV메인</a>
                     </li>
-                    <li id="go_chart">차트</li>
+                   
                     <li id="cinema_add">영화관 추가</li>
                     <li id="cinema_alter">영화관 수정</li>
                     <li id="movie_add">영화정보 추가</li>
                     <li id="movie_alter">영화정보 수정</li>
                     <li id="theater_add">상영정보 추가</li>
                     <li id="theater_alter">상영정보 수정 및 삭제</li>
+                    <li><a href="admin_code">code</a></li>
                 </ul>
             </div>
         </div>
@@ -86,7 +87,7 @@
                     <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
                 </form>
             </div>
-            <div id="chart_big_wrap">
+           <!--  <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
                     <div id="age_chart_title">
                         <p>예매 관객 나이 그래프</p>
@@ -115,7 +116,7 @@
                         <div id="employee_piechart" style="width: 600px; height: 600px;"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div id="master_wrap">
                 
@@ -308,8 +309,8 @@
 							 <ul class="theater_alter_list">
 							<li><a href="master_form?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
 						   <li> <c:out value="${list.name}"></c:out></li>	
-						  <li> <c:out value="${list.delYN}"></c:out></li>
-						     <li><button type="button" class="list_alter_btn"><a href="master_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+
+						     <li><button type="button" class="list_alter_btn"><a href="admin_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
 			
 						 </ul>
 					</c:forEach>
@@ -320,7 +321,7 @@
                         
 
                     </div>
-					 <button type="button" id="go_insert" onclick="location.href='master_form'">추가</button>
+					 <button type="button" id="go_insert" onclick="location.href='admin_form'">추가</button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button">메인으로</button>
                     <button type="submit" class="master_alter_button">등록</button>
                 </form>
@@ -346,7 +347,7 @@
 <script>
 $("#master_search_btn").on("click",function(){
 	//자기 자신을 호출한다
-	$("form[name=form_list]").attr("action","/cgv_master_page").submit();
+	$("form[name=form_list]").attr("action","/admin_list").submit();
 	$("form[name=form_list]").attr("method","get");
 	
 });

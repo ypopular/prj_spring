@@ -95,7 +95,7 @@
          <a href="cgv.html">user</a>
         </div>
         <div id="go_admin_page" class="go_box">
-          <a href="master_login">admin</a>
+          <a href="admin_login">admin</a>
         </div>
         <div class="row gy-4">
 

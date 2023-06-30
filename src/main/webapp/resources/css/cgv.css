@@ -2562,6 +2562,7 @@ video{
    height: 700px;
    margin: auto;
    position: relative;
+   display:none
    
 }
 #master_page{
@@ -2580,7 +2581,7 @@ video{
    top: 50%;
    transform: translate(-50%,-50%);
     position: relative;
-    display: none;
+    
 }
 #master_title{
     width: 110px;
@@ -2594,6 +2595,7 @@ video{
     line-height: 41px;
     color: #ccc;
     font-size: 14px;
+    display:none;
 }
 .master_menu{
     width: 290px;
@@ -2648,7 +2650,7 @@ video{
     display: none;
 }
 #theater_alter_wrap{
-    display: none;
+   display:block;
 }
 
 .master_form{
@@ -2827,7 +2829,6 @@ video{
     height: 200px;
     background-color: #222;
 }
-
 #master_banner_small_wrap{
     width: 1300px;
     height: 200px;
@@ -2964,7 +2965,6 @@ video{
    left: 0%;
    top: 0%;
    background-color: #222;
-   display: none;
 }
 #detail_search{
     width: 950px;
@@ -3108,6 +3108,9 @@ video{
     right: 32%;
     bottom: 5%;
     border-radius: 5px;
+}
+#theater_alter_main_go a{
+	color:#fff;
 }
 
 

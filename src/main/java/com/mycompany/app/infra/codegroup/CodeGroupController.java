@@ -15,8 +15,8 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 	
 	
-	@RequestMapping(value="/cgv_master_page")
-	public String cgv_master_page(CodeGroupVo vo,Model model) {
+	@RequestMapping(value="/admin_list")
+	public String admin_list(CodeGroupVo vo,Model model) {
 		
 	
 		
@@ -26,41 +26,55 @@ public class CodeGroupController {
 	List<CodeGroup> list = service.selectList(vo);
 		
 		model.addAttribute("list",list);
-		return "app/cgv/admin/cgv_master_page";
+		return "admin/infra/codegroup/admin_list";
 	}
-	@RequestMapping("/master_form")
-	public String master_form(CodeGroupVo vo, Model model) {
+	
+	@RequestMapping("/admin_form")
+	public String admin_form(CodeGroupVo vo, Model model) {
 		
 		CodeGroup codeGroup = service.selectOne(vo);
 		
 		model.addAttribute("itme", codeGroup);
 		
-		return "app/cgv/admin/master_form";
+		return "admin/infra/codegroup/admin_form";
 	}
+	
+	@RequestMapping(value="/admin_login")
+	public String admin_login() {
+		return "admin/infra/codegroup/admin_login";
+	}
+	
 	@RequestMapping("/codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroup dto) {
 		
 		System.out.println("codeGroupUpdt");
 		service.update(dto);
-		return "redirect:/cgv_master_page";
+		return "redirect:/admin_list";
 	}
+	
 	@RequestMapping("/codeGroupDelete")
 	public String codeGroupDelete(CodeGroup dto) {
 		
 		System.out.println("codeGroupDelete");
 		service.delete(dto);
-		return "redirect:/cgv_master_page";
+		return "redirect:/admin_list";
 	}
+	
+	/**
+	 * @param dto
+	 * @return
+	 */
 	@RequestMapping("/codeGroupInsert")
 	public String codeGroupInsert(CodeGroup dto) {
 		
 		System.out.println("codeGroupInsert");
 		service.insert(dto);
-		return "redirect:/cgv_master_page";
+		return "redirect:/admin_list";
 	}
+	
 	@RequestMapping("/codeGroupUelete")
 	public String codeGroupUelete(CodeGroup dto) {
 		service.uelete(dto);
-		return "redirect:/cgv_master_page";
+		return "redirect:/admin_list";
 	}
 }
