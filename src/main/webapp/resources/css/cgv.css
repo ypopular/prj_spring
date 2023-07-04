@@ -2735,6 +2735,10 @@ video{
     line-height: 30px;
     float: left;
 }
+#theater_alter_list_wrap ul:nth-child(2n){
+	 background-color: rgba(0, 0, 0, 0.08); 
+}
+
 .theater_alter_list li{
     float: left;
 }
@@ -2973,6 +2977,9 @@ video{
     justify-content: space-between;
   margin: auto;
   margin-top: 30px;
+  position:absolute;
+  left:-10%;
+  top:-20%;
 }
 
 

@@ -35,6 +35,16 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	public int uelete(CodeGroup dto) {
 		return dao.uelete(dto);
 	}
+	@Override
+	public int selectOneCount(CodeGroupVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
+	
+	
+	
+	
+	
 
 	
 }

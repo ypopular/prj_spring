@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,16 +17,27 @@ public class CodeGroupController {
 	
 	
 	@RequestMapping(value="/admin_list")
-	public String admin_list(CodeGroupVo vo,Model model) {
+	public String admin_list(@ModelAttribute("vo")CodeGroupVo vo,Model model) {
 		
 	
 		
 		System.out.println("controller: vo.getShOption():" + vo.getShOption());
 		System.out.println("controller: vo.getShKeyword():" + vo.getShKeyword());
 		
-	List<CodeGroup> list = service.selectList(vo);
+		vo.setShKeyword(vo.getShKeyword() == null?"":vo.getShKeyword());
+       vo.setParamsPaging(service.selectOneCount(vo));
 		
-		model.addAttribute("list",list);
+		if(vo.getTotalRows() > 0) {
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
+//	List<CodeGroup> list = service.selectList(vo);
+//		
+//		model.addAttribute("list",list);
+//		model.addAttribute("vo",vo);
 		return "admin/infra/codegroup/admin_list";
 	}
 	
@@ -77,4 +89,11 @@ public class CodeGroupController {
 		service.uelete(dto);
 		return "redirect:/admin_list";
 	}
+	
+	
+	
+	
+	
+	
+	
 }

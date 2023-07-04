@@ -48,8 +48,9 @@
                     <li id="movie_add">영화정보 추가</li>
                     <li id="movie_alter">영화정보 수정</li>
                     <li id="theater_add">상영정보 추가</li>
-                    <li id="theater_alter">상영정보 수정 및 삭제</li>
+                      <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
                      <li><a href="admin_code">code</a></li>
+                     <li><a href="admin_member">member</a></li>
                 </ul>
             </div>
         </div>
@@ -59,33 +60,8 @@
 
         <div id="master_page">
             <div id="master_search_wrap">
-                <form id="detail_search" name=form_list>
-                    <input  type="text" placeholder="상영지점">
-                   <input name="shKeyword" type="text" placeholder="영화제목">
-                    <input  id="datepicker" type="text" placeholder="상영일">
-                   <select name="shOption">
-                    <option selected disabled value="0">상영관</option>
-                    <option value="1">1관</option>
-                    <option value="2">2관</option>
-                    <option value="3">3관</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영종류</option>
-                    <option value="2D">2D</option>
-                    <option value="4DX">4DX</option>
-                    <option value="IMAX">IMAX</option>
-                    <option value="PRIVATE BOX">PRIVATE BOX</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영시작시간</option>
-                    <option value="9:00">9:00~</option>
-                    <option value="12:00">12:00~</option>
-                    <option value="18:00">18:00~</option>
-                   </select>
-                 
-                    <button type="button" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
-                </form>
+                
+                
             </div>
             <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
@@ -280,7 +256,34 @@
             
             <div id="theater_alter_wrap">
                
-                <form name="form" method="post">
+                <form name="form_list" method="post">
+                <div id="detail_search">
+                    <input  type="text" placeholder="상영지점">
+                   <input name="shKeyword" value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
+                    <input  id="datepicker" type="text" placeholder="상영일">
+                   <select name="shOption">
+                    <option selected disabled value="0">상영관</option>
+                    <option value="1">1관</option>
+                    <option value="2">2관</option>
+                    <option value="3">3관</option>
+                   </select>
+                   <select>
+                    <option selected disabled>상영종류</option>
+                    <option value="2D">2D</option>
+                    <option value="4DX">4DX</option>
+                    <option value="IMAX">IMAX</option>
+                    <option value="PRIVATE BOX">PRIVATE BOX</option>
+                   </select>
+                   <select>
+                    <option selected disabled>상영시작시간</option>
+                    <option value="9:00">9:00~</option>
+                    <option value="12:00">12:00~</option>
+                    <option value="18:00">18:00~</option>
+                   </select>
+                 
+                    <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
+               </div>
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
                             <li>상영지점</li>

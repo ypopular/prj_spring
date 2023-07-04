@@ -1,4 +1,4 @@
-package com.mycompany.app.infra.codegroup;
+package com.mycompany.app.infra.member;
 
 import java.util.List;
 
@@ -9,34 +9,32 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CodeGroupDao {
+public class MemberDao {
 
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.mycompany.app.infra.codegroup.CodeGroupMapper";
+	private static String namespace = "com.mycompany.app.infra.member.MemberMapper";
 	
-    public List<CodeGroup> selectList(CodeGroupVo vo){ 
+    public List<Member> selectList(MemberVo vo){ 
     	return sqlSession.selectList(namespace + ".selectList",vo); 
     	}
-    public CodeGroup selectOne(CodeGroupVo vo) { 
-		CodeGroup codeGroup = sqlSession.selectOne(namespace + ".selectOne", vo); 
-		return codeGroup;
+    public Member selectOne(MemberVo vo) { 
+		Member member = sqlSession.selectOne(namespace + ".selectOne", vo); 
+		return member;
 	}
-    public int update(CodeGroup dto) { 
+    public int update(Member dto) { 
     	return sqlSession.update(namespace + ".update", dto); 		 
 	}
-    public int delete(CodeGroup dto) { 
+    public int delete(Member dto) { 
     	return sqlSession.delete(namespace + ".delete", dto); 		 
 	}
-    public int insert(CodeGroup dto) { 
+    public int insert(Member dto) { 
     	return sqlSession.insert(namespace + ".insert", dto); 		 
 	}
-    public int uelete(CodeGroup dto) { 
+    public int uelete(Member dto) { 
     	return sqlSession.update(namespace + ".uelete", dto); }
-    
-    public int selectOneCount(CodeGroupVo vo){ return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
     
     
 	

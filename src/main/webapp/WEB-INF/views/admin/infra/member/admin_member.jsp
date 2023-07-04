@@ -5,11 +5,12 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_list</title>
+        <title>admin_member</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -42,15 +43,14 @@
                     <li id="go_main">
                         <a href="cgv.html">CGV메인</a>
                     </li>
-                   
                     <li id="cinema_add">영화관 추가</li>
                     <li id="cinema_alter">영화관 수정</li>
                     <li id="movie_add">영화정보 추가</li>
                     <li id="movie_alter">영화정보 수정</li>
                     <li id="theater_add">상영정보 추가</li>
-                      <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
-                    <li><a href="admin_code">code</a></li>
-                    <li><a href="admin_member">member</a></li>
+                    <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
+                     <li><a href="admin_code">code</a></li>
+                     <li><a href="admin_member">member</a></li>
                 </ul>
             </div>
         </div>
@@ -61,8 +61,9 @@
         <div id="master_page">
             <div id="master_search_wrap">
                 
+               
             </div>
-           <!--  <div id="chart_big_wrap">
+            <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
                     <div id="age_chart_title">
                         <p>예매 관객 나이 그래프</p>
@@ -91,7 +92,7 @@
                         <div id="employee_piechart" style="width: 600px; height: 600px;"></div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <div id="master_wrap">
                 
@@ -255,12 +256,10 @@
             
             <div id="theater_alter_wrap">
                
-                <form name="form_list">
-                <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-                  <div id="detail_search">
+                <form name="form_list" method="post">
+                 <div id="detail_search">
                     <input  type="text" placeholder="상영지점">
-                   <input name="shKeyword"  value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
+                   <input name="shKeyword" value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
                     <input  id="datepicker" type="text" placeholder="상영일">
                    <select name="shOption">
                     <option selected disabled value="0">상영관</option>
@@ -284,8 +283,8 @@
                  
                     <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                     <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
-                    </div>
-                	
+                
+                </div>
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
                             <li>상영지점</li>
@@ -303,8 +302,7 @@
                             <li>23.06.01 09:00</li>
                             <li><button type="button" class="list_alter_btn">변경</button></li>
                         </ul>
-                        
-                        <c:choose>
+                         <c:choose>
 				<c:when test="${fn:length(list) eq 0}">
 					<tr>
 							<td class="text-cneter" colspan="9">There is no data</td>
@@ -313,49 +311,25 @@
 						<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">
 							 <ul class="theater_alter_list">
-							<li><a href="admin_form?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
-						   <li> <c:out value="${list.name}"></c:out></li>	
-						  
-
-						     <li><button type="button" class="list_alter_btn"><a href="admin_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+							<li><a href="admin_member?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
+						   <li> <c:out value="${list.id}"></c:out></li>	
+ 						 <li> <c:out value="${list.password}"></c:out></li>	
+ 						  <li> <c:out value="${list.gender}"></c:out></li>	
+ 						   <li> <c:out value="${list.tel}"></c:out></li>	
+ 						    <li> <c:out value="${list.tel_type}"></c:out></li>	
+ 			
+						     <li><button type="button" class="list_alter_btn"><a href="admin_member_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
 			
 						 </ul>
 					</c:forEach>
 				</c:otherwise>
 					</c:choose>	
-                        <div class="container-fluid px-0 mt-2">
-    <div class="row">
-        <div class="col">
-            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
-            <ul class="pagination justify-content-center mb-0">
-                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
-<c:if test="${vo.startPage gt vo.pageNumToShow}">
-                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
-</c:if>
-<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
-	<c:choose>
-		<c:when test="${i.index eq vo.thisPage}">
-                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
-		</c:when>
-		<c:otherwise>             
-                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
-		</c:otherwise>
-	</c:choose>
-</c:forEach>                
-<c:if test="${vo.endPage ne vo.totalPages}">                
-                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
-</c:if>
-                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
-            </ul>
-        </div>
-    </div>
-</div>
                     </div>
                         
 
                     </div>
-					 <button type="button" id="go_insert" onclick="location.href='admin_form'">추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button">메인으로</button>
+ 					<button type="button" id="go_insert" onclick="location.href='admin_member_form'">추가</button>
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_list">메인으로</a></button>
                     <button type="submit" class="master_alter_button">등록</button>
                 </form>
             </div>
@@ -380,16 +354,23 @@
 <script>
 $("#master_search_btn").on("click",function(){
 	//자기 자신을 호출한다
-	$("form[name=form_list]").attr("action","/admin_list").submit();
+	$("form[name=form_list]").attr("action","/admin_member").submit();
 	$("form[name=form_list]").attr("method","get");
 	
 });
-
-goList = function(thisPage) {
-	$("input:hidden[name=thisPage]").val(thisPage);
-	$("form[name=form_list]").attr("action", "admin_list").submit();
-}
-	
+$("#list_save_btn2").on("click",function(){
+		$("form[name=form]").attr("action","/memberUpdt").submit();
+		
+});
+$("#list_insert_btn").on("click",function(){
+	$("form[name=form]").attr("action","/memberInsert").submit();
+});
+$("#list_delete_btn").on("click",function(){
+	$("form[name=form]").attr("action","/memberDelete").submit();
+});
+$("#list_del_check_btn").on("click",function(){
+	$("form[name=form]").attr("action","/memberUelete").submit();
+});
 
 	
 </script>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.app.infra.codegroup.CodeGroup;
@@ -19,13 +20,13 @@ public class CodeController {
 	
 	
 	@RequestMapping(value="/admin_code")
-	public String admin_code(CodeVo vo,Model model) {
+	public String admin_code(@ModelAttribute("vo")CodeVo vo,Model model) {
 		
 	
 		
 		System.out.println("controller: vo.getShOption():" + vo.getShOption());
 		System.out.println("controller: vo.getShKeyword():" + vo.getShKeyword());
-		
+		vo.setShKeyword(vo.getShKeyword() == null?"회원":vo.getShKeyword());
 	List<Code> list = service.selectList(vo);
 		
 		model.addAttribute("list",list);
