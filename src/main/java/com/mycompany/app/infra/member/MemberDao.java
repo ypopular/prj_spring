@@ -36,6 +36,12 @@ public class MemberDao {
     public int uelete(Member dto) { 
     	return sqlSession.update(namespace + ".uelete", dto); }
     
+    public int selectOneCheckId(MemberVo vo) {
+    	return sqlSession.selectOne(namespace + ".selectOneCheckId", vo);
+    }
+    
+    
+    
     
 	
 

@@ -311,14 +311,17 @@
 						<c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">
 							 <ul class="theater_alter_list">
-							<li><a href="admin_member?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
-						   <li> <c:out value="${list.id}"></c:out></li>	
- 						 <li> <c:out value="${list.password}"></c:out></li>	
- 						  <li> <c:out value="${list.gender}"></c:out></li>	
- 						   <li> <c:out value="${list.tel}"></c:out></li>	
- 						    <li> <c:out value="${list.tel_type}"></c:out></li>	
+							<li><a href="admin_member_form?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
+						   <li> <c:out value="${list.id}"></c:out></li>
+						   <li> <c:out value="${list.password}"></c:out></li>
+						   <li> <c:out value="${list.name}"></c:out></li>
+						   <li> <c:out value="${list.gender}"></c:out></li>
+						   <li> <c:out value="${list.tel}"></c:out></li>
+						   <li> <c:out value="${list.tel_type}"></c:out></li>	
+						   	
+ 						
  			
-						     <li><button type="button" class="list_alter_btn"><a href="admin_member_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+						     <li><button type="button" class="list_alter_btn"><a href="admin_cinema_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
 			
 						 </ul>
 					</c:forEach>

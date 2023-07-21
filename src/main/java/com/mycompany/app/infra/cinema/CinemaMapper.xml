@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.app.infra.cinema.CinemaMapper">
+
+    <resultMap id="resultMapObj" type="com.mycompany.app.infra.cinema.Cinema"></resultMap>
+     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.cinema.Cinema_name"></resultMap>
+     
+     
+     
+   <select id="selectList" resultMap="resultMapObj">
+    	SELECT *
+    	FROM
+    		cinema
+    	WHERE
+    		delYN = 0
+    </select>
+    
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT *
+		FROM 
+			cinema
+		WHERE 1=1
+		AND
+			seq = #{seq}
+	</select>
+	
+	<update id="update">
+        UPDATE     cinema
+        SET     location = #{location}
+        WHERE  1=1
+        AND
+           seq = #{seq}  
+    </update>
+    
+    <delete id="delete">
+    	DELETE 
+    	FROM cinema
+    	WHERE 1=1
+    	AND 
+    	seq = #{seq} 
+    </delete>
+    
+    <insert id="insert"> 
+    INSERT
+    INTO cinema
+    (
+    location,
+    delYN
+    )
+    VALUE (
+    #{location},
+    0
+    )
+    </insert>
+    
+     <update id="uelete">
+        UPDATE 
+        	cinema
+        SET 
+        	delYN = 1
+        WHERE 1=1
+        AND
+        	seq = #{seq}
+    </update>
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    
+     <select id="selectList2" resultMap="resultMapObj2">
+    	SELECT *
+    	FROM
+    		cinema_name
+    	WHERE
+    		cinema_seq = #{seq}
+    	AND
+    		delYN = 0
+    	   
+    </select>
+    
+	<select id="selectOne2" resultMap="resultMapObj2">
+		SELECT *
+		FROM 
+			cinema_name
+		WHERE 1=1
+		AND
+			seq = #{seq}
+	</select>
+	
+	<update id="update2">
+        UPDATE     cinema_name
+        SET     location_cinema_name = #{location_cinema_name}
+        WHERE  1=1
+        AND
+           seq = #{seq}  
+    </update>
+    
+    <delete id="delete2">
+    	DELETE 
+    	FROM cinema_name
+    	WHERE 1=1
+    	AND 
+    	seq = #{seq} 
+    </delete>
+    
+    <insert id="insert2"> 
+    INSERT
+    INTO cinema_name
+    (
+    location_cinema_name,
+    cinema_seq,
+    delYN
+    )
+    VALUE 
+    	(
+    	#{location_cinema_name},
+    	#{cinema_seq},
+    	0
+    	)
+    </insert>
+     <update id="uelete2">
+        UPDATE 
+        	cinema_name
+        SET 
+        	delYN = 1
+        WHERE 1=1
+        AND
+        	seq = #{seq}
+    </update>
+
+    
+    
+
+	
+</mapper>   

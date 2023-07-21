@@ -21,6 +21,7 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
    <script src="resources/js/jquery-3.6.4.min.js"></script>
    <script src="resources/js/cgv.js"></script>
+    <script src="resources/js/validation.js"></script>
 </head>
 <body>
     <header>
@@ -188,34 +189,35 @@
         <div id="sign_up_wrap_small">
               <div id="sign_up">
                 <div id="sign_title">회원가입</div>
-                <form>
+                <form name="form" method='post'>
+               <%--  <input type="text" class="form-control" id="seq_sign_up" name="seq" placeholder="seq" required readonly value="<c:out value="${item.seq}"/>">
+                <input type="text" class="form-control" id="delYN_sign_up" name="seq" placeholder="seq" required readonly value="<c:out value="${item.seq}"/>"> --%>
                     <div id="user_name_title">이름</div>
-                    <input type="text" title="이름" id="user_name_sign" name="user_name_sign" required="required" placeholder="이름을 입력해주세요" >
+                    <input type="text" title="이름" id="user_name_sign" name="name" required="<c:out value="${item.name}"/>" placeholder="2글자 이상 한글 입력해주세요" >
                     <div id="user_id_title">아이디</div>
-                    <input type="text" title="아이디" id="user_id_sign" name="user_id_sign" data-title="아이디를" data-message="입력하세요." required="required" placeholder="아이디를 입력해주세요" minlength="5">
+                    <input type="text" title="아이디" id="user_id_sign" name="id" data-title="아이디를" data-message="입력하세요." required="<c:out value="${item.id}"/>" placeholder="5글자이상 영문이나 숫자 입력해주세요" minlength="5">
                     <div id="user_password_title">비밀번호</div>
-                    <input type="password" title="패스워드" id="user_password_sign" name="user_password_sign" data-title="패스워드를" data-message="입력하세요"
-                    required="required" placeholder="비밀번호를 입력해주세요" minlength="5">
+                    <input type="password" title="패스워드" id="user_password_sign" name="password" data-title="패스워드를" data-message="입력하세요"required="<c:out value="${item.password}"/>" placeholder="영문,숫자,특수문자를 입력해주세요" minlength="5">
                     <div id="user_password_title_re">비밀번호 확인</div>
-                    <input type="password" title="패스워드" id="user_password_sign_re" name="user_password_sign" data-title="패스워드를" data-message="입력하세요"
-                    required="required" placeholder="비밀번호를 확인해주세요" minlength="5">
+                    <input type="password" title="패스워드" id="user_password_sign_re" name="user_password_sign"  required="required" data-title="패스워드를" data-message="입력하세요"
+                     placeholder="비밀번호를 확인해주세요" minlength="5">
                      <div id="user_gender_title">성별</div>
-                    <select name="gender" title="성별" id="user_gender">
+                    <select name="gender" title="성별" id="user_gender" required="<c:out value="${item.gender}"/>">
                         <option selected disabled>성별</option>
-                        <option value="male">남성</option>
-                        <option value="female">여성</option>
+                        <option value="0">남성</option>
+                        <option value="1">여성</option>
                     </select>
                     <div id="user_tel_title">전화번호</div>
-                    <input type="text" title="전화번호" id="user_tel" required="required" minlength="11" placeholder="'-'를 빼고 입력해주세요">
+                    <input type="text" title="전화번호" id="user_tel"  name="tel" required="<c:out value="${item.tel}"/>" minlength="11" placeholder="'-'를 빼고 입력해주세요">
                      <div id="user_tel_type_title">통신사</div>
-                    <select name="tel_type" title="통신사" id="user_tel_type">
+                    <select name="tel_type" title="통신사" id="user_tel_type" name="tel_type" required="<c:out value="${item.tel_type}"/>">
                         <option selected disabled>통신사</option>
-                        <option value="skt">skt</option>
-                        <option value="kt">kt</option>
-                         <option value="lg">lg</option>
+                        <option value="0">skt</option>
+                        <option value="1">kt</option>
+                         <option value="2">lg</option>
                     </select>
 
-
+						<button type="button" id="id_check" title="로그인"><span>중복체크</span></button>
                     <button type="submit" id="sign_submit" title="로그인"><span>회원가입</span></button>
                 </form>
               </div>
@@ -250,5 +252,63 @@
     <div id="ticketing_btn"><a href="cgv_ticketing.html">예매하기</a></div>
     <div id="top_btn"><i class="fa-solid fa-arrow-up"></i></div>
     
+    <script>
+    
+     var obj = $("#user_name_sign");
+	 var obj2 =$("#user_id_sign");
+	 var obj3 =$("#user_password_sign");
+	 var obj4 =$("#user_gender");
+	 var obj5 =$("#user_tel");
+	 var obj6 =$("#user_tel_type");
+	 var id_ok = false;
+	   validationInsert = function(){
+		  
+			if(check(obj) == false || check(obj2) == false || check(obj3) == false || check(obj4) ==false || check(obj5) == false || check(obj6)==false ||id_ok==false) return false;
+	   } 
+	     
+	   
+	   $("#sign_submit").on("click", function(){
+		
+	    if(validationInsert() == false) return false;
+	      $("form[name=form]").attr("action", "/memberInsert").submit();
+	   });
+	   
+	    $("#id_check").on("click", function(){
+	    	
+	    	
+	    	$.ajax({
+	    		async: true 
+	    		,cache: false
+	    		,type: "post"
+	    		
+	    		,url: "/checkIdProc"
+	    		
+	    		,data : { "id" : $("#user_id_sign").val()}
+	    		,success: function(response) {
+	    			if($("#user_id_sign").val()== ""){
+	    				alert("아이디를 입력하세요");
+	    			}
+	    	     	else if(response.rt == "available") {
+	    				alert("사용가능합니다");
+	    				id_ok=true;
+	    			} else {
+	    				alert("중복입니다");
+	    			}
+	    		}
+	    		,error : function(jqXHR, textStatus, errorThrown){
+	    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	    		}
+	    	});
+	    });
+	     
+       
+
+	   
+	
+	   
+	 
+
+
+    </script>
 </body>
 </html>

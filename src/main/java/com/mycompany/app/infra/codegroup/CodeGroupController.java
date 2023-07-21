@@ -46,7 +46,7 @@ public class CodeGroupController {
 		
 		CodeGroup codeGroup = service.selectOne(vo);
 		
-		model.addAttribute("itme", codeGroup);
+		model.addAttribute("item", codeGroup);
 		
 		return "admin/infra/codegroup/admin_form";
 	}

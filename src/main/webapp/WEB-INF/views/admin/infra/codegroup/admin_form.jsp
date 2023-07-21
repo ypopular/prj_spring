@@ -302,9 +302,9 @@
                             <li><button type="button" class="list_alter_btn">변경</button></li>
                         </ul>
                          <ul class="theater_alter_list">
-                <li>    <input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${itme.seq}"/>"></li>
- <li><input type="text" class="form-control" id="name" name="name" required value="<c:out value="${itme.name}"/>"></li>
- <li><input type="text" class="form-control" id="delYN" name="delYN" required value="<c:out value="${itme.delYN}"/>"></li>
+                <li>    <input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
+ <li><input type="text" class="form-control" id="name" name="name" required value="<c:out value="${item.name}"/>"></li>
+ <li><input type="text" class="form-control" id="delYN" name="delYN" required value="<c:out value="${item.delYN}"/>"></li>
  			       <button type="button" id="list_save_btn2">변경저장</button>
  			         <button type="button" id="list_delete_btn">삭제</button>
  			          <button type="button" id="list_del_check_btn">삭제확인</button>

@@ -13,23 +13,30 @@
     	WHERE 1=1
     	AND
     	 name LIKE CONCAT('%',#{shKeyword},'%')
+    	 AND	delYN = 0
     		
     
     </select>
     
 	<select id="selectOne" resultMap="resultMapObj">
-		SELECT *
+		SELECT 
+			seq,
+			name,
+			id
 		FROM 
 			member
 		WHERE 1=1
+	    AND
+			id = #{id}
 		AND
-			seq = #{seq}
+			password = #{password}	
 	</select>
 	
 	<update id="update">
         UPDATE     member
         SET     id = #{id},
        			password = #{password},
+       			name = #{name},
        			gender = #{gender},
        			tel = #{tel},
        			tel_type = #{tel_type},
@@ -49,26 +56,46 @@
     
     <insert id="insert"> 
     INSERT
-    INTO member
-    (id,password,gender,tel,tel_type,
-    delYN)
-    VALUE (#{id},#{password},#{gender},#{tel},#{tel_type},#{delYN})
+    INTO member (
+    	id,
+    	password,
+    	name,
+    	gender,
+    	tel,
+    	tel_type,
+    	delYN
+    ) VALUE (
+    	#{id},
+    	#{password},
+    	#{name},
+    	#{gender},
+    	#{tel},
+    	#{tel_type},
+    	0
+    	)
     </insert>
     
     <update id="uelete">
         UPDATE 
         	member
         SET 
-        	delYN = #{delYN}
+        	delYN = 1
         WHERE 1=1
         AND
         	seq = #{seq}
     </update>
     
+ 
    
-    
    
-
+  <select id="selectOneCheckId" resultType="Integer">
+  		SELECT
+  				COUNT(seq)
+  		FROM
+  			member
+  		WHERE 1=1
+  		AND	id=#{id}
+  </select>
 
 
 	

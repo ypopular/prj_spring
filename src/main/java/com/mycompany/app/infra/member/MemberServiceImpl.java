@@ -16,6 +16,8 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectList(vo);
 	}
 	public Member selectOne(MemberVo vo) { return dao.selectOne(vo); }
+	
+	
 	@Override
 	public int update(Member dto) {
 		// TODO Auto-generated method stub
@@ -35,6 +37,17 @@ public class MemberServiceImpl implements MemberService{
 	public int uelete(Member dto) {
 		return dao.uelete(dto);
 	}
+	
+	
+	@Override
+	public int selectOneCheckId(MemberVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCheckId(vo);
+	}
+	
+	
+	
+	
 	
 	
 	

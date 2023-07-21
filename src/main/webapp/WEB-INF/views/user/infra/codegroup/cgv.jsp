@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -196,9 +200,21 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="cgv_login_page.html">
+                        
+                       
+                      <c:choose>
+	                	<c:when test="${not empty sessionId }">
+	                		<i class="fa-sharp fa-solid fa-user-large"></i>
+	                		<span id="btn_logout">로그아웃</span>
+	                	</c:when>
+	                	<c:otherwise>
+	                	<a href="cgv_login_page.html">
                             <i class="fa-solid fa-user-lock"></i>
-                            <span>로그인</span></a>
+	                		<span>로그인</span></a>
+	     
+	                	</c:otherwise>
+	                </c:choose>
+                          
                     </li>
                     <li>
                         <a href="cgv_sign_up.html">
@@ -903,5 +919,27 @@
                     <i class="fa-solid fa-arrow-up"></i>
                 </div>
 
+<script>
+$("#btn_logout").on("click", function(){
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/logoutProc"
+		/* ,data : $("#formLogin").serialize() */
+		,data : { }
+		,success: function(response) {
+				location.href = "/cgv";
+		}
+		
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
+
+
+</script>
             </body>
         </html>

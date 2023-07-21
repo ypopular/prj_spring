@@ -21,10 +21,7 @@ public class IndexController {
 	public String cgv() {
 		return "user/infra/codegroup/cgv";
 	}
-	@RequestMapping(value="/cgv_login_page")
-	public String cgv_login_page() {
-		return "user/infra/codegroup/cgv_login_page";
-	}
+	
 	@RequestMapping(value="/cgv_movie_chart")
 	public String cgv_movie_chart() {
 		return "user/infra/codegroup/cgv_movie_chart";

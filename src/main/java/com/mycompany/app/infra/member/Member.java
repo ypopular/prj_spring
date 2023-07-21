@@ -6,6 +6,7 @@ public class Member {
 	private String id;
 	private String password;
 	private Integer gender;
+	private String name;
 	private String tel;
 	private Integer tel_type;
 	private Integer delYN;
@@ -50,6 +51,12 @@ public class Member {
 	}
 	public void setDelYN(Integer delYN) {
 		this.delYN = delYN;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

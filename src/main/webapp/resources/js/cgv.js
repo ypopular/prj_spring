@@ -63,8 +63,8 @@ $(".sp_hover").mouseover(function(){
     var section = $contents.eq(idx);
 
 
-   $(this).addClass('active');
-   $(this).siblings().removeClass('active')
+   $(this).addClass('active2');
+   $(this).siblings().removeClass('active2')
    $(this).siblings().css("border-top","1px solid #ccc")
    $(this).next().css("border-top","none")
   section.show()
@@ -427,36 +427,48 @@ $(".sp_hover").mouseover(function(){
         $("#personnel02").on("click", personnel02Click);
         $("#personnel03").on("click", personnel03Click);
         // --------------------------------------------------------------
-        $("#sign_submit").on("click",function(){
+       /* $("#sign_submit").on("click",function(){
              if($("#user_name_sign").val() == ""){
                 alert("이름을 입력해주세요");
+                return false;
             }else if($("#user_id_sign").val() == ""){
                 alert("ID를 입력해주세요")
+                  return false;
             }else if ($("#user_id_sign").val().length < 5) {
                 alert("ID는 최소 5자 이상이어야 합니다");
+                  return false;
             }else if($("#user_password_sign").val() == ""){
                 alert("password를 입력해주세요")
+                  return false;
             }else if ($("#user_password_sign").val().length < 5) {
                 alert("비밀번호는 최소 5자 이상이어야 합니다");
+                  return false;
             }
             else if($("#user_password_sign_re").val() == ""){
                 alert("password를 확인해주세요")
+                  return false;
             }else if($("#user_id_sign").val() == $("#user_password_sign").val()){
                 alert("아이디와 비밀번호를 다르게 입력해주세요")
+                  return false;
             }else if($("#user_password_sign").val() != $("#user_password_sign_re").val()){
                 alert("비밀번호 확인이 동일하지 않습니다.")
+                  return false;
             }
             else if($("#user_gender").val() == ""){
                 alert("성별를 선택해주세요")
+                  return false;
             }else if($("#user_tel").val() == ""){
                 alert("전화번호를 입력해주세요")
+                  return false;
             }else if($("#user_tel_type").val() == ""){
                 alert("통신사를 선택해주세요")
+                  return false;
             }
             
             
             else{
                 alert("회원가입이 완료되었습니다");
+               
             }
         });
        
@@ -465,7 +477,7 @@ $(".sp_hover").mouseover(function(){
         alert("변경되었습니다.");
     });
 
-
+/*
     $("#cinema_add").on("click",function(){
         $("#master_search_wrap").hide();
         $("#chart_big_wrap").hide();
@@ -560,7 +572,7 @@ $(".sp_hover").mouseover(function(){
         $("#theater_alter_wrap").show();
         $("#master_search_wrap").show();
     });
-
+*/
    /* $("#go_chart").on("click",function(){
         $("#master_search_wrap").hide();
         $("#chart_big_wrap").css("display","block");

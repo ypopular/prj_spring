@@ -1,12 +1,17 @@
 package com.mycompany.app.infra.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
@@ -26,7 +31,7 @@ public class MemberController {
 		System.out.println("controller: vo.getShOption():" + vo.getShOption());
 		System.out.println("controller: vo.getShKeyword():" + vo.getShKeyword());
 		
-		vo.setShKeyword(vo.getShKeyword() == null?"회원":vo.getShKeyword());
+		vo.setShKeyword(vo.getShKeyword() == null?"":vo.getShKeyword());
 		
 	List<Member> list = service.selectList(vo);
 		
@@ -40,7 +45,7 @@ public class MemberController {
 		
 		Member member = service.selectOne(vo);
 		
-		model.addAttribute("itme", member);
+		model.addAttribute("item", member);
 		
 		return "admin/infra/member/admin_member_form";
 	}
@@ -78,9 +83,54 @@ public class MemberController {
 		return "redirect:/admin_member";
 	}
 	
+	@RequestMapping(value="/cgv_login_page")
+	public String cgv_login_page() {
+		return "user/infra/codegroup/cgv_login_page";
+	}
+	@ResponseBody
+	@RequestMapping("/loginProc")
+	public Map<String,Object> loginProc(MemberVo vo,HttpSession httpSession){
+		Map<String,Object> returnMap =new HashMap<String,Object>();
+		
+		Member rtMember = service.selectOne(vo);
+		
+		if(rtMember !=null) {
+			
+			httpSession.setMaxInactiveInterval(60*60); // 60 min
+			httpSession.setAttribute("sessionId", vo.getId());
+			
+			returnMap.put("rtMember", rtMember);
+			returnMap.put("rt", "success");
+		}else {
+			returnMap.put("rt","fail");
+		}
+		return returnMap;
+	}
 	
+	@ResponseBody
+	@RequestMapping("/checkIdProc")
+	public Map<String,Object> checkIdProc(MemberVo vo){
+		Map<String,Object> returnMap =new HashMap<String,Object>();
+		
+		int rtNum = service.selectOneCheckId(vo);
+		
+		if(rtNum ==0) {
+			returnMap.put("rt","available");
+			
+		}else {
+			returnMap.put("rt", "unavailable");
+		}
+		return returnMap;
+	}
 	
-	
+	@ResponseBody
+	@RequestMapping("/logoutProc")
+	public Map<String, Object>logoutProc(HttpSession httpSession){
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
 	
 	
 	

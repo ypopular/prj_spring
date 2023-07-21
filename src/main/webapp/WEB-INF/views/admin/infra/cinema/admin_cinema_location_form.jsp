@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_member_form</title>
+        <title>admin_cinema_form</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -259,7 +259,7 @@
                 <form name="form" method="post">
                 <div id="detail_search">
                     <input  type="text" placeholder="상영지점">
-                   <input name="shKeyword" value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
+                   <input type="text" placeholder="영화제목">
                     <input  id="datepicker" type="text" placeholder="상영일">
                    <select name="shOption">
                     <option selected disabled value="0">상영관</option>
@@ -302,29 +302,24 @@
                             <li>23.06.01 09:00</li>
                             <li><button type="button" class="list_alter_btn">변경</button></li>
                         </ul>
+                        
+                      
                          <ul class="theater_alter_list">
-                		  <li><input type="text" class="form-control" id="seq" name="seq" placeholder="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
- 						  <li><input type="text" class="form-control" id="id" name="id" placeholder="id" required value="<c:out value="${item.id}"/>"></li>
- 						  <li><input type="text" class="form-control" id="password" name="password" placeholder="password" required value="<c:out value="${item.password}"/>"></li>
- 						  <li><input type="text" class="form-control" id="name" name="name" placeholder="name" required value="<c:out value="${item.name}"/>"></li>
- 						   <li><input type="text" class="form-control" id="gender" name="gender" placeholder="gender" required value="<c:out value="${item.gender}"/>"></li>
- 						    <li><input type="text" class="form-control" id="tel" name="tel" placeholder="tel" required value="<c:out value="${item.tel}"/>"></li>
- 						     <li><input type="text" class="form-control" id="tel_type" name="tel_type" placeholder="tel_type"required value="<c:out value="${item.tel_type}"/>"></li>
- 					
- 						     
- 						  
- 			    	      <button type="button" id="list_save_btn2">변경저장</button>
- 			        	  <button type="button" id="list_delete_btn">삭제</button>
- 			              <button type="button" id="list_del_check_btn">삭제확인</button>
- 			              <button type="button" id="list_insert_btn">추가 저장</button>
-                        </ul>
+ 						
+ <li><input type="text" class="form-control" id="location" name="location" required value="<c:out value="${item.location}"/>"></li>
+ 						
+ 					 <button type="button" id="list_save_btn2"><a href="admin_cinema_form4?seq=<c:out value="${item.seq}"/>">변경</a></button>
+ 					    <button type="button" id="list_insert_btn">추가 저장</button>
+ 			              
+ 						    </ul>
+                      
                     </div>
                         
 
                     </div>
-
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_member">메인으로</a></button>
-                    <button type="submit" class="master_alter_button">등록</button>
+					
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">이전으로</a></button>
+                   
                 </form>
             </div>
         </div>
@@ -346,25 +341,20 @@
         </div>
     </div>
 <script>
-$("#master_search_btn").on("click",function(){
-	//자기 자신을 호출한다
-	$("form[name=form_list]").attr("action","/admin_member").submit();
-	$("form[name=form_list]").attr("method","get");
+$("#list_save_btn2").on("click",function(){
+	$("form[name=form]").attr("action","/cinemaUpdt2").submit();
 	
 });
-$("#list_save_btn2").on("click",function(){
-		$("form[name=form]").attr("action","/memberUpdt").submit();
-		
-});
 $("#list_insert_btn").on("click",function(){
-	$("form[name=form]").attr("action","/memberInsert").submit();
+$("form[name=form]").attr("action","/cinemaInsert2").submit();
 });
 $("#list_delete_btn").on("click",function(){
-	$("form[name=form]").attr("action","/memberDelete").submit();
+$("form[name=form]").attr("action","/cinemaDelete2").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-	$("form[name=form]").attr("action","/memberUelete").submit();
+$("form[name=form]").attr("action","/cinemaUelete2").submit();
 });
+
 
 	
 </script>

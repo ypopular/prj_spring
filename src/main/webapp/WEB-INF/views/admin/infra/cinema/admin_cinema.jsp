@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_member_form</title>
+        <title>admin_cinema</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -43,14 +43,11 @@
                     <li id="go_main">
                         <a href="cgv.html">CGV메인</a>
                     </li>
-                    <li id="cinema_add">영화관 추가</li>
-                    <li id="cinema_alter">영화관 수정</li>
-                    <li id="movie_add">영화정보 추가</li>
+                    <li id="cinema_alter"><a href="admin_cinema">영화관 수정</a></li>
                     <li id="movie_alter">영화정보 수정</li>
-                    <li id="theater_add">상영정보 추가</li>
                     <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
-                     <li><a href="admin_code">code</a></li>
-                       <li><a href="admin_member">member</a></li>
+                     <li><a href="admin_member">회원관리</a></li>
+                     <li><a href="#">예매목록확인</a></li>
                 </ul>
             </div>
         </div>
@@ -59,11 +56,8 @@
         
 
         <div id="master_page">
-            <div id="master_search_wrap">
-                
-                
-            </div>
-            <!-- <div id="chart_big_wrap">
+           
+            <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
                     <div id="age_chart_title">
                         <p>예매 관객 나이 그래프</p>
@@ -92,7 +86,7 @@
                         <div id="employee_piechart" style="width: 600px; height: 600px;"></div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <div id="master_wrap">
                 
@@ -118,10 +112,7 @@
                 <div id="cinema_alter_wrap">
                     <form>
                         <div class="master_form">
-                            <div class="cinema_title">극장 지역</div>
-                            <select name="cinema_local" id="cinema_local">
-                                <option value="경기">경기</option>
-                            </select>
+                     
                         </div>
                         <div class="master_form">
                             <div class="cinema_title">극장명</div>
@@ -256,75 +247,43 @@
             
             <div id="theater_alter_wrap">
                
-                <form name="form" method="post">
-                <div id="detail_search">
-                    <input  type="text" placeholder="상영지점">
-                   <input name="shKeyword" value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
-                    <input  id="datepicker" type="text" placeholder="상영일">
-                   <select name="shOption">
-                    <option selected disabled value="0">상영관</option>
-                    <option value="1">1관</option>
-                    <option value="2">2관</option>
-                    <option value="3">3관</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영종류</option>
-                    <option value="2D">2D</option>
-                    <option value="4DX">4DX</option>
-                    <option value="IMAX">IMAX</option>
-                    <option value="PRIVATE BOX">PRIVATE BOX</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영시작시간</option>
-                    <option value="9:00">9:00~</option>
-                    <option value="12:00">12:00~</option>
-                    <option value="18:00">18:00~</option>
-                   </select>
-                 
-                    <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
+                <form name="form_list" method="post">
                 
-                </div>
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
                             <li>상영지점</li>
-                            <li>영화제목</li>
-                            <li>상영관</li>
-                            <li>상영종류</li>
-                            <li>상영시간</li>
+                            
                         </ul>
                         <div id="theater_alter_list_wrap">
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><button type="button" class="list_alter_btn">변경</button></li>
-                        </ul>
-                         <ul class="theater_alter_list">
-                		  <li><input type="text" class="form-control" id="seq" name="seq" placeholder="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
- 						  <li><input type="text" class="form-control" id="id" name="id" placeholder="id" required value="<c:out value="${item.id}"/>"></li>
- 						  <li><input type="text" class="form-control" id="password" name="password" placeholder="password" required value="<c:out value="${item.password}"/>"></li>
- 						  <li><input type="text" class="form-control" id="name" name="name" placeholder="name" required value="<c:out value="${item.name}"/>"></li>
- 						   <li><input type="text" class="form-control" id="gender" name="gender" placeholder="gender" required value="<c:out value="${item.gender}"/>"></li>
- 						    <li><input type="text" class="form-control" id="tel" name="tel" placeholder="tel" required value="<c:out value="${item.tel}"/>"></li>
- 						     <li><input type="text" class="form-control" id="tel_type" name="tel_type" placeholder="tel_type"required value="<c:out value="${item.tel_type}"/>"></li>
- 					
- 						     
- 						  
- 			    	      <button type="button" id="list_save_btn2">변경저장</button>
- 			        	  <button type="button" id="list_delete_btn">삭제</button>
- 			              <button type="button" id="list_del_check_btn">삭제확인</button>
- 			              <button type="button" id="list_insert_btn">추가 저장</button>
-                        </ul>
+                       
+                         <c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<tr>
+							<td class="text-cneter" colspan="9">There is no data</td>
+					</tr>
+				</c:when>
+						<c:otherwise>
+						
+				<c:forEach items="${list}"  var="list"  varStatus="status">
+							 <ul class="theater_alter_list">
+						<%-- 	<li><a href="admin_cinema_name_list?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>	 --%>		
+						   <li> <c:out value="${list.location}"></c:out></li>	
+ 						
+ 			
+						     <li><button type="button" class="list_alter_btn"><a href="admin_cinema_name_list?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+			 </ul>
+						
+					</c:forEach>
+				
+				</c:otherwise>
+					</c:choose>	 
                     </div>
                         
 
                     </div>
-
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_member">메인으로</a></button>
-                    <button type="submit" class="master_alter_button">등록</button>
+ 					<button type="button" id="go_insert" onclick="location.href='admin_cinema_location_form'">추가</button>
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
+             
                 </form>
             </div>
         </div>
@@ -348,25 +307,25 @@
 <script>
 $("#master_search_btn").on("click",function(){
 	//자기 자신을 호출한다
-	$("form[name=form_list]").attr("action","/admin_member").submit();
+	$("form[name=form_list]").attr("action","/admin_cinema").submit();
 	$("form[name=form_list]").attr("method","get");
 	
 });
 $("#list_save_btn2").on("click",function(){
-		$("form[name=form]").attr("action","/memberUpdt").submit();
+		$("form[name=form]").attr("action","/cinemaUpdt").submit();
 		
 });
 $("#list_insert_btn").on("click",function(){
-	$("form[name=form]").attr("action","/memberInsert").submit();
+	$("form[name=form]").attr("action","/cinemaInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
-	$("form[name=form]").attr("action","/memberDelete").submit();
+	$("form[name=form]").attr("action","/cinemaDelete").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-	$("form[name=form]").attr("action","/memberUelete").submit();
+	$("form[name=form]").attr("action","/cinemaUelete").submit();
 });
 
-	
+
 </script>
 </body>
 

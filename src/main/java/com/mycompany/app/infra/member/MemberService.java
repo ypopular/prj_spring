@@ -14,6 +14,6 @@ public interface MemberService {
 	public int insert(Member dto);
 	public int uelete(Member dto);
 	
-	
-	
+	public int selectOneCheckId(MemberVo vo);
+
 }

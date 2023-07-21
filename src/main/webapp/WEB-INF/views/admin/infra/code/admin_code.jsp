@@ -44,7 +44,7 @@
                         <a href="cgv.html">CGV메인</a>
                     </li>
                     <li id="cinema_add">영화관 추가</li>
-                    <li id="cinema_alter">영화관 수정</li>
+                    <li id="cinema_alter"><a href="admin_cinema">영화관 수정</a></li>
                     <li id="movie_add">영화정보 추가</li>
                     <li id="movie_alter">영화정보 수정</li>
                     <li id="theater_add">상영정보 추가</li>

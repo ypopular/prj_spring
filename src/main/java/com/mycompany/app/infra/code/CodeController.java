@@ -38,7 +38,7 @@ public class CodeController {
 		
 		Code code = service.selectOne(vo);
 		
-		model.addAttribute("itme", code);
+		model.addAttribute("item", code);
 		
 		return "admin/infra/code/admin_code_form";
 	}

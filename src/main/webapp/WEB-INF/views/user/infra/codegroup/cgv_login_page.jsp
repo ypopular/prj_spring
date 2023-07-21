@@ -19,6 +19,8 @@
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
    <script src="resources/js/jquery-3.6.4.min.js"></script>
    <script src="resources/js/cgv.js"></script>
+   <script src="resources/js.validation"></script>
+  
 </head>
 <body>
     <header>
@@ -189,12 +191,12 @@
                 <div id="login_title">
                     <span>로그인</span>
                 </div>
-                <form>
+                <form method="post">
                     <p>아이디를 입력하신 후, 로그인 버튼을 눌러주세요.</p>
-                    <input type="text" title="아이디" id="user_id" name="user_id" data-title="아이디를" data-message="입력하세요." required="required">
+                    <input type="text" title="아이디" id="user_id" name="user_id" data-title="아이디를" data-message="입력하세요." required="required" value="user123">
                     <input type="password" title="패스워드" id="user_password" name="user_password" data-title="패스워드를" data-message="입력하세요"
-                    required="required">
-                    <button type="submit" id="login_submit" title="로그인"><span>로그인</span></button>
+                    required="required" value="user123!">
+                    <button type="button" id="login_submit" title="로그인"><span>로그인</span></button>
                 </form>
             </div>
         </div>
@@ -227,5 +229,45 @@
     <div id="ticketing_btn"><a href="cgv_ticketing.html">예매하기</a></div>
     <div id="top_btn"><i class="fa-solid fa-arrow-up"></i></div>
     
+    
+    <script>
+    $("#login_submit").on("click", function(){
+    	
+    	
+    	if(validation() == false) return false;
+    	
+    	$.ajax({
+    		async: true 
+    		,cache: false
+    		,type: "post"
+    		/* ,dataType:"json" */
+    		,url: "/loginProc"
+    		/* ,data : $("#formLogin").serialize() */
+    		,data : { "id" : $("#user_id").val(),
+    			"password" : $("#user_password").val()}
+    		,success: function(response) {
+    			if(response.rt == "success") {
+    				alert(response.rtMember.name+"님 환영합니다");
+    				location.href = "/cgv";
+    			} else {
+    				alert("없는 회원입니다");
+    			}
+    		}
+    		,error : function(jqXHR, textStatus, errorThrown){
+    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    		}
+    	});
+    });
+
+
+    validation = function() {
+   //  	 if(!checkNull($("#user_id"), $.trim($("#user_id").val()), "아이디를 입력해 주세요!")) return false;
+   //  	 if(!checkNull($("#user_password"), $.trim($("#user_password").val()), "비밀번호를 입력해 주세요!")) return false;
+    }
+    
+    
+    
+  
+    </script>
 </body>
 </html>
