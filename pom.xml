@@ -213,11 +213,7 @@
 		</dependency>
 		<!-- fileupload e 2022.03.30 -->
 
-		<dependency>
-			<groupId>dbsdlsrl25</groupId>
-			<artifactId>dbsdlsrl25</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 	</dependencies>
 	
     <build>
