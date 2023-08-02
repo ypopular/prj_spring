@@ -29,10 +29,10 @@
                     <div id="secret_nav_small2">
                         <ul id="ul_first2">
                             <li>
-                                <a class="secret_title" href="cgv_movie_chart.html">영화</a>
+                                <a class="secret_title" href="cgv_movie_chart">영화</a>
                             </li>
                             <li>
-                                <a href="cgv_movie_chart.html">무비차트</a>
+                                <a href="cgv_movie_chart">무비차트</a>
                             </li>
                             <li>
                                 <a href="#">아트하우스</a>
@@ -54,10 +54,10 @@
                         </ul>
                         <ul>
                             <li>
-                                <a class="secret_title" href="cgv_ticketing.html">예매</a>
+                                <a class="secret_title" href="cgv_ticketing">예매</a>
                             </li>
                             <li>
-                                <a href="cgv_ticketing.html">빠른예매</a>
+                                <a href="cgv_ticketing">빠른예매</a>
                             </li>
                             <li>
                                 <a href="#">상영스케줄</a>
@@ -144,13 +144,13 @@
                     <ul>
                         <a href="#"><img width="70px" height="32px" src="resources/img/logoWhite.png" alt=""></a>
                         <li>
-                            <a href="cgv_movie_chart.html">영화</a>
+                            <a href="cgv_movie_chart">영화</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_theater.html">극장</a>
+                            <a href="cgv_movie_theater">극장</a>
                         </li>
                         <li>
-                            <a href="cgv_ticketing.html">예매</a>
+                            <a href="cgv_ticketing">예매</a>
                         </li>
                         <li>
                             <a href="#">스토어</a>
@@ -182,7 +182,7 @@
         <div id="login_nav">
             <div id="login_nav_small">
                 <div id="cgv_logo">
-                    <a href="cgv.html"><img src="resources/img/logoRed.png" width="100%" height="100%" alt=""></a>
+                    <a href="cgv"><img src="resources/img/logoRed.png" width="100%" height="100%" alt=""></a>
                 </div>
                 <p>CULTUREPLEX</p>
                 <div id="hyundai_card">
@@ -190,12 +190,23 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="cgv_login_page.html">
+                        <c:choose>
+	                	<c:when test="${not empty sessionId }">
+	                	<div id="btn_logout">
+	                		<i class="fa-sharp fa-solid fa-user-large"></i>
+	                		<span >로그아웃</span>
+	                		</div>
+	                	</c:when>
+	                	<c:otherwise>
+	                	<a href="cgv_login_page">
                             <i class="fa-solid fa-user-lock"></i>
-                            <span>로그인</span></a>
+	                		<span>로그인</span></a>
+	     
+	                	</c:otherwise>
+	                </c:choose>
                     </li>
                     <li>
-                        <a href="cgv_sign_up.html">
+                        <a href="cgv_sign_up">
                             <i class="fa-solid fa-user-plus"></i>
                             <span>회원가입</span></a>
                     </li>
@@ -217,10 +228,10 @@
                 <div id="secret_nav_small">
                     <ul id="ul_first">
                         <li>
-                            <a class="secret_title" href="cgv_movie_chart.html">영화</a>
+                            <a class="secret_title" href="cgv_movie_chart">영화</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_chart.html">무비차트</a>
+                            <a href="cgv_movie_chart">무비차트</a>
                         </li>
                         <li>
                             <a href="#">아트하우스</a>
@@ -231,21 +242,21 @@
                     </ul>
                     <ul>
                         <li>
-                            <a class="secret_title" href="cgv_movie_theater.html">극장</a>
+                            <a class="secret_title" href="cgv_movie_theater">극장</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_theater.html">CGV극장</a>
+                            <a href="cgv_movie_theater">CGV극장</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_theater.html">특별관</a>
+                            <a href="cgv_movie_theater">특별관</a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a class="secret_title" href="cgv_ticketing.html">예매</a>
+                            <a class="secret_title" href="cgv_ticketing">예매</a>
                         </li>
                         <li>
-                            <a href="cgv_ticketing.html">빠른예매</a>
+                            <a href="cgv_ticketing">빠른예매</a>
                         </li>
                         <li>
                             <a href="#">상영스케줄</a>
@@ -331,13 +342,13 @@
             <div id="main_nav_small">
                 <ul>
                     <li>
-                        <a href="cgv_movie_chart.html">영화</a>
+                        <a href="cgv_movie_chart">영화</a>
                     </li>
                     <li>
-                        <a href="cgv_movie_theater.html">극장</a>
+                        <a href="cgv_movie_theater">극장</a>
                     </li>
                     <li>
-                        <a href="cgv_ticketing.html">예매</a>
+                        <a href="cgv_ticketing">예매</a>
                     </li>
                     <li>
                         <a href="#">스토어</a>
@@ -1223,11 +1234,33 @@
         </div>
     </div>
     <div id="ticketing_btn">
-        <a href="cgv_ticketing.html">예매하기</a>
+        <a href="cgv_ticketing">예매하기</a>
     </div>
     <div id="top_btn">
         <i class="fa-solid fa-arrow-up"></i>
     </div>
+   <script>
+   $("#btn_logout").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/logoutProc"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { }
+			,success: function(response) {
+					location.href = "/cgv";
+			}
+			
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+   
+  
+   </script>
 
 </body>
 </html>

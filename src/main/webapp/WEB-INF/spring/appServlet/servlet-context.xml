@@ -22,5 +22,35 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.mycompany.app" />
+	<!-- session interceptor s 2023.07.18 for logincheck -->
+	<!-- <interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/biography_user_view_detail" />
+			<exclude-mapping path="/biography_user_view" />
+			<exclude-mapping path="/cgv_login_page" />
+			<exclude-mapping path="/cgv" />
+			<exclude-mapping path="/cgv_movie_chart" />
+			<exclude-mapping path="/cgv_movie_detail" />
+			<exclude-mapping path="/cgv_sign_up" />
+			<exclude-mapping path="/cgv_movie_theater" />
+			<exclude-mapping path="/checkIdProc" />
+			<exclude-mapping path="/loginProc" />
+			<beans:bean id="checkLoginSessionInterception" class="com.mycompany.app.common.interceptor.CheckLoginSessionInterception"/>
+		</interceptor>
+	</interceptors>	 -->
+	<!-- session interceptor e 2023.07.18 for logincheck -->
+	
+	
+		<!-- fileUpload s 2022.03.30 --> 
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="UTF-8"/>
+		<!-- <beans:property name="maxUploadSize" value="52428800"/> --> <!-- 50MB -->
+		<beans:property name="maxUploadSize" value="10485760"/> <!-- 10MB -->
+		<!-- <beans:property name="maxInMemorySize" value="1048576"/> --> <!-- 1MB -->
+	</beans:bean>
+	<!-- fileUpload e 2022.03.30 -->
 	
 </beans:beans>

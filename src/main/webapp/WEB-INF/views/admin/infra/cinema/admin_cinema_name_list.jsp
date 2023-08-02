@@ -38,16 +38,17 @@
                 </div>
             
           
-            <div id="master_banner">
+           
+              <div id="master_banner">
                 <ul>
                     <li id="go_main">
-                        <a href="cgv.html">CGV메인</a>
+                        <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
                     </li>
-                    <li id="cinema_alter"><a href="admin_cinema">영화관 수정</a></li>
-                    <li id="movie_alter">영화정보 수정</li>
-                    <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
-                     <li><a href="admin_member">회원관리</a></li>
-                     <li><a href="#">예매목록확인</a></li>
+                    <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
+                    <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
+                    <li id="theater_alter"><a href="admin_list"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
+                     <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
+                     <li><a href="admin_ticketing"><i class="fa-solid fa-ticket"></i> 예매목록확인</a></li>
                 </ul>
             </div>
         </div>
@@ -252,7 +253,9 @@
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
                           <li>cinema_seq</li>
+                             <li>seq</li>
                             <li>상영지점</li>
+                         
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
@@ -260,10 +263,11 @@
                         <c:forEach items="${list2}"  var="list2"  varStatus="status">
                          <ul class="cinema_name_alter_list">
                 		  <li><input type="text" class="form-control" id="cinema_seq" name="cinema_seq" placeholder="cinema_seq" required readonly value="<c:out value="${list2.cinema_seq}"/>"></li>
+                		   <li><input type="text" class="form-control" id="seq" name="seq" placeholder="seq" required readonly value="<c:out value="${list2.seq}"/>"></li>
  						  <li><input type="text" class="form-control" id="location" name="location" placeholder="location" required readonly value="<c:out value="${list2.location_cinema_name}"/>"></li>
  						
- 					 <button type="button" id="list_save_btn2"><a href="admin_cinema_name_list_form?seq=<c:out value="${list2.seq}"/>">변경</a></button>
- 			      
+ 					 <button type="button" class="name_list_btn" id="list_save_btn2"><a href="admin_cinema_name_list_form?seq=<c:out value="${list2.seq}"/>">변경</a></button>
+ 			       <li><button type="button" class="list_alter_btn"><a href="admin_cinema_theater_list?seq=<c:out value="${list2.seq}"/>">상세</a></button></li>
  			              
  						    </ul>
  						     </c:forEach>

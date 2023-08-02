@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_cinema</title>
+        <title>admin_movie</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -37,7 +37,8 @@
                     <img src="resources/img/small_logo.png" alt="">
                 </div>
             
-           <div id="master_banner">
+          
+            <div id="master_banner">
                 <ul>
                     <li id="go_main">
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
@@ -250,31 +251,26 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
-                            <li >상영지점</li>
+                            <li class="movie_top_title">영화제목</li>
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
-                       
-                 
-						
-				   <c:forEach items="${list}"  var="list"  varStatus="status">
+                       <c:forEach items="${list}"  var="list"  varStatus="status">
 							 <ul class="theater_alter_list">
-						<%-- 	<li><a href="admin_cinema_name_list?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>	 --%>		
-								   <li class="form-control"> <c:out value="${list.location}"></c:out></li>	
+						   <li class="form-control movie_title_name"> <c:out value="${list.movie_name}"></c:out></li>	
  						
- 			    					  <button type="button" class="list_alter_btn2"><a href="admin_cinema_location_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button>
-			   						 <button type="button" class="list_alter_btn"><a href="admin_cinema_name_list?seq=<c:out value="${list.seq}"/>">상세</a></button>
-								 </ul>
+ 			    				  <button type="button" class="list_alter_btn2"><a href="admin_cinema_location_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button>
+						     <li><button type="button" class="list_alter_btn"><a href="admin_movie_detail?seq=<c:out value="${list.seq}"/>">상세</a></button></li>
+			 </ul>
 						
 					</c:forEach>
-				
-				
+                       
                     </div>
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_cinema_location_add_form'">추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
+ 					<button type="button" id="go_insert" onclick="location.href='admin_movie_add_form'">영화 추가</button>
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_movie">메인으로</a></button>
              
                 </form>
             </div>

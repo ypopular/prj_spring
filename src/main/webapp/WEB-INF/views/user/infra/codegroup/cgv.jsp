@@ -39,10 +39,10 @@
                     <div id="secret_nav_small2">
                         <ul id="ul_first2">
                             <li>
-                                <a class="secret_title" href="cgv_movie_chart.html">영화</a>
+                                <a class="secret_title" href="cgv_movie_chart">영화</a>
                             </li>
                             <li>
-                                <a href="cgv_movie_chart.html">무비차트</a>
+                                <a href="cgv_movie_chart">무비차트</a>
                             </li>
                             <li>
                                 <a href="#">아트하우스</a>
@@ -53,21 +53,21 @@
                         </ul>
                         <ul>
                             <li>
-                                <a class="secret_title" href="cgv_movie_theater.html">극장</a>
+                                <a class="secret_title" href="cgv_movie_theater">극장</a>
                             </li>
                             <li>
-                                <a href="cgv_movie_theater.html">CGV극장</a>
+                                <a href="cgv_movie_theater">CGV극장</a>
                             </li>
                             <li>
-                                <a href="cgv_movie_theater.html">특별관</a>
+                                <a href="cgv_movie_theater">특별관</a>
                             </li>
                         </ul>
                         <ul>
                             <li>
-                                <a class="secret_title" href="cgv_ticketing.html">예매</a>
+                                <a class="secret_title" href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a>
                             </li>
                             <li>
-                                <a href="cgv_ticketing.html">빠른예매</a>
+                                <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">빠른예매</a>
                             </li>
                             <li>
                                 <a href="#">상영스케줄</a>
@@ -154,13 +154,13 @@
                     <ul>
                         <a href="#"><img width="70px" height="32px" src="resources/img/logoWhite.png" alt=""></a>
                         <li>
-                            <a href="cgv_movie_chart.html">영화</a>
+                            <a href="cgv_movie_chart">영화</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_theater.html">극장</a>
+                            <a href="cgv_movie_theater">극장</a>
                         </li>
                         <li>
-                            <a href="cgv_ticketing.html">예매</a>
+                            <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a>
                         </li>
                         <li>
                             <a href="#">스토어</a>
@@ -192,7 +192,7 @@
         <div id="login_nav">
             <div id="login_nav_small">
                 <div id="cgv_logo">
-                    <a href="cgv.html"><img src="resources/img/logoRed.png" width="100%" height="100%" alt=""></a>
+                    <a href="cgv"><img src="resources/img/logoRed.png" width="100%" height="100%" alt=""></a>
                 </div>
                 <p>CULTUREPLEX</p>
                 <div id="hyundai_card">
@@ -204,11 +204,13 @@
                        
                       <c:choose>
 	                	<c:when test="${not empty sessionId }">
+	                	<div id="btn_logout">
 	                		<i class="fa-sharp fa-solid fa-user-large"></i>
-	                		<span id="btn_logout">로그아웃</span>
+	                		<span >로그아웃</span>
+	                		</div>
 	                	</c:when>
 	                	<c:otherwise>
-	                	<a href="cgv_login_page.html">
+	                	<a href="cgv_login_page">
                             <i class="fa-solid fa-user-lock"></i>
 	                		<span>로그인</span></a>
 	     
@@ -217,7 +219,7 @@
                           
                     </li>
                     <li>
-                        <a href="cgv_sign_up.html">
+                        <a href="javascript:void(0);" onclick="handleSignUp()">
                             <i class="fa-solid fa-user-plus"></i>
                             <span>회원가입</span></a>
                     </li>
@@ -239,10 +241,10 @@
                 <div id="secret_nav_small">
                     <ul id="ul_first">
                         <li>
-                            <a class="secret_title" href="cgv_movie_chart.html">영화</a>
+                            <a class="secret_title" href="cgv_movie_chart">영화</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_chart.html">무비차트</a>
+                            <a href="cgv_movie_chart">무비차트</a>
                         </li>
                         <li>
                             <a href="#">아트하우스</a>
@@ -253,21 +255,21 @@
                     </ul>
                     <ul>
                         <li>
-                            <a class="secret_title" href="cgv_movie_theater.html">극장</a>
+                            <a class="secret_title" href="cgv_movie_theater">극장</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_theater.html">CGV극장</a>
+                            <a href="cgv_movie_theater">CGV극장</a>
                         </li>
                         <li>
-                            <a href="cgv_movie_theater.html">특별관</a>
+                            <a href="cgv_movie_theater">특별관</a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a class="secret_title" href="cgv_ticketing.html">예매</a>
+                            <a class="secret_title" href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a>
                         </li>
                         <li>
-                            <a href="cgv_ticketing.html">빠른예매</a>
+                            <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">빠른예매</a>
                         </li>
                         <li>
                             <a href="#">상영스케줄</a>
@@ -353,13 +355,13 @@
             <div id="main_nav_small">
                 <ul>
                     <li>
-                        <a href="cgv_movie_chart.html">영화</a>
+                        <a href="cgv_movie_chart">영화</a>
                     </li>
                     <li>
-                        <a href="cgv_movie_theater.html">극장</a>
+                        <a href="cgv_movie_theater">극장</a>
                     </li>
                     <li>
-                        <a href="cgv_ticketing.html">예매</a>
+                        <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a>
                     </li>
                     <li>
                         <a href="#">스토어</a>
@@ -417,7 +419,7 @@
         <div id="movie_chart_small">
             <span id="show_chart">무비차트</span>
             <div id="movie_look">
-                <a href="cgv_movie_chart.html">전체보기
+                <a href="cgv_movie_chart">전체보기
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </div>
@@ -429,10 +431,10 @@
                                 <div class="chart_img_wrap">
                                     <img src="resources/img/chart/1.jpg" alt="">
                                     <div class="secret_movie_detail">
-                                        <a href="cgv_movie_detail.html">상세보기</a>
+                                        <a href="cgv_movie_detail">상세보기</a>
                                     </div>
                                     <div class="secret_movie_ticketing">
-                                        <a href="cgv_ticketing.html">예매하기</a>
+                                        <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
                                     </div>
                                     <span>1</span>
                                 </div>
@@ -450,10 +452,10 @@
                                 <div class="chart_img_wrap">
                                     <img src="resources/img/chart/2.jpg" alt="">
                                     <div class="secret_movie_detail">
-                                        <a href="cgv_movie_detail.html">상세보기</a>
+                                        <a href="cgv_movie_detail">상세보기</a>
                                     </div>
                                     <div class="secret_movie_ticketing">
-                                        <a href="cgv_ticketing.html">예매하기</a>
+                                        <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
                                     </div>
                                     <span>2</span>
                                     </div>
@@ -470,10 +472,10 @@
                                     <div class="chart_img_wrap">
                                         <img src="resources/img/chart/3.jpg" alt="">
                                         <div class="secret_movie_detail">
-                                            <a href="cgv_movie_detail.html">상세보기</a>
+                                            <a href="cgv_movie_detail">상세보기</a>
                                         </div>
                                         <div class="secret_movie_ticketing">
-                                            <a href="cgv_ticketing.html">예매하기</a>
+                                            <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
                                         </div>
                                         <span>3</span>
                                         </div>
@@ -491,10 +493,10 @@
                                         <div class="chart_img_wrap">
                                             <img src="resources/img/chart/4.jpg" alt="">
                                             <div class="secret_movie_detail">
-                                                <a href="cgv_movie_detail.html">상세보기</a>
+                                                <a href="cgv_movie_detail">상세보기</a>
                                             </div>
                                             <div class="secret_movie_ticketing">
-                                                <a href="cgv_ticketing.html">예매하기</a>
+                                                <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
                                             </div>
                                             <span>4</span>
                                             </div>
@@ -511,8 +513,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/5.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>5</span>
                                                 </div>
                                             <p class="title">남은 인생 10년
@@ -530,8 +532,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/6.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>6</span>
                                                 </div>
                                             <p class="title">SUGA Agust D TOSJOWD
@@ -547,8 +549,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/7.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><ahref="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>7</span>
                                                 </div>
                                             <p class="title">스프린터
@@ -564,8 +566,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/8.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>8</span>
                                                 </div>
                                             <p class="title">메이플스토리 2023년 검은마법사
@@ -581,8 +583,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/9.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>9</span>
                                                 </div>
                                             <p class="title">문제인입니다
@@ -598,8 +600,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/10.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>10</span>
                                                 </div>
                                             <p class="title">아기공룔둘리-얼음속에 갇힌
@@ -617,8 +619,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/11.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>11</span>
                                                 </div>
                                             <p class="title">ACT:SEWEET
@@ -634,8 +636,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/12.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>12</span>
                                                 </div>
                                             <p class="title">사슴의 왕
@@ -651,8 +653,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/13.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>13</span>
                                                 </div>
                                             <p class="title">메리 마이 데드바디
@@ -668,8 +670,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/14.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>14</span>
                                                 </div>
                                             <p class="title">라이드 온
@@ -685,8 +687,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/15.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>15</span>
                                                 </div>
                                             <p class="title">슬픔의 삼각형
@@ -704,8 +706,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/16.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>16</span>
                                                 </div>
                                             <p class="title">짱구는 못말려 극장판 못말려-동물소환닌자
@@ -721,8 +723,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/17.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>17</span>
                                                 </div>
                                             <p class="title">스즈메의 문단속
@@ -738,8 +740,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/18.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>18</span>
                                                 </div>
                                             <p class="title">마리오 브라더스
@@ -755,8 +757,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/19.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>19</span>
                                                 </div>
                                             <p class="title">포켓몬스터DP 극장판
@@ -772,8 +774,8 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/20.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail.html">상세보기</a></div>
-                                                <div class="secret_movie_ticketing"><a href="cgv_ticketing.html">예매하기</a></div>
+                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>20</span>
                                                 </div>
                                             <p class="title">롱디
@@ -805,23 +807,23 @@
                                 <p>특별관</p>
                             </div>
                             <div id="sp_look">
-                                <a href="cgv_movie_theater.html">전체보기
+                                <a href="cgv_movie_theater">전체보기
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </a>
                             </div>
                             <div id="special">
                                 <div id="sp_img">
-                                    <a class="sp_idx" href="cgv_movie_theater.html"><img src="resources/img/special/suite_cinema.png" alt=""></a>
-                                    <a class="sp_idx" href="cgv_movie_theater.html">
+                                    <a class="sp_idx" href="cgv_movie_theater"><img src="resources/img/special/suite_cinema.png" alt=""></a>
+                                    <a class="sp_idx" href="cgv_movie_theater">
                                         <img src="resources/img/special/cine_livingroom.png" alt=""></a>
-                                    <a class="sp_idx" href="cgv_movie_theater.html">
+                                    <a class="sp_idx" href="cgv_movie_theater">
                                         <img src="resources/img/special/4dx.png" alt=""></a>
-                                    <a class="sp_idx" href="cgv_movie_theater.html">
+                                    <a class="sp_idx" href="cgv_movie_theater">
                                         <img src="resources/img/special/cine_de_chef.png" alt=""></a>
                                 </div>
                                 <div>
                                     <div class="sp_hover">
-                                        <a href="cgv_movie_theater.html">
+                                        <a href="cgv_movie_theater">
                                             <span>SUITE CINEMA</span>
                                             <div class="hash">
                                                 <p>#호텔 컨셉의 프리미엄관</p>
@@ -829,7 +831,7 @@
                                         </a>
                                     </div>
                                     <div class="sp_hover">
-                                        <a href="cgv_movie_theater.html">
+                                        <a href="cgv_movie_theater">
                                             <span>CINE & LIVINGROOM</span>
                                             <div class="hash">
                                                 <p>#신개념 소셜 상영관
@@ -838,7 +840,7 @@
                                         </a>
                                     </div>
                                     <div class="sp_hover">
-                                        <a href="cgv_movie_theater.html">
+                                        <a href="cgv_movie_theater">
                                             <span>4DX</span>
                                             <div class="hash">
                                                 <p>#모션시트 #오감체험</p>
@@ -846,7 +848,7 @@
                                         </a>
                                     </div>
                                     <div class="sp_hover">
-                                        <a href="cgv_movie_theater.html">
+                                        <a href="cgv_movie_theater">
                                             <span>CINE de CHEF</span>
                                             <div class="hash">
                                                 <p>쉐프가 있는 영화관</p>
@@ -913,13 +915,38 @@
                     </div>
                 </div>
                 <div id="ticketing_btn">
-                    <a href="cgv_ticketing.html">예매하기</a>
+                    <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
                 </div>
                 <div id="top_btn">
                     <i class="fa-solid fa-arrow-up"></i>
                 </div>
 
 <script>
+function checkLogin(pageName) {
+    <c:choose>
+        <c:when test="${sessionId == null}">
+            alert("<c:out value='로그인 후에 이용 가능합니다'/>");
+            window.location.href="/cgv_login_page"
+        </c:when>
+        <c:otherwise>
+        window.location.href = pageName;
+            // 버튼을 클릭한 후 실행할 동작
+        </c:otherwise>
+    </c:choose>
+}
+function handleSignUp() {
+    <c:choose>
+        <c:when test="${sessionId == null}">
+            // User is not logged in, allow access to the registration page
+            window.location.href = "cgv_sign_up"; // Replace "cgv_sign_up" with the actual URL of your registration page
+        </c:when>
+        <c:otherwise>
+            // User is logged in, prevent access to the registration page
+            alert("<c:out value='로그인 상태에서는 회원가입이 불가능합니다'/>");
+        </c:otherwise>
+    </c:choose>
+}
+
 $("#btn_logout").on("click", function(){
 	$.ajax({
 		async: true 
@@ -938,6 +965,9 @@ $("#btn_logout").on("click", function(){
 		}
 	});
 });
+
+
+
 
 
 </script>

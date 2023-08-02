@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.app.infra.movie.MovieMapper">
+<resultMap id="resultMapObj" type="com.mycompany.app.infra.movie.Movie"></resultMap>
+
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT *
+		FROM
+			movie
+		WHERE
+			delYN=0
+	</select>
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT *
+		FROM 
+			movie
+		WHERE 1=1
+		AND
+			seq = #{seq}
+	</select>
+	
+	
+	<update id="update">
+        UPDATE     movie
+        SET     movie_name = #{movie_name},
+        		movie_post = #{movie_post},
+        		movie_en_name = #{movie_en_name},
+        		reservation_in_progress = #{reservation_in_progress},
+        		reservation_rate = #{reservation_rate},
+        		director = #{director},
+        		casting_actor = #{casting_actor},
+        		genre = #{genre},
+        		view_age = #{view_age},
+        		made_country = #{made_country},
+        		release_date = #{release_date},
+        		description_movie = #{description_movie},
+        		movie_chart = #{movie_chart}
+        		
+        WHERE  1=1
+        AND
+           seq = #{seq}  
+    </update>
+    
+    <delete id="delete">
+    	DELETE 
+    	FROM movie
+    	WHERE 1=1
+    	AND 
+    	seq = #{seq} 
+    </delete>
+    
+    <insert id="insert"> 
+    INSERT
+    INTO movie
+    (
+    movie_name,
+    movie_post,
+    movie_en_name,
+    reservation_in_progress,
+    reservation_rate,
+    director,
+    casting_actor,
+    genre,
+    view_age,
+    made_country,
+    release_date,
+    description_movie,
+    movie_chart,
+    delYN
+    )
+    VALUE (
+    #{movie_name},
+    #{movie_post},
+    #{movie_en_name},
+    #{reservation_in_progress},
+    #{reservation_rate},
+    #{casting_actor},
+    #{genre},
+    #{view_age},
+    #{made_country},
+    #{release_date},
+    #{description_movie},
+    #{movie_chart},
+    0
+    )
+    </insert>
+    
+     <update id="uelete">
+        UPDATE 
+        	movie
+        SET 
+        	delYN = 1
+        WHERE 1=1
+        AND
+        	seq = #{seq}
+    </update>
+    
+  <!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+  <!-- uploaded s -->
+	<!-- <insert id="insertUploaded">
+		INSERT INTO ${uploaded} (
+			type
+			,defaultYN
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delYN
+			<include refid="Base.insertRegColumn" />
+			,pseq
+		) values (
+			#{type}
+			,#{defaultYN}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			<include refid="Base.insertRegValue" />
+			,#{pseq}
+		)
+	</insert>
+	<sql id="Base.insertRegColumn">
+    , regDate
+    , modDate
+    , createdBy
+    , modifiedBy
+</sql>
+
+<sql id="Base.insertRegValue">
+    , #{regDate}
+    , #{modDate}
+    , #{createdBy}
+    , #{modifiedBy}
+</sql>
+	 -->
+</mapper>

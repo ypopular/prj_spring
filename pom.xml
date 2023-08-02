@@ -203,6 +203,21 @@
 			<version>2.13.0</version>
 		</dependency>
 		<!-- for ajax s 2022.03.12 -->	
+		
+		
+			<!-- fileupload s 2022.03.30 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- fileupload e 2022.03.30 -->
+
+		<dependency>
+			<groupId>dbsdlsrl25</groupId>
+			<artifactId>dbsdlsrl25</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	
     <build>
@@ -243,4 +258,6 @@
             </plugin>
         </plugins>
     </build>
+    
+    
 </project>

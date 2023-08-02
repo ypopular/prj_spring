@@ -226,7 +226,7 @@
             <div class="portfolio-wrap">
               <img src="resources/assets/img/cgv.png" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="biography_user_view_detail.html" title="More Details"><i class="bx bx-plus"></i></a>
+                <a href="biography_user_view_detail" title="More Details"><i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>

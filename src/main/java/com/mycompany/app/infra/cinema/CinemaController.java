@@ -20,35 +20,54 @@ public class CinemaController {
 	
 	@RequestMapping(value="/admin_cinema")
 	public String admin_cinema(@ModelAttribute("vo")CinemaVo vo,Cinema_nameVo vo2,Model model) {
-		
 	List<Cinema> list = service.selectList(vo);
-	
 		model.addAttribute("list",list);
 		return "admin/infra/cinema/admin_cinema";
 	}
 	
 	@RequestMapping("/admin_cinema_name_list")
-	public String admin_cinema_name_list(CinemaVo vo,Cinema_nameVo vo2, Model model) {
-		
-		
-		
+	public String admin_cinema_name_list(CinemaVo vo,Cinema_nameVo vo2,Cinema_theaterVo Vo3, Model model) {
 	List<Cinema_name> list2 = service.selectList2(vo2);
-		
 		model.addAttribute("list2",list2);
-		
-		
-		
-		
 		return "admin/infra/cinema/admin_cinema_name_list";
 	}
+	
+	@RequestMapping("/admin_cinema_theater_list")
+	public String admin_cinema_theater_list(Cinema_nameVo vo2,Cinema_theaterVo vo3, Model model) {
+	List<Cinema_theaterVo> list3 = service.selectList3(vo3);
+		model.addAttribute("list3",list3);
+		return "admin/infra/cinema/admin_cinema_theater_list";
+	}
+//	---------------------------------------------------------------------
 	@RequestMapping("/admin_cinema_name_list_form")
 	public String admin_cinema_name_lsit_form(CinemaVo vo,Cinema_nameVo vo2, Model model) {
-		
 		Cinema_name cinema_name = service.selectOne2(vo2);
-		
 		model.addAttribute("item", cinema_name);
 		return "admin/infra/cinema/admin_cinema_name_list_form";
 	}
+	
+	@RequestMapping("/admin_cinema_location_add_form")
+	public String admin_cinema_location_add_form(CinemaVo vo, Model model) {
+		Cinema cinema = service.selectOne(vo);
+		model.addAttribute("item", cinema);
+		return "admin/infra/cinema/admin_cinema_location_add_form";
+	}
+	
+	@RequestMapping("/admin_cinema_location_alter_form")
+	public String admin_cinema_location_alter_form(CinemaVo vo, Model model) {
+		Cinema cinema = service.selectOne(vo);
+		model.addAttribute("item", cinema);
+		return "admin/infra/cinema/admin_cinema_location_alter_form";
+	}
+	
+	@RequestMapping("/admin_cinema_theater_list_form")
+	public String admin_cinema_theater_lsit_form(Cinema_nameVo vo2,Cinema_theaterVo vo3, Model model) {
+		Cinema_theater cinema_theater = service.selectOne3(vo3);
+		model.addAttribute("item", cinema_theater);
+		return "admin/infra/cinema/admin_cinema_theater_list_form";
+	}
+	
+	
 //	
 //	@RequestMapping("/admin_cinema_form3")
 //	public String admin_cinema_form3(CinemaVo vo,Cinema_nameVo vo2, Model model) {
@@ -67,7 +86,7 @@ public class CinemaController {
 	}
 	
 	@RequestMapping("/cinemaDelete")
-	public String codeDelete(Cinema dto) {
+	public String cinemaDelete(Cinema dto) {
 		
 		System.out.println("cinemaDelete");
 		service.delete(dto);
@@ -125,6 +144,40 @@ public class CinemaController {
 	@RequestMapping("/cinemaUelete2")
 	public String cinemaUelete2(Cinema_name dto2) {
 		service.uelete2(dto2);
+		return "redirect:/admin_cinema";
+	}
+//	-----------------------------------------------
+	@RequestMapping("/cinemaUpdt3")
+	public String cinemaUpdt3(Cinema_theater dto3) {
+		
+		System.out.println("cinemaUpdt3");
+		service.update3(dto3);
+		return "redirect:/admin_cinema";
+	}
+	
+	@RequestMapping("/cinemaDelete3")
+	public String cinemaDelete3(Cinema_theater dto3) {
+		
+		System.out.println("cinemaDelete3");
+		service.delete3(dto3);
+		return "redirect:/admin_cinema";
+	}
+	
+	/**
+	 * @param dto
+	 * @return
+	 */
+	@RequestMapping("/cinemaInsert3")
+	public String cinemaInsert3(Cinema_theater dto3) {
+		
+		System.out.println("cinemaInsert3");
+		service.insert3(dto3);
+		return "redirect:/admin_cinema";
+	}
+	
+	@RequestMapping("/cinemaUelete3")
+	public String cinemaUelete3(Cinema_theater dto3) {
+		service.uelete3(dto3);
 		return "redirect:/admin_cinema";
 	}
 	

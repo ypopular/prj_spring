@@ -48,7 +48,7 @@
 
       <div class="profile">
         <img src="resources/assets/img/profile_img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="portfolio.html">Yoon InGi</a></h1>
+        <h1 class="text-light"><a href="biography_user_view">Yoon InGi</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -80,7 +80,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Portfoio Details</h2>
           <ol>
-            <li><a href="portolio.html">Home</a></li>
+            <li><a href="biography_user_view">Home</a></li>
             <li>Portfoio Details</li>
           </ol>
         </div>
@@ -92,7 +92,7 @@
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
         <div id="go_user_page" class="go_box">
-         <a href="cgv.html">user</a>
+         <a href="cgv">user</a>
         </div>
         <div id="go_admin_page" class="go_box">
           <a href="admin_login">admin</a>

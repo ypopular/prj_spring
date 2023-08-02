@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_cinema_form</title>
+        <title>admin_cinema_location_add_form</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -38,19 +38,17 @@
                 </div>
             
           
-            <div id="master_banner">
+           
+              <div id="master_banner">
                 <ul>
                     <li id="go_main">
-                        <a href="cgv.html">CGV메인</a>
+                        <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
                     </li>
-                    <li id="cinema_add">영화관 추가</li>
-                    <li id="cinema_alter">영화관 수정</li>
-                    <li id="movie_add">영화정보 추가</li>
-                    <li id="movie_alter">영화정보 수정</li>
-                    <li id="theater_add">상영정보 추가</li>
-                    <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
-                     <li><a href="admin_code">code</a></li>
-                       <li><a href="admin_member">member</a></li>
+                    <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
+                    <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
+                    <li id="theater_alter"><a href="admin_list"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
+                     <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
+                     <li><a href="admin_ticketing"><i class="fa-solid fa-ticket"></i> 예매목록확인</a></li>
                 </ul>
             </div>
         </div>
@@ -59,11 +57,8 @@
         
 
         <div id="master_page">
-            <div id="master_search_wrap">
-                
-                
-            </div>
-            <!-- <div id="chart_big_wrap">
+           
+            <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
                     <div id="age_chart_title">
                         <p>예매 관객 나이 그래프</p>
@@ -92,7 +87,7 @@
                         <div id="employee_piechart" style="width: 600px; height: 600px;"></div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <div id="master_wrap">
                 
@@ -118,10 +113,7 @@
                 <div id="cinema_alter_wrap">
                     <form>
                         <div class="master_form">
-                            <div class="cinema_title">극장 지역</div>
-                            <select name="cinema_local" id="cinema_local">
-                                <option value="경기">경기</option>
-                            </select>
+                     
                         </div>
                         <div class="master_form">
                             <div class="cinema_title">극장명</div>
@@ -256,70 +248,33 @@
             
             <div id="theater_alter_wrap">
                
-                <form name="form" method="post">
-                <div id="detail_search">
-                    <input  type="text" placeholder="상영지점">
-                   <input type="text" placeholder="영화제목">
-                    <input  id="datepicker" type="text" placeholder="상영일">
-                   <select name="shOption">
-                    <option selected disabled value="0">상영관</option>
-                    <option value="1">1관</option>
-                    <option value="2">2관</option>
-                    <option value="3">3관</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영종류</option>
-                    <option value="2D">2D</option>
-                    <option value="4DX">4DX</option>
-                    <option value="IMAX">IMAX</option>
-                    <option value="PRIVATE BOX">PRIVATE BOX</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영시작시간</option>
-                    <option value="9:00">9:00~</option>
-                    <option value="12:00">12:00~</option>
-                    <option value="18:00">18:00~</option>
-                   </select>
-                 
-                    <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
+                <form name="form_list" method="post">
                 
-                </div>
                     <div id="theater_alter_small_wrap">
-                        <ul class="title_alter_list">
+                        <ul class="cinema_name_title_alter_list">
+                       
                             <li>상영지점</li>
-                            <li>영화제목</li>
-                            <li>상영관</li>
-                            <li>상영종류</li>
-                            <li>상영시간</li>
+                            
                         </ul>
                         <div id="theater_alter_list_wrap">
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><button type="button" class="list_alter_btn">변경</button></li>
-                        </ul>
                         
-                      
-                         <ul class="theater_alter_list">
- 						
- <li><input type="text" class="form-control" id="location" name="location" required value="<c:out value="${item.location}"/>"></li>
- 						
- 					 <button type="button" id="list_save_btn2"><a href="admin_cinema_form4?seq=<c:out value="${item.seq}"/>">변경</a></button>
- 					    <button type="button" id="list_insert_btn">추가 저장</button>
+                        
+                         <ul class="cinema_name_alter_list">
+                        
+                        <li><input type="text" class="form-control" id="location" name="location" required value="<c:out value="${item.location}"/>"></li>
+    					<button type="button" id="list_insert_btn" class="location_insert_btn">추가 저장</button>
+    					
+ 	
+ 			      
  			              
  						    </ul>
-                      
+ 						    
                     </div>
                         
 
                     </div>
-					
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">이전으로</a></button>
-                   
+ 					
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
                 </form>
             </div>
         </div>
@@ -341,22 +296,27 @@
         </div>
     </div>
 <script>
-$("#list_save_btn2").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaUpdt2").submit();
+$("#master_search_btn").on("click",function(){
+	//자기 자신을 호출한다
+	$("form[name=form_list]").attr("action","/admin_cinema").submit();
+	$("form[name=form_list]").attr("method","get");
 	
+});
+$("#list_save_btn2").on("click",function(){
+		$("form[name=form_list]").attr("action","/cinemaUpdt").submit();
+		
 });
 $("#list_insert_btn").on("click",function(){
-$("form[name=form]").attr("action","/cinemaInsert2").submit();
+	$("form[name=form_list]").attr("action","/cinemaInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
-$("form[name=form]").attr("action","/cinemaDelete2").submit();
+	$("form[name=form]").attr("action","/cinemaDelete").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-$("form[name=form]").attr("action","/cinemaUelete2").submit();
+	$("form[name=form_list]").attr("action","/cinemaUelete").submit();
 });
 
 
-	
 </script>
 </body>
 

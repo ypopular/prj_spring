@@ -83,6 +83,42 @@ public class CinemaServiceImpl implements CinemaService{
 		// TODO Auto-generated method stub
 		return dao.uelete2(dto2);
 	}
+//--------------------------------------------------------
+	@Override
+	public List<Cinema_theaterVo> selectList3(Cinema_theaterVo vo3) {
+		// TODO Auto-generated method stub
+		return dao.selectList3(vo3);
+	}
+
+	@Override
+	public Cinema_theater selectOne3(Cinema_theaterVo vo3) {
+		// TODO Auto-generated method stub
+		return dao.selectOne3(vo3);
+	}
+
+	@Override
+	public int update3(Cinema_theater dto3) {
+		// TODO Auto-generated method stub
+		return dao.update3(dto3);
+	}
+
+	@Override
+	public int delete3(Cinema_theater dto3) {
+		// TODO Auto-generated method stub
+		return dao.delete3(dto3);
+	}
+
+	@Override
+	public int insert3(Cinema_theater dto3) {
+		// TODO Auto-generated method stub
+		return dao.insert3(dto3);
+	}
+
+	@Override
+	public int uelete3(Cinema_theater dto3) {
+		// TODO Auto-generated method stub
+		return dao.uelete3(dto3);
+	}
 	
 
 

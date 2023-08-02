@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_cinema</title>
+        <title>admin_cinema_theater_list</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -37,7 +37,8 @@
                     <img src="resources/img/small_logo.png" alt="">
                 </div>
             
-           <div id="master_banner">
+          
+            <div id="master_banner">
                 <ul>
                     <li id="go_main">
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
@@ -249,33 +250,34 @@
                 <form name="form_list" method="post">
                 
                     <div id="theater_alter_small_wrap">
-                        <ul class="title_alter_list">
-                            <li >상영지점</li>
+                        <ul class="cinema_name_title_alter_list">
+                        	<li>name_seq</li>
+                          <li  class="cinema_top_title">상영관번호</li>
+                            <li>상영타입</li>
+                            <li>좌석 수</li> 
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
-                       
-                 
-						
-				   <c:forEach items="${list}"  var="list"  varStatus="status">
-							 <ul class="theater_alter_list">
-						<%-- 	<li><a href="admin_cinema_name_list?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>	 --%>		
-								   <li class="form-control"> <c:out value="${list.location}"></c:out></li>	
- 						
- 			    					  <button type="button" class="list_alter_btn2"><a href="admin_cinema_location_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button>
-			   						 <button type="button" class="list_alter_btn"><a href="admin_cinema_name_list?seq=<c:out value="${list.seq}"/>">상세</a></button>
-								 </ul>
-						
-					</c:forEach>
-				
-				
+                        
+                        <c:forEach items="${list3}"  var="list3"  varStatus="status">
+                         <ul class="cinema_name_alter_list">
+                	 <li><input type="text" class="form-control" id="cinema_name_seq" name="cinema_name_seq" placeholder="theater_number" required readonly value="<c:out value="${list3.cinema_name_seq}"/>"></li>
+ 						  <li><input type="text" class="form-control" id="theater_number" name="theater_number" placeholder="theater_number" required readonly value="<c:out value="${list3.theater_number}"/>"></li>
+ 						 <li><input type="text" class="form-control" id="cinema_type" name="cinema_type" placeholder="cinema_type" required readonly value="<c:out value="${list3.cinema_type}"/>"></li>
+ 						  <li><input type="text" class="form-control" id="seat_count" name="seat_count" placeholder="seat_count" required readonly value="<c:out value="${list3.seat_count}"/>"></li>
+ 				
+ 					 <button type="button" id="list_save_btn2"><a href="admin_cinema_theater_list_form?seq=<c:out value="${list3.seq}"/>">변경</a></button>
+ 			      
+ 			              
+ 						    </ul>
+ 						     </c:forEach>
+                  
                     </div>
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_cinema_location_add_form'">추가</button>
+ 					<button type="button" id="go_insert"><a href="admin_cinema_theater_list_form">추가</a></button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
-             
                 </form>
             </div>
         </div>
@@ -303,10 +305,7 @@ $("#master_search_btn").on("click",function(){
 	$("form[name=form_list]").attr("method","get");
 	
 });
-$("#list_save_btn2").on("click",function(){
-		$("form[name=form]").attr("action","/cinemaUpdt").submit();
-		
-});
+
 $("#list_insert_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaInsert").submit();
 });

@@ -6,6 +6,7 @@
 
     <resultMap id="resultMapObj" type="com.mycompany.app.infra.cinema.Cinema"></resultMap>
      <resultMap id="resultMapObj2" type="com.mycompany.app.infra.cinema.Cinema_name"></resultMap>
+      <resultMap id="resultMapObj3" type="com.mycompany.app.infra.cinema.Cinema_theater"></resultMap>
      
      
      
@@ -126,7 +127,76 @@
         AND
         	seq = #{seq}
     </update>
-
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    
+     <select id="selectList3" resultMap="resultMapObj3">
+    	SELECT *
+    	FROM
+    		cinema_theater
+    	WHERE
+    		cinema_name_seq = #{seq}
+    	AND
+    		delYN = 0
+    	   
+    </select>
+    
+	<select id="selectOne3" resultMap="resultMapObj3">
+		SELECT *
+		FROM 
+			cinema_theater
+		WHERE 1=1
+		AND
+			seq = #{seq}
+	</select>
+	
+	<update id="update3">
+        UPDATE     cinema_theater
+        SET     theater_number = #{theater_number},
+        		cinema_type = #{cinema_type},
+        		seat_count = #{seat_count},
+        		cinema_name_seq = #{cinema_name_seq}
+        WHERE  1=1
+        AND
+           seq = #{seq}  
+    </update>
+    
+    <delete id="delete3">
+    	DELETE 
+    	FROM cinema_theater
+    	WHERE 1=1
+    	AND 
+    	seq = #{seq} 
+    </delete>
+    
+    <insert id="insert3"> 
+    INSERT
+    INTO cinema_theater
+    (
+    theater_number,
+    cinema_type,
+    seat_count,
+    cinema_name_seq,
+    delYN
+    )
+    VALUES
+    	(
+    	#{theater_number},
+    	#{cinema_type},
+    	#{seat_count},
+    	#{cinema_name_seq},
+    	0
+    	)
+    </insert>
+     <update id="uelete3">
+        UPDATE 
+        	cinema_theater
+        SET 
+        	delYN = 1
+        WHERE 1=1
+        AND
+        	seq = #{seq}
+    </update>
+ 
     
     
 

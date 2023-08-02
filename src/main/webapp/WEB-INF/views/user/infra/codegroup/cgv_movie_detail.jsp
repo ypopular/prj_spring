@@ -26,19 +26,19 @@
             <div id="secret_nav2">
                 <div id="secret_nav_small2">
                     <ul id="ul_first2">
-                        <li><a class="secret_title" href="cgv_movie_chart.html">영화</a></li>
-                        <li><a href="cgv_movie_chart.html">무비차트</a></li>
+                        <li><a class="secret_title" href="cgv_movie_chart">영화</a></li>
+                        <li><a href="cgv_movie_chart">무비차트</a></li>
                         <li><a href="#">아트하우스</a></li>
                         <li><a href="#">ICECON</a></li>
                     </ul>
                     <ul>
-                        <li><a class="secret_title" href="cgv_movie_theater.html">극장</a></li>
-                        <li><a href="cgv_movie_theater.html">CGV극장</a></li>
-                        <li><a href="cgv_movie_theater.html">특별관</a></li>
+                        <li><a class="secret_title" href="cgv_movie_theater">극장</a></li>
+                        <li><a href="cgv_movie_theater">CGV극장</a></li>
+                        <li><a href="cgv_movie_theater">특별관</a></li>
                     </ul>
                     <ul>
-                        <li><a class="secret_title" href="cgv_ticketing.html">예매</a></li>
-                        <li><a href="cgv_ticketing.html">빠른예매</a></li>
+                        <li><a class="secret_title" href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a></li>
+                        <li><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">빠른예매</a></li>
                         <li><a href="#">상영스케줄</a></li>
                         <li><a href="#">English Ticketing</a></li>
                         <li><a href="#">English Schedule</a></li>
@@ -75,9 +75,9 @@
             <div id="main_nav_small2">
                 <ul>
                    <a href="#"><img width="70px" height="32px" src="resources/img/logoWhite.png" alt=""></a>
-                    <li><a href="cgv_movie_chart.html">영화</a></li>
-                    <li><a href="cgv_movie_theater.html">극장</a></li>
-                    <li><a href="cgv_ticketing.html">예매</a></li>
+                    <li><a href="cgv_movie_chart">영화</a></li>
+                    <li><a href="cgv_movie_theater">극장</a></li>
+                    <li><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a></li>
                     <li><a href="#">스토어</a></li>
                     <li><a href="#">이벤트</a></li>
                     <li><a href="#">혜택</a></li>
@@ -103,12 +103,25 @@
     </div>
     <div id="login_nav">
         <div id="login_nav_small">
-            <div id="cgv_logo"><a href="cgv.html"><img src="resources/img/logoRed.png" width="100%" height="100%" alt=""></a></div>
+            <div id="cgv_logo"><a href="cgv"><img src="resources/img/logoRed.png" width="100%" height="100%" alt=""></a></div>
             <p>CULTUREPLEX</p>
             <div id="hyundai_card"><a href="#"><img src="resources/img/hyundai_Card.png" alt=""></a></div>
             <ul>
-                <li><a href="cgv_login_page.html"><i class="fa-solid fa-user-lock"></i><span>로그인</span></a></li>
-                <li><a href="cgv_sign_up.html"><i class="fa-solid fa-user-plus"></i><span>회원가입</span></a></li>
+                <li><c:choose>
+	                	<c:when test="${not empty sessionId }">
+	                	<div id="btn_logout">
+	                		<i class="fa-sharp fa-solid fa-user-large"></i>
+	                		<span >로그아웃</span>
+	                		</div>
+	                	</c:when>
+	                	<c:otherwise>
+	                	<a href="cgv_login_page">
+                            <i class="fa-solid fa-user-lock"></i>
+	                		<span>로그인</span></a>
+	     
+	                	</c:otherwise>
+	                </c:choose></li>
+                <li><a href="cgv_sign_up"><i class="fa-solid fa-user-plus"></i><span>회원가입</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-user"></i><span>MY CGV</span></a></li>
                 <li><a href="#"><i class="fa-solid fa-headset"></i><span>고객센터</span></a></li>
             </ul>
@@ -118,19 +131,19 @@
         <div id="secret_nav">
             <div id="secret_nav_small">
                 <ul id="ul_first">
-                    <li><a class="secret_title" href="cgv_movie_chart.html">영화</a></li>
-                    <li><a href="cgv_movie_chart.html">무비차트</a></li>
+                    <li><a class="secret_title" href="cgv_movie_chart">영화</a></li>
+                    <li><a href="cgv_movie_chart">무비차트</a></li>
                     <li><a href="#">아트하우스</a></li>
                     <li><a href="#">ICECON</a></li>
                 </ul>
                 <ul>
-                    <li><a class="secret_title" href="cgv_movie_theater.html">극장</a></li>
-                    <li><a href="cgv_movie_theater.html">CGV극장</a></li>
-                    <li><a href="cgv_movie_theater.html">특별관</a></li>
+                    <li><a class="secret_title" href="cgv_movie_theater">극장</a></li>
+                    <li><a href="cgv_movie_theater">CGV극장</a></li>
+                    <li><a href="cgv_movie_theater">특별관</a></li>
                 </ul>
                 <ul>
-                    <li><a class="secret_title" href="cgv_ticketing.html">예매</a></li>
-                    <li><a href="cgv_ticketing.html">빠른예매</a></li>
+                    <li><a class="secret_title" href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a></li>
+                    <li><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">빠른예매</a></li>
                     <li><a href="#">상영스케줄</a></li>
                     <li><a href="#">English Ticketing</a></li>
                     <li><a href="#">English Schedule</a></li>
@@ -166,9 +179,9 @@
         </div>
         <div id="main_nav_small">
             <ul>
-                <li><a href="cgv_movie_chart.html">영화</a></li>
-                <li><a href="cgv_movie_theater.html">극장</a></li>
-                <li><a href="cgv_ticketing.html">예매</a></li>
+                <li><a href="cgv_movie_chart">영화</a></li>
+                <li><a href="cgv_movie_theater">극장</a></li>
+                <li><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매</a></li>
                 <li><a href="#">스토어</a></li>
                 <li><a href="#">이벤트</a></li>
                 <li><a href="#">혜택</a></li>
@@ -203,7 +216,7 @@
                                 15, 105분, 한국</p>
                         <p>개봉 : 
                                     2023.05.31</p>
-                        <div id="ticketing_go"><a href="cgv_ticketing.html"></a></div>
+                        <div id="ticketing_go"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')"></a></div>
                     </div>
                 </div>
             </div>
@@ -261,8 +274,41 @@
             </div>
         </div>
     </div>
-    <div id="ticketing_btn"><a href="cgv_ticketing.html">예매하기</a></div>
+    <div id="ticketing_btn"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
     <div id="top_btn"><i class="fa-solid fa-arrow-up"></i></div>
     
+    <script >
+    function checkLogin(pageName) {
+        <c:choose>
+            <c:when test="${sessionId == null}">
+                alert("<c:out value='로그인 후에 이용 가능합니다'/>");
+                window.location.href="/cgv_login_page"
+            </c:when>
+            <c:otherwise>
+            window.location.href = pageName;
+                // 버튼을 클릭한 후 실행할 동작
+            </c:otherwise>
+        </c:choose>
+    }
+    $("#btn_logout").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/logoutProc"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { }
+			,success: function(response) {
+					location.href = "/cgv";
+			}
+			
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+    
+    </script>
 </body>
 </html>

@@ -57,4 +57,24 @@ public class CinemaDao {
 	}
     public int uelete2(Cinema_name dto2) { 
     	return sqlSession.update(namespace + ".uelete2", dto2); }
+    
+//    --------------------------------------------------------
+    public List<Cinema_theaterVo> selectList3(Cinema_theaterVo vo3){ 
+    	return sqlSession.selectList(namespace + ".selectList3",vo3); 
+    	}
+    public Cinema_theater selectOne3(Cinema_theaterVo vo3) { 
+		Cinema_theater cinema_theater = sqlSession.selectOne(namespace + ".selectOne3", vo3); 
+		return cinema_theater;
+	}
+    public int update3(Cinema_theater dto3) { 
+    	return sqlSession.update(namespace + ".update3", dto3); 		 
+	}
+    public int delete3(Cinema_theater dto3) { 
+    	return sqlSession.delete(namespace + ".delete3", dto3); 		 
+	}
+    public int insert3(Cinema_theater dto3) { 
+    	return sqlSession.insert(namespace + ".insert3", dto3); 		 
+	}
+    public int uelete3(Cinema_theater dto3) { 
+    	return sqlSession.update(namespace + ".uelete3", dto3); }
 }

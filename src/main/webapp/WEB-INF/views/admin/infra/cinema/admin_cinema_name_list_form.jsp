@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_cinema_name_list</title>
+        <title>admin_cinema_name_list_form</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -38,16 +38,17 @@
                 </div>
             
           
-            <div id="master_banner">
+           
+             <div id="master_banner">
                 <ul>
                     <li id="go_main">
-                        <a href="cgv.html">CGV메인</a>
+                        <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
                     </li>
-                    <li id="cinema_alter"><a href="admin_cinema">영화관 수정</a></li>
-                    <li id="movie_alter">영화정보 수정</li>
-                    <li id="theater_alter"><a href="admin_list">상영정보 수정 및 삭제</a></li>
-                     <li><a href="admin_member">회원관리</a></li>
-                     <li><a href="#">예매목록확인</a></li>
+                    <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
+                    <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
+                    <li id="theater_alter"><a href="admin_list"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
+                     <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
+                     <li><a href="admin_ticketing"><i class="fa-solid fa-ticket"></i> 예매목록확인</a></li>
                 </ul>
             </div>
         </div>
@@ -260,8 +261,8 @@
                         
                         
                          <ul class="cinema_name_alter_list">
-                         <li>    <li><input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
-                		   <li>    <li><input type="text" class="form-control" id="cinema_seq" name="cinema_seq" required value="<c:out value="${item.cinema_seq}"/>"></li>
+                             <li><input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
+                		       <li><input type="text" class="form-control" id="cinema_seq" name="cinema_seq" required value="<c:out value="${item.cinema_seq}"/>"></li>
  <li><input type="text" class="form-control" id="location_cinema_name" name="location_cinema_name" required value="<c:out value="${item.location_cinema_name}"/>"></li>
     					<button type="button" id="list_insert_btn">추가 저장</button>
  					 <button type="button" id="list_del_check_btn">삭제</button>
