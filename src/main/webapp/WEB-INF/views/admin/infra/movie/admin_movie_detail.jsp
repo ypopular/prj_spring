@@ -248,70 +248,70 @@
             
             <div id="theater_alter_wrap">
                <form name="form_list" method="post">
-                 <c:forEach items="${list}"  var="list"  varStatus="status">
+              
                 	<div id="master_movie_wrap">
              		   <div class="master_movie_form">
                             <div class="movie_title">영화이름</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.movie_name}"/>">
+                            required readonly value="<c:out value="${item.movie_name}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">영어이름</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.movie_en_name}"/>">
+                            required readonly value="<c:out value="${item.movie_en_name}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">상영상태</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.reservation_in_progress}"/>">
+                            required readonly value="<c:out value="${item.reservation_in_progress}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">예매율</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.reservation_rate}"/>">
+                            required readonly value="<c:out value="${item.reservation_rate}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">감독</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.director}"/>">
+                            required readonly value="<c:out value="${item.director}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">배우</div>
                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.casting_actor}"/>">
+                            required readonly value="<c:out value="${item.casting_actor}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">장르</div>
                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.genre}"/>">
+                            required readonly value="<c:out value="${item.genre}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나이</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.view_age}"/>">
+                            required readonly value="<c:out value="${item.view_age}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">상영시간</div>
                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.movie_time}"/>">
+                            required readonly value="<c:out value="${item.movie_time}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나라</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.made_country}"/>">
+                            required readonly value="<c:out value="${item.made_country}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나라</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.release_date}"/>">
+                            required readonly value="<c:out value="${item.release_date}"/>">
                         </div>
                         <div class="master_movie_form_story">
                             <div class="movie_title">줄거리</div>
                             <input type="text" class="movie_name_story form-control" 
-                            required readonly value="<c:out value="${list.description_movie}"/>">
+                            required readonly value="<c:out value="${item.description_movie}"/>">
                         </div>
                     </div>
-                    </c:forEach>
+                   
                     
                     <div id="master_movie_wrap2">
                     <div class="master_movie_form_img">

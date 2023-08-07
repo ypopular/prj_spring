@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.app.infra.cinema.Cinema;
 import com.mycompany.app.infra.cinema.CinemaServiceImpl;
 import com.mycompany.app.infra.cinema.CinemaVo;
+import com.mycompany.app.infra.cinema.Cinema_name;
 import com.mycompany.app.infra.cinema.Cinema_nameVo;
 import com.mycompany.app.infra.cinema.Cinema_theater;
 
@@ -30,9 +31,8 @@ public class MovieController {
 	
 	@RequestMapping(value="/admin_movie_detail")
 	public String admin_movie_detail(@ModelAttribute("vo")MovieVo vo,Model model) {
-	List<MovieVo> list = service.selectList(vo);
-	
-		model.addAttribute("list",list);
+		Movie movie = service.selectOne(vo);
+		model.addAttribute("item", movie);
 		return "admin/infra/movie/admin_movie_detail";
 	}
 //--------------------------------------------------------------------------

@@ -12,6 +12,8 @@
 		WHERE
 			delYN=0
 	</select>
+	
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT *
 		FROM 
@@ -76,6 +78,7 @@
     #{movie_en_name},
     #{reservation_in_progress},
     #{reservation_rate},
+    #{director},
     #{casting_actor},
     #{genre},
     #{view_age},

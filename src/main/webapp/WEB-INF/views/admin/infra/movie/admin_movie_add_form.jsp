@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_movie_detail</title>
+        <title>admin_movie_add_form</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -248,121 +248,130 @@
             
             <div id="theater_alter_wrap">
                <form name="form_list" method="post">
-                 <c:forEach items="${list}"  var="list"  varStatus="status">
+               
                 	<div id="master_movie_wrap">
              		   <div class="master_movie_form">
                             <div class="movie_title">영화이름</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.movie_name}"/>">
+                            required value="<c:out value="${item.movie_name}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">영어이름</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.movie_en_name}"/>">
+                            required value="<c:out value="${item.movie_en_name}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">상영상태</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.reservation_in_progress}"/>">
+                            required value="<c:out value="${item.reservation_in_progress}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">예매율</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.reservation_rate}"/>">
+                            required value="<c:out value="${item.reservation_rate}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">감독</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.director}"/>">
+                            required value="<c:out value="${item.director}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">배우</div>
                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.casting_actor}"/>">
+                            required value="<c:out value="${item.casting_actor}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">장르</div>
                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.genre}"/>">
+                            required value="<c:out value="${item.genre}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나이</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.view_age}"/>">
+                            required value="<c:out value="${item.view_age}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">상영시간</div>
                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.movie_time}"/>">
+                            required value="<c:out value="${item.movie_time}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나라</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.made_country}"/>">
+                            required value="<c:out value="${item.made_country}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나라</div>
                             <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${list.release_date}"/>">
+                            required value="<c:out value="${item.release_date}"/>">
                         </div>
                         <div class="master_movie_form_story">
                             <div class="movie_title">줄거리</div>
                             <input type="text" class="movie_name_story form-control" 
-                            required readonly value="<c:out value="${list.description_movie}"/>">
+                            required value="<c:out value="${item.description_movie}"/>">
                         </div>
                     </div>
-                    </c:forEach>
+                  
                     
                     <div id="master_movie_wrap2">
                     <div class="master_movie_form_img">
-                    <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
+                  
                             <div class="movie_title">파일첨부</div>
                              <span id=insert_img_btn>첨부하기</span>
                             <input type="text" class="movie_img_insert form-control" 
                             required readonly value="">
+                            
+                            
                            
                             
                             <div class="movie_title">미리보기</div>
                                  <span id=insert_img_btn>첨부하기</span>
-                           <div class="movie_img_insert form-control" >
-                         	  <c:set var="type" value="1"/>		<!-- #-> -->
-        					  <c:set var="name" value="uploadImgProfile"/>		<!-- #-> -->
-        <c:choose>
+                           <div class="movie_img_insert form-control" ></div>
+                           <!-----------------  -->
+                           
+                          <div class="col-sm-12 text-center">
+        
+      		<c:set var="type" value="1"/>		<!-- #-> -->
+        	<c:set var="name" value="uploadImgProfile"/>		<!-- #-> -->
+<c:choose>
 	<c:when test="${seq eq 0 }">
-		<img id="<c:out value="${name}"/>Preview" src="/resources/img/chart/1.jpg" class="rounded-circle mx-auto d-block" width="100" height="100">
+		<img id="<c:out value="${name }"/>Preview" src="/resources/img/chart/1.jpg" class="rounded-circle mx-auto d-block" width="100" height="100">
 	</c:when>
 	<c:otherwise>
 		<c:choose>
 			<c:when test="${fn:length(listUploaded) eq 0 }">
-				<img id="<c:out value="${name}"/>Preview"  src="/resources/img/chart/1.jpg" class="rounded-circle mx-auto d-block" width="100" height="100">
+				<img id="<c:out value="${name }"/>Preview"  src="/resources/img/chart/1.jpg" class="rounded-circle mx-auto d-block" width="100" height="100">
 			</c:when>
 			<c:otherwise>
 				<c:set var="GetNy" value="0"/>
 				<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
 					<c:if test="${listUploaded.type eq type }">
-			        	<input type="hidden" id="<c:out value="${name}"/>DeleteSeq" name="<c:out value="${name}"/>DeleteSeq" value="<c:out value="${listUploaded.seq }"/>"/>
-			        	<input type="hidden" id="<c:out value="${name}"/>DeletePathFile" name="<c:out value="${name}"/>DeletePathFile" value="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"/>  
-						<img id="<c:out value="${name}"/>Preview" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded-circle mx-auto d-block" width="100" height="100">
+			        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq" value="<c:out value="${listUploaded.seq }"/>"/>
+			        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile" value="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"/>  
+						<img id="<c:out value="${name }"/>Preview" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded-circle mx-auto d-block" width="100" height="100">
 						<c:set var="GetNy" value="1"/>		
 					</c:if>
 				</c:forEach>
 				<c:if test="${GetNy eq 0 }">
-					<img id="<c:out value="${name}"/>Preview" src="/resources/img/chart/1.jpg" class="rounded-circle mx-auto d-block" width="100" height="100">
+					<img id="<c:out value="${name }"/>Preview"  src="/resources/img/chart/1.jpg" class="rounded-circle mx-auto d-block" width="100" height="100">
 				</c:if>
 			</c:otherwise>
 		</c:choose>
 	</c:otherwise>
-</c:choose>		
-
-
-<input type="hidden" id="<c:out value="${name}"/>Type" name="<c:out value="${name}"/>Type" value="<c:out value="${type}"/>"/>
-			<input type="hidden" id="<c:out value="${name}"/>MaxNumber" name="<c:out value="${name}"/>MaxNumber" value="0"/>
-			<label for="<c:out value="${name}"/>" class="form-label input-file-button"><b>+</b></label>
- 			<input class="form-control form-control-sm" id="<c:out value="${name}"/>" name="<c:out value="${name}"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 3);">
+</c:choose>
+            
+			<input type="hidden" id="<c:out value="${name }"/>Type" name="<c:out value="${name }"/>Type" value="<c:out value="${type }"/>"/>
+			<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+			<label for="<c:out value="${name }"/>" class="form-label input-file-button"><b>+</b></label>
+ 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 3);">
         </div>
-
-
-  <div class="col-sm-6 mt-3 mt-sm-0">
+                          
+                          
+                          
+                          <!-----------------------------  -->
+                          <!--  이미지 첨부 -->
+                          
+                           <div class="col-sm-6 mt-3 mt-sm-0">
         	<c:set var="type" value="2"/>		<!-- #-> -->
         	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
         	<input type="hidden" id="<c:out value="${name }"/>Type" name="<c:out value="${name }"/>Type" value="<c:out value="${type }"/>"/>
@@ -382,22 +391,21 @@
 				</c:forEach>
 			</div>
         </div>
-        
-       
-			  					
+                          
+                          
+                          
+                          <!-- ------ -->
                            </div>
+                           </div>
+                            <button type="button" id="go_insert_movie">추가 저장</button>
                             </form>
                         </div>
+                       
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_movie">메인으로</a></button>
+                        
                     </div>
                     
- 					<button type="button" id="go_insert_movie" onclick="location.href='admin_cinema_location_add_form'">추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_movie">메인으로</a></button>
-             
-             
-             
-             
-                </form>
-                
+ 					
         
         
         
@@ -408,12 +416,7 @@
         
         
         
-        
-        
-        
-            </div>
         </div>
-    </div>
 
     <div id="footer2">
         <div id="footer2_small">
@@ -441,8 +444,8 @@ $("#list_save_btn2").on("click",function(){
 		$("form[name=form]").attr("action","/cinemaUpdt").submit();
 		
 });
-$("#list_insert_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaInsert").submit();
+$("#go_insert_movie").on("click",function(){
+	$("form[name=form_list]").attr("action","/movieInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaDelete").submit();
