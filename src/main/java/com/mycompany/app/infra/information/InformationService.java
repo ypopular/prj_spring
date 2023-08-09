@@ -6,26 +6,18 @@ import java.util.List;
 
 public interface InformationService {
 
-public List<IfCinema_name> selectList(IfCinema_nameVo vo);
-	
-	public IfCinema_name selectOne(IfCinema_nameVo vo);
-	
-	public int update(IfCinema_nameVo dto);
-	public int delete(IfCinema_nameVo dto);
-	public int insert(IfCinema_nameVo dto);
-	public int uelete(IfCinema_nameVo dto);
-	
-//	-----------------------------------
-public List<Running_time> selectList2(Running_timeVo vo2);
-	
-	public Running_time selectOne2(Running_timeVo vo2);
-	
-	public int update2(Running_timeVo dto2);
-	public int delete2(Running_timeVo dto2);
-	public int insert2(Running_timeVo dto2);
-	public int uelete2(Running_timeVo dto2);
-	
-	
 
+//	-----------------------------------
+public List<Running_time> selectList(Running_timeVo vo);
+	
+	public Running_time selectOne(Running_timeVo vo);
+	
+	public int update(Running_time dto);
+	public int delete(Running_time dto);
+	public int insert(Running_time dto);
+	public int uelete(Running_time dto);
+	
+	public List<Cinema_name2> selectList2(Cinema_name2Vo vo2);
+	public List<Movie2> selectList3(Movie2Vo vo3);
 	
 }

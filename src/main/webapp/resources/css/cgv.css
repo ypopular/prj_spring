@@ -2787,8 +2787,6 @@ video{
 }
 .theater_alter_list li{
 	float:left;
-	width:64px;
-	height:30px;
 	text-align:center;
 	
 }
@@ -3380,4 +3378,23 @@ video{
 }
 .information_page{
 	top:53% !important;
+}
+#theater_alter_list_wrap li{
+	margin-right:50px;
+	 text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size:13px;
+    text-align:center;
+}
+
+.information_list li{
+	margin-right:50px !important;
+}
+.in_select{
+	padding:5px 0px 0px 2px!important;
+}
+.in_select select{
+	width:74px;
+	height:19px;
 }

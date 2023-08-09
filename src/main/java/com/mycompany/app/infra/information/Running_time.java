@@ -9,6 +9,39 @@ public class Running_time {
 	public Integer delYN;
 	public String movie_seq;
 	public String cinema_theater_seq;
+	public String movie_name;
+	public String location_cinema_name;
+	public Integer theater_number;
+	public Integer cinema_type;
+	    
+	
+	
+	
+	
+	public Integer getTheater_number() {
+		return theater_number;
+	}
+	public void setTheater_number(Integer theater_number) {
+		this.theater_number = theater_number;
+	}
+	public Integer getCinema_type() {
+		return cinema_type;
+	}
+	public void setCinema_type(Integer cinema_type) {
+		this.cinema_type = cinema_type;
+	}
+	public String getMovie_name() {
+			return movie_name;
+		}
+		public void setMovie_name(String movie_name) {
+			this.movie_name = movie_name;
+		}
+		public String getLocation_cinema_name() {
+			return location_cinema_name;
+		}
+		public void setLocation_cinema_name(String location_cinema_name) {
+			this.location_cinema_name = location_cinema_name;
+		}
 	public String getSeq() {
 		return seq;
 	}

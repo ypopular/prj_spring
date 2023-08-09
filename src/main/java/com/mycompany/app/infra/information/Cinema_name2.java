@@ -1,6 +1,6 @@
 package com.mycompany.app.infra.information;
 
-public class IfCinema_name {
+public class Cinema_name2 {
 
 	private String seq;
 	private String location_cinema_name;

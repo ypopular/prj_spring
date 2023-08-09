@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_information</title>
+        <title>admin_information_add_form</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -44,7 +44,7 @@
                     </li>
                     <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
                     <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
-                    <li id="theater_alter"><a href="admin_information"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
+                    <li id="theater_alter"><a href="admin_list"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
                      <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
                      <li><a href="admin_ticketing"><i class="fa-solid fa-ticket"></i> 예매목록확인</a></li>
                 </ul>
@@ -56,9 +56,7 @@
 
         <div id="master_page">
         
-         <div id="master_search_wrap">
-                
-            </div>
+        
            
             <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
@@ -253,10 +251,10 @@
           <form name="form_list" method="post">
                 <!----------------------  -->
                 
-                 <%--  <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> --%>
+                <%--  <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
                   <div id="detail_search">
-                    <input name="shKeyword2"  value="<c:out value="${vo.shKeyword2 }"/>" type="text" placeholder="상영지점"> 
+                    <input  type="text" placeholder="상영지점">
                    <input name="shKeyword"  value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
                     <input  id="datepicker" type="text" placeholder="상영일">
                    <select name="shOption">
@@ -282,7 +280,7 @@
                     <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
                     <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
                     </div> 
-                 
+                 --%>
                 
                 
                 
@@ -301,23 +299,47 @@
                         <div id="theater_alter_list_wrap">
                        
                  	
-                 	<c:forEach items="${list}" var="list" varStatus="status">
-							 <ul class="theater_alter_list">
+                 	
 						
-							  <li class="form-control"> <c:out value="${list.location_cinema_name}"></c:out></li>
-							    <li class="form-control"> <c:out value="${list.movie_name}"></c:out></li>	
-							 <li class="form-control"><c:out value="${list.theater_number}"></c:out></li>			
-						   <li class="form-control"> <c:out value="${list.cinema_type}"></c:out></li>	
-						     <li class="form-control"> <c:out value="${list.date}"></c:out></li>
-						     <li class="form-control"> <c:out value="${list.start_time}"></c:out></li>
+
+							 <ul class="theater_alter_list">
+							
+					<%-- <li class="form-control in_select">
+						<select>
+   							<option value="">상영지점</option>
+  							   <c:forEach var="list2" items="${list2}">
+     						<option value="${list2.location_cinema_name}">${list2.location_cinema_name}</option>
+    							</c:forEach>
+ 						</select>
+					</li>
+					<li class="form-control in_select">
+						<select>
+   							<option value="">영화이름</option>
+  							   <c:forEach var="list3" items="${list3}">
+     						<option value="${list3.movie_name}">${list3.movie_name}</option>
+    							</c:forEach>
+ 						</select>
+					</li> --%>
+					 <li><input type="text" class="form-control" 
+                            required value="<c:out value="${item.cinema_theater_seq}"/>"> </li>
+                         <li><input type="text" class="form-control" 
+                            required value="<c:out value="${item.movie_seq}"/>"> </li>
+                             <li><input type="text" class="form-control" 
+                            required value="<c:out value="${item.theater_number}"/>"> </li>
+                             <li><input type="text" class="form-control" 
+                            required value="<c:out value="${item.cinema_type}"/>"> </li>
+                             <li><input type="text" class="form-control" 
+                            required value="<c:out value="${item.date}"/>"> </li>
+                             <li><input type="text" class="form-control" 
+                            required value="<c:out value="${item.start_time}"/>"> </li>
+							     
 						    
 						     	
 
-						     <li><button type="button" class="list_alter_btn">변경</button></li>
+						     <li><button type="button" id="if_insert_btn" class="list_alter_btn">추가</button></li>
 			
 						 </ul>
-					</c:forEach>
-						
+			
 					
 				
 				
@@ -325,8 +347,8 @@
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_information_add_form'">추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_information">메인으로</a></button>
+ 					<button type="button" id="go_insert" onclick="location.href='admin_cinema_location_add_form'">추가</button>
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
              
                 </form>
             </div>
@@ -349,9 +371,10 @@
         </div>
     </div>
 <script>
+
 $("#master_search_btn").on("click",function(){
 	//자기 자신을 호출한다
-	$("form[name=form_list]").attr("action","/admin_information").submit();
+	$("form[name=form_list]").attr("action","/admin_cinema").submit();
 	$("form[name=form_list]").attr("method","get");
 	
 });
@@ -359,8 +382,8 @@ $("#list_save_btn2").on("click",function(){
 		$("form[name=form]").attr("action","/cinemaUpdt").submit();
 		
 });
-$("#list_insert_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaInsert").submit();
+$("#if_insert_btn").on("click",function(){
+	$("form[name=form_list]").attr("action","/informationInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaDelete").submit();

@@ -9,6 +9,30 @@ public class Running_timeVo {
 	public Integer delYN;
 	public String movie_seq;
 	public String cinema_theater_seq;
+	private Integer shOption;
+	private String shKeyword;
+	private String shKeyword2;
+	
+	
+	
+	public String getShKeyword2() {
+		return shKeyword2;
+	}
+	public void setShKeyword2(String shKeyword2) {
+		this.shKeyword2 = shKeyword2;
+	}
+	public Integer getShOption() {
+		return shOption;
+	}
+	public void setShOption(Integer shOption) {
+		this.shOption = shOption;
+	}
+	public String getShKeyword() {
+		return shKeyword;
+	}
+	public void setShKeyword(String shKeyword) {
+		this.shKeyword = shKeyword;
+	}
 	public String getSeq() {
 		return seq;
 	}

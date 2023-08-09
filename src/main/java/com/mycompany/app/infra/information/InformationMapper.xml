@@ -4,80 +4,57 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.app.infra.information.InformationMapper">
 
-    <resultMap id="resultMapObj" type="com.mycompany.app.infra.information.IfCinema_name"></resultMap>
-     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.information.Running_time"></resultMap>
+ 
+     <resultMap id="resultMapObj" type="com.mycompany.app.infra.information.Running_time"></resultMap>
+     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.information.Cinema_name2"></resultMap>
+      <resultMap id="resultMapObj3" type="com.mycompany.app.infra.information.Movie2"></resultMap>
+     
+       <select id="selectList3" resultMap="resultMapObj3">
+      select
+      		*
+      from
+      		movie
+   	  where
+   	  		delYN = 0;
+      
+      
+      </select>
+     
+      <select id="selectList2" resultMap="resultMapObj2">
+      select
+      		*
+      from
+      		cinema_name
+   	  where
+   	  		delYN = 0;
+      
+      
+      </select>
    
-    
      <select id="selectList" resultMap="resultMapObj">
-    	SELECT *
-    	FROM
-    		cinema_name
-    	WHERE
-    		delYN = 0
+    
+    	      	select
+					a.seq,
+					a.start_time,
+					a.date,
+					a.delYN,
+					b.movie_name,
+					d.location_cinema_name,
+					c.theater_number,
+					c.cinema_type
+				from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+ 				 WHERE 
+ 				  b.movie_name LIKE CONCAT('%',#{shKeyword},'%')
+ 				AND d.location_cinema_name LIKE CONCAT('%',#{shKeyword2},'%')
+   				AND	 a.delYN = 0;
     	   
     </select>
     
 	<select id="selectOne" resultMap="resultMapObj">
-		SELECT *
-		FROM 
-			cinema_name
-		WHERE 1=1
-		AND
-			seq = #{seq}
-	</select>
-	
-	<update id="update">
-        UPDATE     cinema_name
-        SET     location_cinema_name = #{location_cinema_name}
-        WHERE  1=1
-        AND
-           seq = #{seq}  
-    </update>
-    
-    <delete id="delete">
-    	DELETE 
-    	FROM cinema_name
-    	WHERE 1=1
-    	AND 
-    	seq = #{seq} 
-    </delete>
-    
-    <insert id="insert"> 
-    INSERT
-    INTO cinema_name
-    (
-    location_cinema_name,
-    cinema_seq,
-    delYN
-    )
-    VALUE 
-    	(
-    	#{location_cinema_name},
-    	#{cinema_seq},
-    	0
-    	)
-    </insert>
-     <update id="uelete">
-        UPDATE 
-        	cinema_name
-        SET 
-        	delYN = 1
-        WHERE 1=1
-        AND
-        	seq = #{seq}
-    </update>
-    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-   
-     <select id="selectList2" resultMap="resultMapObj2">
-    	SELECT *
-    	FROM
-    		running_time
-    	WHERE
-    		delYN = 0
-    	   
-    </select>
-    
-	<select id="selectOne2" resultMap="resultMapObj2">
 		SELECT *
 		FROM 
 			running_time
@@ -86,7 +63,7 @@
 			seq = #{seq}
 	</select>
 	
-	<update id="update2">
+	<update id="update">
         UPDATE    running_time
         SET     start_time = #{start_time},
         		date = #{date}
@@ -95,7 +72,7 @@
            seq = #{seq}  
     </update>
     
-    <delete id="delete2">
+    <delete id="delete">
     	DELETE 
     	FROM running_time
     	WHERE 1=1
@@ -103,7 +80,7 @@
     	seq = #{seq} 
     </delete>
     
-    <insert id="insert2"> 
+    <insert id="insert"> 
     INSERT
     INTO running_time
     (
@@ -113,7 +90,7 @@
     cinema_theater_seq,
     delYN
     )
-    VALUE 
+    VALUES 
     	(
     	#{start_time},
     	#{date},
@@ -122,7 +99,7 @@
     	0
     	)
     </insert>
-     <update id="uelete2">
+     <update id="uelete">
         UPDATE 
         	running_time
         SET 
@@ -131,6 +108,8 @@
         AND
         	seq = #{seq}
     </update>
+    
+    
     
 
 	
