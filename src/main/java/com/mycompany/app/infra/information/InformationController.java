@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mycompany.app.infra.member.Member;
-import com.mycompany.app.infra.member.MemberVo;
+
 
 
 
@@ -84,24 +84,61 @@ public class InformationController {
 		return "redirect:/admin_information";
 	}
 // -----------------------------------------------------
+//	@ResponseBody
+//	@RequestMapping("/cinemaProc")
+//	public Map<String,Object> cinemaProc(Cinema_theater2Vo vo5,HttpSession httpSession){
+//		Map<String,Object> returnMap =new HashMap<String,Object>();
+//		
+//		List<Cinema_theater2> cinema_theater2Vo =service.selectList5(vo5);
+//		
+//		
+//		if(cinema_theater2Vo !=null) {
+//			
+//			httpSession.setMaxInactiveInterval(60*60); // 60 min
+//			httpSession.setAttribute("sessionId", vo5.getCinema_name_seq());
+//			
+//			returnMap.put("rtMember", cinema_theater2Vo);
+//			returnMap.put("rt", "success");
+//		}else {
+//			returnMap.put("rt","fail");
+//		}
+//		return returnMap;
+//	}
+//	@ResponseBody
+//	@RequestMapping("/cinemaProc")
+//	public Map<String, Object> cinemaProc(Cinema_theater2Vo vo5, HttpSession httpSession) {
+//	    Map<String, Object> returnMap = new HashMap<String, Object>();
+//
+//	    List<Cinema_theater2> cinema_theater2Vo = service.selectList5(vo5);
+//
+//	    if (cinema_theater2Vo != null) {
+//	        
+//
+//	        returnMap.put("rtTheaters", cinema_theater2Vo); // Change the key to rtTheaters
+//	        returnMap.put("rt", "success");
+//	    } else {
+//	        returnMap.put("rt", "fail");
+//	    }
+//	    return returnMap;
+//	}
+	
 	@ResponseBody
 	@RequestMapping("/cinemaProc")
-	public Map<String,Object> cinemaProc(Cinema_theater2Vo vo4,HttpSession httpSession){
-		Map<String,Object> returnMap =new HashMap<String,Object>();
-		
-		Member rtMember = service.selectOne(vo4);
-		
-		if(rtMember !=null) {
-			
-			httpSession.setMaxInactiveInterval(60*60); // 60 min
-			httpSession.setAttribute("sessionId", vo4.getCinema_name_seq());
-			
-			returnMap.put("rtMember", rtMember);
-			returnMap.put("rt", "success");
-		}else {
-			returnMap.put("rt","fail");
-		}
-		return returnMap;
+	public Map<String, Object> cinemaProc(@RequestParam("seq") String seq, HttpSession httpSession) {
+	    Map<String, Object> returnMap = new HashMap<>();
+
+	    Cinema_theater2Vo vo = new Cinema_theater2Vo();
+	    vo.setCinema_name_seq(seq);
+
+	    List<Cinema_theater2> cinemaTheaterList = service.selectList5(vo);
+
+	    if (cinemaTheaterList != null && !cinemaTheaterList.isEmpty()) {
+	        returnMap.put("rtTheaters", cinemaTheaterList);
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
 	}
 	
 }

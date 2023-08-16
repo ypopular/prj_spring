@@ -10,15 +10,16 @@
       <resultMap id="resultMapObj3" type="com.mycompany.app.infra.information.Movie2"></resultMap>
        <resultMap id="resultMapObj4" type="com.mycompany.app.infra.information.Cinema_theater2"></resultMap>
        
-       <select id="selectList5" resultMap="resultMapObj4">
-       select
-       		cinema_theater_number
-       	from 
-       		cinema_theater
-       	where 1=1
-       	and
-       		cinema_name_seq = #{seq}	
-       </select>
+<select id="selectList5" resultMap="resultMapObj4">
+    select
+        cinema_name_seq,
+        theater_number
+    from 
+        cinema_theater
+    where 1=1
+    and
+        cinema_name_seq = '${cinema_name_seq}' <!-- Use single quotes -->
+</select>
        
      <select id="selectList4" resultMap="resultMapObj4">
       select

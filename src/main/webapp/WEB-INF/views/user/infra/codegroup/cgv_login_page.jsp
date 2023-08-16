@@ -247,7 +247,7 @@
     			"password" : $("#user_password").val()}
     		,success: function(response) {
     			if(response.rt == "success") {
-    				alert(response.rtMember.name+"님 환영합니다");
+    				
     				location.href = "/cgv";
     			} else {
     				alert("없는 회원입니다");

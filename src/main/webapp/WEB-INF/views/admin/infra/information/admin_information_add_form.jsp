@@ -313,27 +313,18 @@
 							 <ul class="theater_alter_list">
 							
 					 <li class="form-control in_select">
-						<select>
-   							<option value="">상영지점</option>
-  							   <c:forEach var="list2" items="${list2}">
-     						<option>${list2.location_cinema_name}</option>
-    							</c:forEach>
- 						</select>
-					</li>
-					<li class="form-control in_select">
-						<select name="movie_seq">
-   							<option value="">영화이름</option>
-  							   <c:forEach var="list3" items="${list3}">
-     						<option value="${list3.seq}">${list3.movie_name}</option>
-    							</c:forEach>
- 						</select>
-					</li> 
-					
-                           <li class="form-control in_select">
-    						<select name="cinema_theater_seq">
-       						 <option value="">상영관</option>
-   							 </select>
-									</li>
+    <select id="select_location">
+        <option value="">상영지점</option>
+        <c:forEach var="list2" items="${list2}">
+            <option value="${list2.seq}">${list2.location_cinema_name}</option>
+        </c:forEach>
+    </select>
+</li>
+<li class="form-control in_select">
+    <select id="select_theater" name="cinema_theater_seq">
+        <option value="">상영관</option>
+    </select>
+</li>
                              <li><input type="text" class="form-control" id="cinema_type" name="cinema_type"
                             required value="<c:out value="${item.cinema_type}"/>"> </li>
                              <li><input type="text" class="form-control dateSelector form_date" id="date" name="date"
@@ -402,7 +393,37 @@ $("#list_del_btn").on("click",function(){
 $("#list_del_check_btn").on("click",function(){
 	$("form[name=form]").attr("action","/informationUelete").submit();
 });
+$("#select_location").on("change", function() {
+    var selectedLocation = $(this).val();
+	
+    $.ajax({
+        async: true,
+        cache: false,
+        type: "post",
+        url: "/cinemaProc",
+        data: {
+            "seq": selectedLocation
+        },
+        success: function(response) {
+            if (response.rt === "success") {
+                var theaters = response.rtTheaters;
+                var selectTheater = $("#select_theater");
 
+                selectTheater.empty();
+                selectTheater.append($("<option value=''>상영관</option>"));
+
+                $.each(theaters, function(index, theater) {
+                    selectTheater.append($("<option>").attr("value", theater.cinema_name_seq).text(theater.theater_number));
+                });
+            } else {
+                alert("상영관 정보를 가져오는 데 실패했습니다.");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+        }
+    });
+});
 
 </script>
 </body>
