@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>iPortfolio Bootstrap Template - Index</title>
+  <title>biography_user_view</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -48,7 +48,7 @@
 
       <div class="profile">
         <img src="resources/assets/img/profile_icon.png" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Yoon InGi</a></h1>
+        <h1 class="text-light"><a href="biography_user_view">Yoon InGi</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

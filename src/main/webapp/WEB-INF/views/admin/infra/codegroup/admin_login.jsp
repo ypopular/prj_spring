@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -41,12 +45,12 @@
                 <div id="master_login_title">
                     <span>관리자 로그인</span>
                 </div>
-                <form>
+                <form method="post">
                     <p>아이디를 입력하신 후, 로그인 버튼을 눌러주세요.</p>
-                    <input type="text" title="아이디" id="master_id" name="user_id" data-title="아이디를" data-message="입력하세요." required="required">
+                    <input type="text" title="아이디" id="master_id" name="user_id" data-title="아이디를" data-message="입력하세요." required="required" value="master">
                     <input type="password" title="패스워드" id="user_password" name="master_password" data-title="패스워드를" data-message="입력하세요"
-                    required="required">
-                    <button type="submit" id="master_submit" title="로그인"><a href="admin_list">로그인</a></button>
+                    required="required" value="master">
+                    <button type="button" id="master_submit" title="로그인">로그인</button>
                 </form>
             </div>
         </div>
@@ -68,6 +72,39 @@
             </div>
         </div>
     </div>
+<script>
+$("#master_submit").on("click", function(){
+	
+	
+	if(validation() == false) return false;
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/loginProc"
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "id" : $("#master_id").val(),
+			"password" : $("#user_password").val()}
+		,success: function(response) {
+			if(response.rt == "success") {
+				alert(response.rtMember.name+"님 환영합니다");
+				location.href = "/admin_cinema";
+			} else {
+				alert("없는 회원입니다");
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
+validation = function() {
+	   //  	 if(!checkNull($("#user_id"), $.trim($("#user_id").val()), "아이디를 입력해 주세요!")) return false;
+	   //  	 if(!checkNull($("#user_password"), $.trim($("#user_password").val()), "비밀번호를 입력해 주세요!")) return false;
+	    }
 
+</script>
 </body>
 </html>

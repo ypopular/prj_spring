@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_cinema_theater_list_form</title>
+        <title>admin_theater</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -37,7 +37,9 @@
                     <img src="resources/img/small_logo.png" alt="">
                 </div>
             
-            <div id="master_banner">
+          
+           
+               <div id="master_banner">
                 <ul>
                     <li id="go_main">
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
@@ -251,36 +253,30 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
-                        <li>seq</li>
-                         <li>name_seq</li>
-                          <li class="cinema_top_title">상영관번호</li>
-                            <li>상영타입</li>
-                            <li>좌석 수</li>
-                           
+                         
+                            <li>상영지점</li>
+                         
+                            
                         </ul>
                         <div id="theater_alter_list_wrap">
                         
-                        
+                        <c:forEach items="${list2}"  var="list2"  varStatus="status">
                          <ul class="cinema_name_alter_list">
-                            <li><input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
-                             <li><input type="text" class="form-control" id="cinema_name_seq" name="cinema_name_seq" required value="<c:out value="${item.cinema_name_seq}"/>"></li>
-                		    <li><input type="text" class="form-control" id="theater_number" name="theater_number" required value="<c:out value="${item.theater_number}"/>"></li>
-                            <li><input type="text" class="form-control" id="cinema_type" name="cinema_type" required value="<c:out value="${item.cinema_type}"/>"></li>
-                              <li><input type="text" class="form-control" id="seat_count" name="seat_count" required value="<c:out value="${item.seat_count}"/>"></li>
-                               
-    					<button type="button"  id="list_insert_btn">추가 저장</button>
- 					 <button type="button"  id="list_del_check_btn">삭제</button>
- 					 <button type="button" id="list_save_btn2">변경</button>
- 			      
+                		  
+ 						  <li><input type="text" class="form-control" id="location" name="location" placeholder="location" required readonly value="<c:out value="${list2.location_cinema_name}"/>"></li>
+ 						
+ 					
+ 			       <li><button type="button" class="list_alter_btn"><a href="admin_theater_list?cinema_name_seq=<c:out value="${list2.seq}"/>">상세</a></button></li>
  			              
  						    </ul>
- 						    
+ 						     </c:forEach>
+                  
                     </div>
                         
 
                     </div>
  					
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_theater">메인으로</a></button>
                 </form>
             </div>
         </div>
@@ -309,17 +305,17 @@ $("#master_search_btn").on("click",function(){
 	
 });
 $("#list_save_btn2").on("click",function(){
-		$("form[name=form_list]").attr("action","/cinemaUpdt3").submit();
+		$("form[name=form_list]").attr("action","/cinemaUpdt2").submit();
 		
 });
 $("#list_insert_btn").on("click",function(){
-	$("form[name=form_list]").attr("action","/cinemaInsert3").submit();
+	$("form[name=form]").attr("action","/cinemaInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaDelete3").submit();
+	$("form[name=form]").attr("action","/cinemaDelete").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-	$("form[name=form_list]").attr("action","/cinemaUelete3").submit();
+	$("form[name=form]").attr("action","/cinemaUelete").submit();
 });
 
 

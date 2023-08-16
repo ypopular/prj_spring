@@ -233,7 +233,7 @@ $(".sp_hover").mouseover(function(){
         });
 
 
-        $("#date a").on("click",function(){
+        $("#date1 a").on("click",function(){
             var dateTitle = $(this).attr("title");
             var pTag4 =$("<span>").text(dateTitle);
             $("#pick_theater,#choice_detail").find("span:eq(0)").remove();
@@ -242,7 +242,7 @@ $(".sp_hover").mouseover(function(){
             dateTrue=true;
         });
         var dateTrue = false;
-        $("#date li").on("click",function(){
+        $("#date1 li").on("click",function(){
             $(this).addClass("date_active");
             $(this).siblings().removeClass("date_active");
             $(this).find("a").addClass("date_a_active");
@@ -667,3 +667,10 @@ function drawChart()
 
 
 });
+
+
+
+ var fp2 = flatpickr(document.getElementById("date"), {
+    'monthSelectorType': 'static',
+    'locale': 'ko',
+  });

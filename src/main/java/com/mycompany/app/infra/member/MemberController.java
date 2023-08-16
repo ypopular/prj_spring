@@ -87,6 +87,12 @@ public class MemberController {
 	public String cgv_login_page() {
 		return "user/infra/codegroup/cgv_login_page";
 	}
+	@RequestMapping(value="/admin_login")
+	public String admin_login() {
+		return "admin/infra/codegroup/admin_login";
+	}
+	
+	
 	@ResponseBody
 	@RequestMapping("/loginProc")
 	public Map<String,Object> loginProc(MemberVo vo,HttpSession httpSession){

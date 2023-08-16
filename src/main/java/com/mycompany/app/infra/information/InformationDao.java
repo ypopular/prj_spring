@@ -44,6 +44,16 @@ public class InformationDao {
 	    public List<Movie2> selectList3(Movie2Vo vo3){ 
 	    	return sqlSession.selectList(namespace + ".selectList3",vo3); 
 	    	}
-		
+	    public List<Cinema_theater2> selectList4(Cinema_theater2Vo vo4){ 
+	    	return sqlSession.selectList(namespace + ".selectList4",vo4); 
+	    	}
+	    public Running_time selectOne2(Running_timeVo vo) { 
+	    	Running_time running_time = sqlSession.selectOne(namespace + ".selectOne2", vo); 
+			return running_time;
+		}
+	    
+	    public List<Cinema_theater2> selectList5(Cinema_theater2Vo vo5){ 
+	    	return sqlSession.selectList(namespace + ".selectList5",vo5); 
+	    	}
 		
 }

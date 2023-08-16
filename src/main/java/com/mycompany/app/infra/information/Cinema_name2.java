@@ -6,6 +6,17 @@ public class Cinema_name2 {
 	private String location_cinema_name;
 	private String cinema_seq;
 	private Integer delYN;
+	private String cinema_name_seq;
+	
+	
+	
+	
+	public String getCinema_name_seq() {
+		return cinema_name_seq;
+	}
+	public void setCinema_name_seq(String cinema_name_seq) {
+		this.cinema_name_seq = cinema_name_seq;
+	}
 	public String getSeq() {
 		return seq;
 	}

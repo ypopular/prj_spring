@@ -39,14 +39,15 @@
             
           
            
-              <div id="master_banner">
+               <div id="master_banner">
                 <ul>
                     <li id="go_main">
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
                     </li>
                     <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
+                    <li><a href="admin_theater"><i class="fa-solid fa-film"></i> 상영관 수정</a></li>
                     <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
-                    <li id="theater_alter"><a href="admin_list"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
+                    <li id="theater_alter"><a href="admin_information"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
                      <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
                      <li><a href="admin_ticketing"><i class="fa-solid fa-ticket"></i> 예매목록확인</a></li>
                 </ul>
@@ -276,7 +277,7 @@
                         
 
                     </div>
- 					<button type="button" id="go_insert"><a href="admin_cinema_name_list_form">추가</a></button>
+ 					<button type="button" id="go_insert"><a href="admin_cinema_name_list_form">지점 추가</a></button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
                 </form>
             </div>

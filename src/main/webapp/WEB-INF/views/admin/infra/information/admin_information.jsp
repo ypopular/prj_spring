@@ -43,6 +43,7 @@
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
                     </li>
                     <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
+                    <li><a href="admin_theater"><i class="fa-solid fa-film"></i> 상영관 수정</a></li>
                     <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
                     <li id="theater_alter"><a href="admin_information"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
                      <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
@@ -293,8 +294,8 @@
                             <li>상영지점</li>
                             <li>영화제목</li>
                             <li>상영관</li>
-                            <li>상영종류</li>
-                            <li>상영날짜</li>
+                            <li id="date_margin">상영종류</li>
+                            <li id="date_margin2">상영날짜</li>
                               <li>상영시간</li>
                             
                         </ul>
@@ -308,12 +309,12 @@
 							    <li class="form-control"> <c:out value="${list.movie_name}"></c:out></li>	
 							 <li class="form-control"><c:out value="${list.theater_number}"></c:out></li>			
 						   <li class="form-control"> <c:out value="${list.cinema_type}"></c:out></li>	
-						     <li class="form-control"> <c:out value="${list.date}"></c:out></li>
+						     <li class="form-control form_date" > <c:out value="${list.date}"></c:out></li>
 						     <li class="form-control"> <c:out value="${list.start_time}"></c:out></li>
 						    
 						     	
 
-						     <li><button type="button" class="list_alter_btn">변경</button></li>
+						     <li><button type="button" class="list_alter_btn"><a href="admin_information_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
 			
 						 </ul>
 					</c:forEach>

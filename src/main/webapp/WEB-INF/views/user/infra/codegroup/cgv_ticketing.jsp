@@ -620,7 +620,7 @@
                     </div>
                     <div id="day_select">
                         <div class="ticketing_select_title">날짜</div>
-                        <div id="date">
+                        <div id="date1">
                             <ul>
                                 <p class="year">2023</p>
                                 <p class="month">6</p>

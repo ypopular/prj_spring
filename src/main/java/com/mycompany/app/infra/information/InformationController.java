@@ -1,20 +1,20 @@
 package com.mycompany.app.infra.information;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mycompany.app.infra.cinema.Cinema;
-
-
-
-
-
-
+import com.mycompany.app.infra.member.Member;
+import com.mycompany.app.infra.member.MemberVo;
 
 
 
@@ -40,19 +40,68 @@ public class InformationController {
 	
 	
 	@RequestMapping("/admin_information_add_form")
-	public String admin_information_add_form(@ModelAttribute("vo")Cinema_name2Vo vo2,Movie2Vo vo3,Model model) {
+	public String admin_information_add_form(@ModelAttribute("vo")Running_timeVo vo,Cinema_name2Vo vo2,Movie2Vo vo3,Cinema_theater2Vo vo4,Model model) {
+		Running_time running_time = service.selectOne(vo);
+		model.addAttribute("item", running_time);
 		List<Cinema_name2> list2 = service.selectList2(vo2);
 		model.addAttribute("list2",list2);
 		List<Movie2> list3 = service.selectList3(vo3);
 		model.addAttribute("list3",list3);
+		List<Cinema_theater2> list4 = service.selectList4(vo4);
+		model.addAttribute("list4",list4);
 		return "admin/infra/information/admin_information_add_form";
+	}
+	
+	@RequestMapping("/admin_information_alter_form")
+	public String admin_information_alter_form(@ModelAttribute("vo")Running_timeVo vo,Model model) {
+		Running_time running_time = service.selectOne2(vo);
+		model.addAttribute("item2", running_time);
+		return "admin/infra/information/admin_information_alter_form";
 	}
 //	-----------------------------------------------------
 	@RequestMapping("/informationInsert")
 	public String informationInsert(Running_time dto) {
-		
+		System.out.println("informationInsert");
 		service.insert(dto);
 		return "redirect:/admin_information";
+	}
+	@RequestMapping("/informationDelete")
+	public String informationDelete(Running_time dto) {
+		System.out.println("informationDelete");
+		service.delete(dto);
+		return "redirect:/admin_information";
+	}
+	@RequestMapping("/informationUelete")
+	public String informationUelete(Running_time dto) {
+		System.out.println("informationUelete");
+		service.uelete(dto);
+		return "redirect:/admin_information";
+	}
+	@RequestMapping("/informationUpdt")
+	public String informationUpdt(Running_time dto) {
+		System.out.println("informationUpdt");
+		service.update(dto);
+		return "redirect:/admin_information";
+	}
+// -----------------------------------------------------
+	@ResponseBody
+	@RequestMapping("/cinemaProc")
+	public Map<String,Object> cinemaProc(Cinema_theater2Vo vo4,HttpSession httpSession){
+		Map<String,Object> returnMap =new HashMap<String,Object>();
+		
+		Member rtMember = service.selectOne(vo4);
+		
+		if(rtMember !=null) {
+			
+			httpSession.setMaxInactiveInterval(60*60); // 60 min
+			httpSession.setAttribute("sessionId", vo4.getCinema_name_seq());
+			
+			returnMap.put("rtMember", rtMember);
+			returnMap.put("rt", "success");
+		}else {
+			returnMap.put("rt","fail");
+		}
+		return returnMap;
 	}
 	
 }

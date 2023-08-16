@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Running_timeVo {
 	public String seq;
 	public String start_time;
-	public Date date;
+	public String date;
 	public Integer delYN;
 	public String movie_seq;
 	public String cinema_theater_seq;
@@ -45,10 +45,10 @@ public class Running_timeVo {
 	public void setStart_time(String start_time) {
 		this.start_time = start_time;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getMovie_seq() {

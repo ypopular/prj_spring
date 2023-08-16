@@ -8,7 +8,28 @@
      <resultMap id="resultMapObj" type="com.mycompany.app.infra.information.Running_time"></resultMap>
      <resultMap id="resultMapObj2" type="com.mycompany.app.infra.information.Cinema_name2"></resultMap>
       <resultMap id="resultMapObj3" type="com.mycompany.app.infra.information.Movie2"></resultMap>
-     
+       <resultMap id="resultMapObj4" type="com.mycompany.app.infra.information.Cinema_theater2"></resultMap>
+       
+       <select id="selectList5" resultMap="resultMapObj4">
+       select
+       		cinema_theater_number
+       	from 
+       		cinema_theater
+       	where 1=1
+       	and
+       		cinema_name_seq = #{seq}	
+       </select>
+       
+     <select id="selectList4" resultMap="resultMapObj4">
+      select
+      		*
+      from
+      		cinema_theater
+   	  where
+   	  		delYN = 0;
+      
+      
+      </select>
        <select id="selectList3" resultMap="resultMapObj3">
       select
       		*
@@ -21,12 +42,15 @@
       </select>
      
       <select id="selectList2" resultMap="resultMapObj2">
-      select
-      		*
-      from
-      		cinema_name
-   	  where
-   	  		delYN = 0;
+     SELECT DISTINCT
+    a.seq,
+    a.location_cinema_name,
+    b.cinema_name_seq
+FROM
+    cinema_name a
+JOIN cinema_theater b ON b.cinema_name_seq = a.seq
+WHERE 
+    a.delYN = 0;
       
       
       </select>
@@ -62,14 +86,39 @@
 		AND
 			seq = #{seq}
 	</select>
+	<select id="selectOne2" resultMap="resultMapObj">
+		select
+					a.seq,
+					a.start_time,
+					a.date,
+					a.delYN,
+					b.movie_name,
+					d.location_cinema_name,
+					c.theater_number,
+					c.cinema_type
+				from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+ 				 WHERE 1=1
+ 				 AND
+ 				 		a.seq = #{seq}
+   				
+	</select>
 	
 	<update id="update">
-        UPDATE    running_time
-        SET     start_time = #{start_time},
-        		date = #{date}
-        WHERE  1=1
-        AND
-           seq = #{seq}  
+        UPDATE running_time a
+    JOIN movie b ON b.seq = a.movie_seq
+    JOIN cinema_theater c ON c.seq = a.cinema_theater_seq
+    JOIN cinema_name d ON d.seq = c.cinema_name_seq
+    SET a.start_time = #{start_time},
+        a.date = #{date},
+        b.movie_name = #{movie_name},
+        d.location_cinema_name = #{location_cinema_name},  
+        c.theater_number = #{theater_number},  
+        c.cinema_type = #{cinema_type} 
+    WHERE a.seq = #{seq}
     </update>
     
     <delete id="delete">
@@ -90,7 +139,7 @@
     cinema_theater_seq,
     delYN
     )
-    VALUES 
+    VALUE
     	(
     	#{start_time},
     	#{date},

@@ -51,10 +51,7 @@ public class CodeGroupController {
 		return "admin/infra/codegroup/admin_form";
 	}
 	
-	@RequestMapping(value="/admin_login")
-	public String admin_login() {
-		return "admin/infra/codegroup/admin_login";
-	}
+	
 	
 	@RequestMapping("/codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroup dto) {

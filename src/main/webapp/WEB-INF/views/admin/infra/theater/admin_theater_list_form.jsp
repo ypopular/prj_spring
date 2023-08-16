@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_cinema_theater_list_form</title>
+        <title>admin_theater_list_form</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -251,8 +251,7 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
-                        <li>seq</li>
-                         <li>name_seq</li>
+                        
                           <li class="cinema_top_title">상영관번호</li>
                             <li>상영타입</li>
                             <li>좌석 수</li>
@@ -262,8 +261,9 @@
                         
                         
                          <ul class="cinema_name_alter_list">
-                            <li><input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
-                             <li><input type="text" class="form-control" id="cinema_name_seq" name="cinema_name_seq" required value="<c:out value="${item.cinema_name_seq}"/>"></li>
+                            
+                             <li><input type="hidden" class="form-control" id="seq" name="seq" required value="<c:out value="${item.seq}"/>"></li>
+                            <input type="hidden" class="form-control" id="cinema_name_seq" name="cinema_name_seq" required value="<c:out value="${param.cinema_name_seq}"/>">
                 		    <li><input type="text" class="form-control" id="theater_number" name="theater_number" required value="<c:out value="${item.theater_number}"/>"></li>
                             <li><input type="text" class="form-control" id="cinema_type" name="cinema_type" required value="<c:out value="${item.cinema_type}"/>"></li>
                               <li><input type="text" class="form-control" id="seat_count" name="seat_count" required value="<c:out value="${item.seat_count}"/>"></li>
@@ -309,11 +309,11 @@ $("#master_search_btn").on("click",function(){
 	
 });
 $("#list_save_btn2").on("click",function(){
-		$("form[name=form_list]").attr("action","/cinemaUpdt3").submit();
+		$("form[name=form_list]").attr("action","/theaterUpdt").submit();
 		
 });
 $("#list_insert_btn").on("click",function(){
-	$("form[name=form_list]").attr("action","/cinemaInsert3").submit();
+	$("form[name=form_list]").attr("action","/theaterInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaDelete3").submit();

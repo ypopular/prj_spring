@@ -22,9 +22,14 @@
 
         <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
         <script src="resources/js/jquery-3.6.4.min.js"></script>
-        <script src="resources/js/cgv.js"></script>
+      
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_black.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
         
         
     </head>
@@ -37,14 +42,15 @@
                     <img src="resources/img/small_logo.png" alt="">
                 </div>
             
-           <div id="master_banner">
+            <div id="master_banner">
                 <ul>
                     <li id="go_main">
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
                     </li>
                     <li id="cinema_alter"><a href="admin_cinema"><i class="fa-solid fa-rectangle-ad"></i> 영화관이름 수정</a></li>
+                    <li><a href="admin_theater"><i class="fa-solid fa-film"></i> 상영관 수정</a></li>
                     <li id="movie_alter"><a href="admin_movie"><i class="fa-solid fa-file-lines"></i> 영화정보 수정</a></li>
-                    <li id="theater_alter"><a href="admin_list"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
+                    <li id="theater_alter"><a href="admin_information"><i class="fa-solid fa-clock"></i> 상영정보 수정 및 삭제</a></li>
                      <li><a href="admin_member"><i class="fa-solid fa-user"></i> 회원관리</a></li>
                      <li><a href="admin_ticketing"><i class="fa-solid fa-ticket"></i> 예매목록확인</a></li>
                 </ul>
@@ -90,7 +96,9 @@
             </div>
 
             <div id="master_wrap" class="information_page">
-                
+                  <div id="master_title">
+                    <span>관리자</span>
+                </div>
                 
                 <div id="master_menu_wrap"></div>
                 <div id="cinema_add_wrap">
@@ -291,8 +299,8 @@
                             <li>상영지점</li>
                             <li>영화제목</li>
                             <li>상영관</li>
-                            <li>상영종류</li>
-                            <li>상영날짜</li>
+                           <li id="date_margin">상영종류</li>
+                            <li id="date_margin2">상영날짜</li>
                               <li>상영시간</li>
                             
                         </ul>
@@ -304,39 +312,41 @@
 
 							 <ul class="theater_alter_list">
 							
-					<%-- <li class="form-control in_select">
+					 <li class="form-control in_select">
 						<select>
    							<option value="">상영지점</option>
   							   <c:forEach var="list2" items="${list2}">
-     						<option value="${list2.location_cinema_name}">${list2.location_cinema_name}</option>
+     						<option>${list2.location_cinema_name}</option>
     							</c:forEach>
  						</select>
 					</li>
 					<li class="form-control in_select">
-						<select>
+						<select name="movie_seq">
    							<option value="">영화이름</option>
   							   <c:forEach var="list3" items="${list3}">
-     						<option value="${list3.movie_name}">${list3.movie_name}</option>
+     						<option value="${list3.seq}">${list3.movie_name}</option>
     							</c:forEach>
  						</select>
-					</li> --%>
-					 <li><input type="text" class="form-control" 
-                            required value="<c:out value="${item.cinema_theater_seq}"/>"> </li>
-                         <li><input type="text" class="form-control" 
-                            required value="<c:out value="${item.movie_seq}"/>"> </li>
-                             <li><input type="text" class="form-control" 
-                            required value="<c:out value="${item.theater_number}"/>"> </li>
-                             <li><input type="text" class="form-control" 
+					</li> 
+					
+                           <li class="form-control in_select">
+    						<select name="cinema_theater_seq">
+       						 <option value="">상영관</option>
+   							 </select>
+									</li>
+                             <li><input type="text" class="form-control" id="cinema_type" name="cinema_type"
                             required value="<c:out value="${item.cinema_type}"/>"> </li>
-                             <li><input type="text" class="form-control" 
+                             <li><input type="text" class="form-control dateSelector form_date" id="date" name="date"
                             required value="<c:out value="${item.date}"/>"> </li>
-                             <li><input type="text" class="form-control" 
+                             <li><input type="text" class="form-control" id="start_time" name="start_time"
                             required value="<c:out value="${item.start_time}"/>"> </li>
 							     
+							     
+							     
+						     <button type="button" id="if_insert_btn" class="list_alter_btn">추가</button>
 						    
-						     	
-
-						     <li><button type="button" id="if_insert_btn" class="list_alter_btn">추가</button></li>
+								
+						    
 			
 						 </ul>
 			
@@ -347,8 +357,8 @@
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_cinema_location_add_form'">추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
+ 					
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_information">메인으로</a></button>
              
                 </form>
             </div>
@@ -370,6 +380,7 @@
             </div>
         </div>
     </div>
+      <script src="resources/js/cgv.js"></script>
 <script>
 
 $("#master_search_btn").on("click",function(){
@@ -379,17 +390,17 @@ $("#master_search_btn").on("click",function(){
 	
 });
 $("#list_save_btn2").on("click",function(){
-		$("form[name=form]").attr("action","/cinemaUpdt").submit();
+		$("form[name=form]").attr("action","/informationUpdt").submit();
 		
 });
 $("#if_insert_btn").on("click",function(){
 	$("form[name=form_list]").attr("action","/informationInsert").submit();
 });
-$("#list_delete_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaDelete").submit();
+$("#list_del_btn").on("click",function(){
+	$("form[name=form]").attr("action","/informationDelete").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaUelete").submit();
+	$("form[name=form]").attr("action","/informationUelete").submit();
 });
 
 
