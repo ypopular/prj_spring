@@ -83,6 +83,18 @@ public class InformationServiceImpl implements InformationService{
 		return dao.selectList6(vo6);
 	}
 
+	@Override
+	public List<Movie2> selectList7(Movie2Vo vo7) {
+		// TODO Auto-generated method stub
+		return dao.selectList7(vo7);
+	}
+
+	@Override
+	public List<Movie2> selectList8(Movie2Vo vo8) {
+		// TODO Auto-generated method stub
+		return dao.selectList8(vo8);
+	}
+
 	
 
 	

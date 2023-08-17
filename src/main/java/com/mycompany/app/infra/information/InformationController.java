@@ -159,5 +159,46 @@ public class InformationController {
 	    }
 	    return returnMap;
 	}
-	
+	@ResponseBody
+	@RequestMapping("/movieProc")
+	public Map<String, Object> movieProc(
+	    @RequestParam("seq") String seq,
+	    HttpSession httpSession
+	) {
+	    Map<String, Object> returnMap = new HashMap<>();
+	    			
+	    Movie2Vo vo = new Movie2Vo();
+	    vo.setSeq(seq);
+	   
+	    List<Movie2> movie2 = service.selectList7(vo);
+	   
+	    if (movie2 != null && !movie2.isEmpty()) {
+	        returnMap.put("movie_time", movie2.get(0).getMovie_time());  // 이 부분은 movie_time 값을 가져와서 반환합니다.
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
+	}
+	@ResponseBody
+	@RequestMapping("/movieProc2")
+	public Map<String, Object> movieProc2(
+	    @RequestParam("movie_name") String movie_name,
+	    HttpSession httpSession
+	) {
+	    Map<String, Object> returnMap = new HashMap<>();
+	    			
+	    Movie2Vo vo = new Movie2Vo();
+	    vo.setMovie_name(movie_name);
+	   
+	    List<Movie2> movie2 = service.selectList8(vo);
+	   
+	    if (movie2 != null && !movie2.isEmpty()) {
+	        returnMap.put("movie_time", movie2.get(0).getMovie_time());  // 이 부분은 movie_time 값을 가져와서 반환합니다.
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
+	}
 }

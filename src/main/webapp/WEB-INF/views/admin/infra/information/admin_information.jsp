@@ -259,7 +259,7 @@
                   <div id="detail_search">
                     <input name="shKeyword2"  value="<c:out value="${vo.shKeyword2 }"/>" type="text" placeholder="상영지점"> 
                    <input name="shKeyword"  value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
-                    <input  id="datepicker" type="text" placeholder="상영일">
+                    <input  id="datepicker"  value="<c:out value="${vo.shKeyword3}"/>" type="text" placeholder="상영일">
                    <select name="shOption">
                     <option selected disabled value="0">상영관</option>
                     <option value="1">1관</option>

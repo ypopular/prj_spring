@@ -11,6 +11,24 @@
        <resultMap id="resultMapObj4" type="com.mycompany.app.infra.information.Cinema_theater2"></resultMap>
        
        
+       <select id="selectList8" resultMap="resultMapObj3">
+   SELECT
+    movie_time
+FROM 
+    movie
+WHERE 1=1
+    AND movie_name = #{movie_name}
+    AND delYN = 0	   
+</select>
+       <select id="selectList7" resultMap="resultMapObj3">
+   SELECT
+    movie_time
+FROM 
+    movie
+WHERE 1=1
+    AND seq = #{seq}
+    AND delYN = 0	   
+</select>
        <select id="selectList6" resultMap="resultMapObj4">
    SELECT
     seq,

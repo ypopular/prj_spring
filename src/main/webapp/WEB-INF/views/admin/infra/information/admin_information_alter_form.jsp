@@ -294,14 +294,15 @@
                 
                 
                 <!---------------------  -->
-                    <div id="theater_alter_small_wrap">
+                    <div id="theater_alter_small_wrap" class="information_wrap">
                         <ul class="title_alter_list information_list">
                             <li>상영지점</li>
                             <li>영화제목</li>
                             <li>상영관</li>
                            <li id="date_margin">상영종류</li>
                             <li id="date_margin2">상영날짜</li>
-                              <li>상영시간</li>
+                              <li>시작시간</li>
+                              <li>종료시간</li>
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
@@ -310,7 +311,7 @@
                  	
 						
 
-							 <ul class="theater_alter_list">
+							 <ul class="theater_alter_list information_wrap">
 							 <li><input type="hidden" class="form-control" id="seq" name="seq"
                             required value="<c:out value="${item2.seq}"/>"> </li>
 					 <li><input type="text" class="form-control" id="location_cinema_name" name="location_cinema_name"
@@ -332,7 +333,8 @@
                             required value="<c:out value="${item2.date}"/>"> </li>
                              <li><input type="text" class="form-control" id="start_time" name="start_time"
                             required value="<c:out value="${item2.start_time}"/>"> </li>
-							     
+							       <li><input type="text" class="form-control" id="end_time" name="end_time"
+                            required value="<c:out value="${item2.end_time}"/>"> </li>
 							     
 							     
 						    
@@ -395,7 +397,40 @@ $("#list_del_btn").on("click",function(){
 $("#list_del_check_btn").on("click",function(){
 	$("form[name=form_list]").attr("action","/informationUelete").submit();
 });
-
+$("#start_time").on("change", function() {
+    var selectedMovie = $("#movie_name").val();
+    var selectTime = $(this).val();
+    
+    $.ajax({
+        async: true,
+        cache: false,
+        type: "post",
+        url: "/movieProc2",
+        data: {
+            "movie_name": selectedMovie
+        },
+        success: function(response) {
+            if (response.rt === "success") {
+                var movie_time = response.movie_time;  // 서버에서 반환한 movie_time 값
+                var startTime = selectTime.split(":");
+                var startHour = parseInt(startTime[0]);
+                var startMinute = parseInt(startTime[1]);
+                
+                var endHour = startHour + Math.floor((startMinute + movie_time) / 60);
+                var endMinute = (startMinute + movie_time) % 60;
+                
+                var endTime = ("0" + endHour).slice(-2) + ":" + ("0" + endMinute).slice(-2);
+                
+                $("#end_time").val(endTime);
+            } else {
+                alert("상영타입 정보를 가져오는 데 실패했습니다.");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+        }
+    });
+});
 
 </script>
 </body>
