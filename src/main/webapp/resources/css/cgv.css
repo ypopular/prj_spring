@@ -2765,9 +2765,8 @@ video{
     margin: auto;
     margin-top: 20px;
       border-bottom: 1px solid #898987;
-     
-    
 }
+
 #theater_alter_list_wrap{
     width: 900px;
     height: 400px;
@@ -3391,7 +3390,9 @@ video{
     font-size:13px;
     text-align:center;
 }
-
+.information_list{
+	width:1000px !important;
+}
 .information_list li{
 	margin-right:50px !important;
 }
@@ -3421,4 +3422,10 @@ video{
 }
 .information_add{
 	margin-right:89px !important;
+}
+.information_wrap{
+	width :1000px !important;
+}
+.information_insert{
+	right:10% !important;
 }

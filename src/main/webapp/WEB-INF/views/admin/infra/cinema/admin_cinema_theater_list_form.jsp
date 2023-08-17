@@ -251,8 +251,7 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
-                        <li>seq</li>
-                         <li>name_seq</li>
+                       
                           <li class="cinema_top_title">상영관번호</li>
                             <li>상영타입</li>
                             <li>좌석 수</li>
@@ -262,10 +261,18 @@
                         
                         
                          <ul class="cinema_name_alter_list">
-                            <li><input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
-                             <li><input type="text" class="form-control" id="cinema_name_seq" name="cinema_name_seq" required value="<c:out value="${item.cinema_name_seq}"/>"></li>
+                            <li><input type="hidden" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
+                             <li><input type="hidden" class="form-control" id="cinema_name_seq" name="cinema_name_seq" required value="<c:out value="${param.cinema_name_seq}"/>"></li>
                 		    <li><input type="text" class="form-control" id="theater_number" name="theater_number" required value="<c:out value="${item.theater_number}"/>"></li>
-                            <li><input type="text" class="form-control" id="cinema_type" name="cinema_type" required value="<c:out value="${item.cinema_type}"/>"></li>
+                            <li class="form-control in_select">
+                           <select  id="cinema_type" name="cinema_type" required>
+     <option value="">상영타입</option>
+    <option value="1" <c:if test="${item.cinema_type == '1'}">selected</c:if>>2D</option>
+    <option value="2" <c:if test="${item.cinema_type == '2'}">selected</c:if>>4DX</option>
+    <option value="3" <c:if test="${item.cinema_type == '3'}">selected</c:if>>IMAX</option>
+    <option value="4" <c:if test="${item.cinema_type == '4'}">selected</c:if>>PRIVATE BOX</option>
+</select>
+                            </li>
                               <li><input type="text" class="form-control" id="seat_count" name="seat_count" required value="<c:out value="${item.seat_count}"/>"></li>
                                
     					<button type="button"  id="list_insert_btn">추가 저장</button>

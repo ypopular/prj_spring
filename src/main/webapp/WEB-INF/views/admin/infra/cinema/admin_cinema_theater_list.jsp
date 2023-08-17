@@ -251,7 +251,7 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
-                        	<li>name_seq</li>
+                        	
                           <li  class="cinema_top_title">상영관번호</li>
                             <li>상영타입</li>
                             <li>좌석 수</li> 
@@ -261,9 +261,27 @@
                         
                         <c:forEach items="${list3}"  var="list3"  varStatus="status">
                          <ul class="cinema_name_alter_list">
-                	 <li><input type="text" class="form-control" id="cinema_name_seq" name="cinema_name_seq" placeholder="theater_number" required readonly value="<c:out value="${list3.cinema_name_seq}"/>"></li>
+                	 <li><input type="hidden" class="form-control" id="cinema_name_seq" name="cinema_name_seq" placeholder="theater_number" required readonly value="<c:out value="${list3.cinema_name_seq}"/>"></li>
  						  <li><input type="text" class="form-control" id="theater_number" name="theater_number" placeholder="theater_number" required readonly value="<c:out value="${list3.theater_number}"/>"></li>
- 						 <li><input type="text" class="form-control" id="cinema_type" name="cinema_type" placeholder="cinema_type" required readonly value="<c:out value="${list3.cinema_type}"/>"></li>
+ 						 <li class="form-control" id="cinema_type" name="cinema_type" placeholder="cinema_type" required readonly>
+ 						<c:choose>
+            <c:when test="${list3.cinema_type == 1}">
+                2D
+            </c:when>
+             <c:when test="${list3.cinema_type == 2}">
+                4DX
+            </c:when>
+             <c:when test="${list3.cinema_type == 3}">
+                IMAX
+            </c:when>
+             <c:when test="${list3.cinema_type == 4}">
+                PRIVATE BOX
+            </c:when>
+            <c:otherwise>
+                <c:out value="${list3.cinema_type}"/>
+            </c:otherwise>
+        </c:choose>
+ 						 </li>
  						  <li><input type="text" class="form-control" id="seat_count" name="seat_count" placeholder="seat_count" required readonly value="<c:out value="${list3.seat_count}"/>"></li>
  				
  					 <button type="button" id="list_save_btn2"><a href="admin_cinema_theater_list_form?seq=<c:out value="${list3.seq}"/>">변경</a></button>
@@ -276,7 +294,7 @@
                         
 
                     </div>
- 					<button type="button" id="go_insert"><a href="admin_cinema_theater_list_form">상영관 추가</a></button>
+ 					<button type="button" id="go_insert"><a href="admin_cinema_theater_list_form?cinema_name_seq=<c:out value="${seq3}"/>">상영관 추가</a></button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
                 </form>
             </div>

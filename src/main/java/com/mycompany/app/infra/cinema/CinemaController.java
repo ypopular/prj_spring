@@ -29,6 +29,8 @@ public class CinemaController {
 	public String admin_cinema_name_list(CinemaVo vo,Cinema_nameVo vo2,Cinema_theaterVo Vo3, Model model) {
 	List<Cinema_name> list2 = service.selectList2(vo2);
 		model.addAttribute("list2",list2);
+		model.addAttribute("seq2",vo.getSeq());
+		
 		return "admin/infra/cinema/admin_cinema_name_list";
 	}
 	
@@ -36,6 +38,7 @@ public class CinemaController {
 	public String admin_cinema_theater_list(Cinema_nameVo vo2,Cinema_theaterVo vo3, Model model) {
 	List<Cinema_theaterVo> list3 = service.selectList3(vo3);
 		model.addAttribute("list3",list3);
+		model.addAttribute("seq3",vo2.getSeq());
 		return "admin/infra/cinema/admin_cinema_theater_list";
 	}
 //	---------------------------------------------------------------------

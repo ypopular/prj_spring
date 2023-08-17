@@ -263,7 +263,7 @@
                          <ul class="cinema_name_alter_list">
                         
                         <li><input type="text" class="form-control" id="location" name="location" required value="<c:out value="${item.location}"/>"></li>
-    					<button type="button" id="list_insert_btn" class="location_insert_btn">추가 저장</button>
+    					<button type="button" id="list_insert_btn" class="location_insert_btn">(추가) 저장</button>
     					
  	
  			      

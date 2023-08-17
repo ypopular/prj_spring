@@ -140,5 +140,24 @@ public class InformationController {
 	    }
 	    return returnMap;
 	}
+	@ResponseBody
+	@RequestMapping("/cinemaProc2")
+	public Map<String, Object> cinemaProc2(
+	    Cinema_theater2Vo vo,HttpSession httpSession
+	) {
+	    Map<String, Object> returnMap = new HashMap<>();
+	    		
+	  
+	   
+	    List<Cinema_theater2> cinemaTypeList = service.selectList6(vo);
+	   
+	    if (cinemaTypeList != null) {
+	        returnMap.put("rtTypes", cinemaTypeList);
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
+	}
 	
 }

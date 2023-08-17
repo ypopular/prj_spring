@@ -55,5 +55,8 @@ public class InformationDao {
 	    public List<Cinema_theater2> selectList5(Cinema_theater2Vo vo5){ 
 	    	return sqlSession.selectList(namespace + ".selectList5",vo5); 
 	    	}
+	    public List<Cinema_theater2> selectList6(Cinema_theater2Vo vo6){ 
+	    	return sqlSession.selectList(namespace + ".selectList6",vo6); 
+	    	}
 		
 }

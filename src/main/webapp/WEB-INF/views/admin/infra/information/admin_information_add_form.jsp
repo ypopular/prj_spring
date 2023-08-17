@@ -312,21 +312,35 @@
 
 							 <ul class="theater_alter_list">
 							
-					 <li class="form-control in_select">
-    <select id="select_location">
-        <option value="">상영지점</option>
-        <c:forEach var="list2" items="${list2}">
-            <option value="${list2.seq}">${list2.location_cinema_name}</option>
-        </c:forEach>
-    </select>
-</li>
-<li class="form-control in_select">
-    <select id="select_theater" name="cinema_theater_seq">
-        <option value="">상영관</option>
-    </select>
-</li>
-                             <li><input type="text" class="form-control" id="cinema_type" name="cinema_type"
-                            required value="<c:out value="${item.cinema_type}"/>"> </li>
+							 <li class="form-control in_select">
+   									 <select id="select_location">
+       								 <option value="">상영지점</option>
+       									 <c:forEach var="list2" items="${list2}">
+         									   <option value="${list2.seq}">${list2.location_cinema_name}</option>
+      										  </c:forEach>
+   											 </select>
+								</li>
+								<li class="form-control in_select">
+						<select name="movie_seq">
+   							<option value="">영화이름</option>
+  							   <c:forEach var="list3" items="${list3}">
+     						<option value="${list3.seq}">${list3.movie_name}</option>
+    							</c:forEach>
+ 						</select>
+					</li> 
+								
+								<li class="form-control in_select">
+   											 <select id="select_theater" >
+      											  <option value="">상영관</option>
+   											 </select>
+								</li>
+								<li class="form-control in_select">
+   											 <select id="select_type" name="cinema_theater_seq">
+      											  <option value="">상영타입</option>
+   											 </select>
+								</li>
+                            <%--  <li><input type="text" class="form-control" id="cinema_type" name="cinema_type"
+                            required value="<c:out value="${item.cinema_type}"/>"> </li> --%>
                              <li><input type="text" class="form-control dateSelector form_date" id="date" name="date"
                             required value="<c:out value="${item.date}"/>"> </li>
                              <li><input type="text" class="form-control" id="start_time" name="start_time"
@@ -413,10 +427,62 @@ $("#select_location").on("change", function() {
                 selectTheater.append($("<option value=''>상영관</option>"));
 
                 $.each(theaters, function(index, theater) {
-                    selectTheater.append($("<option>").attr("value", theater.cinema_name_seq).text(theater.theater_number));
+                    selectTheater.append($("<option>").attr("value", theater.theater_number).text(theater.theater_number));
                 });
             } else {
                 alert("상영관 정보를 가져오는 데 실패했습니다.");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+        }
+    });
+});
+
+$("#select_theater").on("change", function() {
+    var selectedTheater = $(this).val();
+    var selectedLocation2 = $("#select_location").val();
+  
+    $.ajax({
+        async: true,
+        cache: false,
+        type: "post",
+        url: "/cinemaProc2",
+        data: {
+            "theater_number": selectedTheater,
+            "cinema_name_seq" : selectedLocation2
+        },
+        success: function(response) {
+            if (response.rt === "success") {
+                var types = response.rtTypes;
+                var selectType = $("#select_type");
+
+                selectType.empty();
+                selectType.append($("<option value=''>상영타입</option>"));
+
+                $.each(types, function(index, type) {
+                    var typeText = "";
+                    switch (type.cinema_type) {
+                        case 1:
+                            typeText = "2D";
+                            break;
+                        case 2:
+                            typeText = "4DX";
+                            break;
+                        case 3:
+                            typeText = "IMAX";
+                            break;
+                        case 4:
+                            typeText = "PRIVATE BOX";
+                            break;
+                        default:
+                            typeText = type.cinema_type;
+                            break;
+                    }
+                    selectType.append($("<option>").attr("value", type.seq).text(typeText));
+                });
+            } else {
+                alert("상영타입 정보를 가져오는 데 실패했습니다.");
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {

@@ -289,28 +289,48 @@
                 
                 
                 <!---------------------  -->
-                    <div id="theater_alter_small_wrap">
+                    <div id="theater_alter_small_wrap" class="information_wrap">
                         <ul class="title_alter_list information_list">
                             <li>상영지점</li>
                             <li>영화제목</li>
                             <li>상영관</li>
                             <li id="date_margin">상영종류</li>
                             <li id="date_margin2">상영날짜</li>
-                              <li>상영시간</li>
+                              <li>시작시간</li>
+                              <li>종료시간</li>
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
                        
                  	
                  	<c:forEach items="${list}" var="list" varStatus="status">
-							 <ul class="theater_alter_list">
+							 <ul class="theater_alter_list information_wrap">
 						
 							  <li class="form-control"> <c:out value="${list.location_cinema_name}"></c:out></li>
 							    <li class="form-control"> <c:out value="${list.movie_name}"></c:out></li>	
 							 <li class="form-control"><c:out value="${list.theater_number}"></c:out></li>			
-						   <li class="form-control"> <c:out value="${list.cinema_type}"></c:out></li>	
+						   <li class="form-control" id="cinema_type" name="cinema_type" placeholder="cinema_type" required readonly>
+ 						<c:choose>
+            <c:when test="${list.cinema_type == 1}">
+                2D
+            </c:when>
+             <c:when test="${list.cinema_type == 2}">
+                4DX
+            </c:when>
+             <c:when test="${list.cinema_type == 3}">
+                IMAX
+            </c:when>
+             <c:when test="${list.cinema_type == 4}">
+                PRIVATE BOX
+            </c:when>
+            <c:otherwise>
+                <c:out value="${list.cinema_type}"/>
+            </c:otherwise>
+        </c:choose>
+ 						 </li>
 						     <li class="form-control form_date" > <c:out value="${list.date}"></c:out></li>
 						     <li class="form-control"> <c:out value="${list.start_time}"></c:out></li>
+						      <li class="form-control"> <c:out value="${list.end_time}"></c:out></li>
 						    
 						     	
 
@@ -326,7 +346,7 @@
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_information_add_form'">추가</button>
+ 					<button type="button" id="go_insert" class="information_insert" onclick="location.href='admin_information_add_form'">추가</button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_information">메인으로</a></button>
              
                 </form>

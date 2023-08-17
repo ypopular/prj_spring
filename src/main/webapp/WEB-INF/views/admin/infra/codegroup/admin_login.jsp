@@ -89,8 +89,8 @@ $("#master_submit").on("click", function(){
 			"password" : $("#user_password").val()}
 		,success: function(response) {
 			if(response.rt == "success") {
-				alert(response.rtMember.name+"님 환영합니다");
-				location.href = "/admin_cinema";
+				
+				location.href = "/admin_information";
 			} else {
 				alert("없는 회원입니다");
 			}

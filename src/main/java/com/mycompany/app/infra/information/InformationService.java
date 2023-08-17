@@ -24,5 +24,6 @@ public List<Running_time> selectList(Running_timeVo vo);
 	public Running_time selectOne2(Running_timeVo vo);
 	
 	public List<Cinema_theater2> selectList5(Cinema_theater2Vo vo5);
+	public List<Cinema_theater2> selectList6(Cinema_theater2Vo vo6);
 	
 }

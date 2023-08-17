@@ -253,8 +253,7 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
-                          <li>cinema_seq</li>
-                             <li>seq</li>
+                          
                             <li>상영지점</li>
                          
                             
@@ -263,8 +262,8 @@
                         
                         <c:forEach items="${list2}"  var="list2"  varStatus="status">
                          <ul class="cinema_name_alter_list">
-                		  <li><input type="text" class="form-control" id="cinema_seq" name="cinema_seq" placeholder="cinema_seq" required readonly value="<c:out value="${list2.cinema_seq}"/>"></li>
-                		   <li><input type="text" class="form-control" id="seq" name="seq" placeholder="seq" required readonly value="<c:out value="${list2.seq}"/>"></li>
+                		  <li><input type="hidden" class="form-control" id="cinema_seq" name="cinema_seq" placeholder="cinema_seq" required readonly value="<c:out value="${list2.cinema_seq}"/>"></li>
+                		   <li><input type="hidden" class="form-control" id="seq" name="seq" placeholder="seq" required readonly value="<c:out value="${list2.seq}"/>"></li>
  						  <li><input type="text" class="form-control" id="location" name="location" placeholder="location" required readonly value="<c:out value="${list2.location_cinema_name}"/>"></li>
  						
  					 <button type="button" class="name_list_btn" id="list_save_btn2"><a href="admin_cinema_name_list_form?seq=<c:out value="${list2.seq}"/>">변경</a></button>
@@ -277,7 +276,7 @@
                         
 
                     </div>
- 					<button type="button" id="go_insert"><a href="admin_cinema_name_list_form">지점 추가</a></button>
+ 					<button type="button" id="go_insert"> <a href="admin_cinema_name_list_form?cinema_seq=<c:out value="${seq2}"/>">지점 추가</a></button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_cinema">메인으로</a></button>
                 </form>
             </div>

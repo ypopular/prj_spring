@@ -153,8 +153,7 @@
         UPDATE     cinema_theater
         SET     theater_number = #{theater_number},
         		cinema_type = #{cinema_type},
-        		seat_count = #{seat_count},
-        		cinema_name_seq = #{cinema_name_seq}
+        		seat_count = #{seat_count}
         WHERE  1=1
         AND
            seq = #{seq}  

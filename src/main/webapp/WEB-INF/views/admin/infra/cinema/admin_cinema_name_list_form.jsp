@@ -253,8 +253,7 @@
                 
                     <div id="theater_alter_small_wrap">
                         <ul class="cinema_name_title_alter_list">
-                        <li>seq</li>
-                          <li>cinema_seq</li>
+                       
                             <li>상영지점</li>
                             
                         </ul>
@@ -262,10 +261,10 @@
                         
                         
                          <ul class="cinema_name_alter_list">
-                             <li><input type="text" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
-                		       <li><input type="text" class="form-control" id="cinema_seq" name="cinema_seq" required value="<c:out value="${item.cinema_seq}"/>"></li>
+                             <li><input type="hidden" class="form-control" id="seq" name="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
+                		       <li><input type="hidden" class="form-control" id="cinema_seq" name="cinema_seq" required value="<c:out value="${param.cinema_seq}"/>"></li>
  <li><input type="text" class="form-control" id="location_cinema_name" name="location_cinema_name" required value="<c:out value="${item.location_cinema_name}"/>"></li>
-    					<button type="button" id="list_insert_btn">추가 저장</button>
+    					<button type="button" id="list_insert_btn">(추가)저장</button>
  					 <button type="button" id="list_del_check_btn">삭제</button>
  					 <button type="button" id="list_save_btn2">변경</button>
  			      

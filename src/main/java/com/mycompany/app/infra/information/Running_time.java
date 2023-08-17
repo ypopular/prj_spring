@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Running_time {
 	public String seq;
 	public String start_time;
+	public String end_time;
 	public String date;
 	public Integer delYN;
 	public String movie_seq;
@@ -18,6 +19,12 @@ public class Running_time {
 	
 	
 	
+	public String getEnd_time() {
+		return end_time;
+	}
+	public void setEnd_time(String end_time) {
+		this.end_time = end_time;
+	}
 	public Integer getTheater_number() {
 		return theater_number;
 	}

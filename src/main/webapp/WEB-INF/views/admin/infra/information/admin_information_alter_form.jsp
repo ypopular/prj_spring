@@ -319,8 +319,15 @@
                             required value="<c:out value="${item2.movie_name}"/>"> </li>
                              <li><input type="text" class="form-control" id="theater_number" name="theater_number"
                             required value="<c:out value="${item2.theater_number}"/>"> </li>
-                             <li><input type="text" class="form-control" id="cinema_type" name="cinema_type"
-                            required value="<c:out value="${item2.cinema_type}"/>"> </li>
+                            <li class="form-control in_select">
+                           <select  id="cinema_type" name="cinema_type" required>
+     <option value="">상영타입</option>
+    <option value="1" <c:if test="${item2.cinema_type == '1'}">selected</c:if>>2D</option>
+    <option value="2" <c:if test="${item2.cinema_type == '2'}">selected</c:if>>4DX</option>
+    <option value="3" <c:if test="${item2.cinema_type == '3'}">selected</c:if>>IMAX</option>
+    <option value="4" <c:if test="${item2.cinema_type == '4'}">selected</c:if>>PRIVATE BOX</option>
+</select>
+                            </li>
                              <li><input type="text" class="form-control dateSelector form_date" id="date" name="date"
                             required value="<c:out value="${item2.date}"/>"> </li>
                              <li><input type="text" class="form-control" id="start_time" name="start_time"

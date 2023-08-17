@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Running_timeVo {
 	public String seq;
 	public String start_time;
+	public String date_time;
 	public String date;
 	public Integer delYN;
 	public String movie_seq;
@@ -15,6 +16,12 @@ public class Running_timeVo {
 	
 	
 	
+	public String getDate_time() {
+		return date_time;
+	}
+	public void setDate_time(String date_time) {
+		this.date_time = date_time;
+	}
 	public String getShKeyword2() {
 		return shKeyword2;
 	}

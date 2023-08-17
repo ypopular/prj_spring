@@ -268,7 +268,25 @@
     <ul class="cinema_name_alter_list">
  
         <li><input type="text" class="form-control" id="theater_number" name="theater_number" placeholder="theater_number" required readonly value="<c:out value="${list.theater_number}"/>"></li>
-        <li><input type="text" class="form-control" id="cinema_type" name="cinema_type" placeholder="cinema_type" required readonly value="<c:out value="${list.cinema_type}"/>"></li>
+        <li class="form-control" id="cinema_type" name="cinema_type" placeholder="cinema_type" required readonly>
+ 						<c:choose>
+            <c:when test="${list.cinema_type == 1}">
+                2D
+            </c:when>
+             <c:when test="${list.cinema_type == 2}">
+                4DX
+            </c:when>
+             <c:when test="${list.cinema_type == 3}">
+                IMAX
+            </c:when>
+             <c:when test="${list.cinema_type == 4}">
+                PRIVATE BOX
+            </c:when>
+            <c:otherwise>
+                <c:out value="${list.cinema_type}"/>
+            </c:otherwise>
+        </c:choose>
+ 						 </li>
         <li><input type="text" class="form-control" id="seat_count" name="seat_count" placeholder="seat_count" required readonly value="<c:out value="${list.seat_count}"/>"></li>
         <button type="button" id="list_save_btn2"><a href="admin_theater_list_form?seq=<c:out value="${list.seq}"/>">변경</a></button>
        

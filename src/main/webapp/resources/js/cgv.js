@@ -674,3 +674,16 @@ function drawChart()
     'monthSelectorType': 'static',
     'locale': 'ko',
   });
+  
+  var fp3 = flatpickr(document.getElementById("start_time"), {
+    enableTime: true,  // 시간 선택 활성화
+    noCalendar: true,   // 달력 표시하지 않음
+    time_24hr: true,   // 24시간 표시 형식 사용
+    'locale': 'ko',
+});
+ var fp4 = flatpickr(document.getElementById("end_time"), {
+    enableTime: true,  // 시간 선택 활성화
+    noCalendar: true,   // 달력 표시하지 않음
+    time_24hr: true,   // 24시간 표시 형식 사용
+    'locale': 'ko',
+});
