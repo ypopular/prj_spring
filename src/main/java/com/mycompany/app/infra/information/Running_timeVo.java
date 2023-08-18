@@ -10,12 +10,35 @@ public class Running_timeVo {
 	public Integer delYN;
 	public String movie_seq;
 	public String cinema_theater_seq;
-	private Integer shOption;
+	
 	private String shKeyword;
 	private String shKeyword2;
+	private String shKeyword3;
+	
+	private Integer shOption;
+	private Integer shOption2;
+	private String shOption3;
 	
 	
 	
+	public String getShOption3() {
+		return shOption3;
+	}
+	public void setShOption3(String shOption3) {
+		this.shOption3 = shOption3;
+	}
+	public Integer getShOption2() {
+		return shOption2;
+	}
+	public void setShOption2(Integer shOption2) {
+		this.shOption2 = shOption2;
+	}
+	public String getShKeyword3() {
+		return shKeyword3;
+	}
+	public void setShKeyword3(String shKeyword3) {
+		this.shKeyword3 = shKeyword3;
+	}
 	public String getDate_time() {
 		return date_time;
 	}

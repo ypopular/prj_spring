@@ -681,3 +681,6 @@ function drawChart()
     time_24hr: true,   // 24시간 표시 형식 사용
     'locale': 'ko',
 });
+
+
+

@@ -22,9 +22,14 @@
 
         <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
         <script src="resources/js/jquery-3.6.4.min.js"></script>
-        <script src="resources/js/cgv.js"></script>
+       
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_black.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
         
         
     </head>
@@ -259,29 +264,42 @@
                   <div id="detail_search">
                     <input name="shKeyword2"  value="<c:out value="${vo.shKeyword2 }"/>" type="text" placeholder="상영지점"> 
                    <input name="shKeyword"  value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
-                    <input  id="datepicker"  value="<c:out value="${vo.shKeyword3}"/>" type="text" placeholder="상영일">
-                   <select name="shOption">
-                    <option selected disabled value="0">상영관</option>
-                    <option value="1">1관</option>
-                    <option value="2">2관</option>
-                    <option value="3">3관</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영종류</option>
-                    <option value="2D">2D</option>
-                    <option value="4DX">4DX</option>
-                    <option value="IMAX">IMAX</option>
-                    <option value="PRIVATE BOX">PRIVATE BOX</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영시작시간</option>
-                    <option value="9:00">9:00~</option>
-                    <option value="12:00">12:00~</option>
-                    <option value="18:00">18:00~</option>
-                   </select>
+                    <input  id="search_date"  class="dateSelector" name="shKeyword3"  value="<c:out value="${vo.shKeyword3 }"/>" type="text" placeholder="상영일">
+                   
+               <select name="shOption">
+    <c:set var="selectedValue" value="${vo.shOption}" />
+    <option value="" >상영관</option>
+    <option value="1" ${selectedValue == '1' ? 'selected' : null}>1관</option>
+    <option value="2" ${selectedValue == '2' ? 'selected' : null}>2관</option>
+    <option value="3" ${selectedValue == '3' ? 'selected' : null}>3관</option>
+    <option value="4" ${selectedValue == '4' ? 'selected' : null}>4관</option>
+    <option value="5" ${selectedValue == '5' ? 'selected' : null}>5관</option>
+    <option value="6" ${selectedValue == '6' ? 'selected' : null}>6관</option>
+    <option value="7" ${selectedValue == '7' ? 'selected' : null}>7관</option>
+    <option value="8" ${selectedValue == '8' ? 'selected' : null}>8관</option>
+     <option value="9" ${selectedValue == '9' ? 'selected' : null}>9관</option>
+</select>
+                   
+                   <select name="shOption2">
+                    <c:set var="selectedValue2" value="${vo.shOption2}" />
+                    <option value="">상영종류</option>
+                     <option value="1" ${selectedValue2 == '1' ? 'selected' : null}>2D</option>
+   					 <option value="2" ${selectedValue2 == '2' ? 'selected' : null}>4DX</option>
+   					 <option value="3" ${selectedValue2 == '3' ? 'selected' : null}>IMAX</option>
+   					 <option value="4" ${selectedValue2 == '4' ? 'selected' : null}>PRIVATE BOX</option>
+                   </select>  
+                   
+                   
+                   <select name="shOption3">
+    <c:set var="selectedValue3" value="${vo.shOption3}" />
+    <option value="00:00" ${selectedValue3 == '00:00' ? 'selected' : null}>상영시작시간</option>
+    <option value="09:00" ${selectedValue3 == '09:00' ? 'selected' : null}>09:00 ~</option>
+    <option value="12:00" ${selectedValue3 == '12:00' ? 'selected' : null}>12:00 ~</option>
+    <option value="18:00" ${selectedValue3 == '18:00' ? 'selected' : null}>18:00 ~</option>
+</select>
                  
                     <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
+                    <button type="button" id="search_reset" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
                     </div> 
                  
                 
@@ -369,7 +387,16 @@
             </div>
         </div>
     </div>
+    
+    
+     <script src="resources/js/cgv.js"></script>
 <script>
+var fp = flatpickr(document.getElementById("search_date"), {
+    'monthSelectorType': 'static',
+    'locale': 'ko',
+  });
+
+
 $("#master_search_btn").on("click",function(){
 	//자기 자신을 호출한다
 	$("form[name=form_list]").attr("action","/admin_information").submit();
@@ -391,7 +418,18 @@ $("#list_del_check_btn").on("click",function(){
 });
 
 
+document.getElementById('search_reset').addEventListener('click', function() {
+    // 각 검색 조건 필드의 값을 초기화
+    document.getElementsByName('shKeyword2')[0].value = '';
+    document.getElementsByName('shKeyword')[0].value = '';
+    document.getElementsByName('shKeyword3')[0].value = '';
+    document.getElementsByName('shOption')[0].value = '';
+    document.getElementsByName('shOption2')[0].value = '';
+    document.getElementsByName('shOption3')[0].value = '00:00'; // 상영시작시간 초기화
+});
+
 </script>
+
 </body>
 
 </html>

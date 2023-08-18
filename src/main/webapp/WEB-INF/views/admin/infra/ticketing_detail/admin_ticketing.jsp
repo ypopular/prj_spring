@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            <div id="master_wrap">
+            <div id="master_wrap" class="information_page">
                 
                 <div id="master_title">
                     <span>관리자</span>
@@ -251,11 +251,17 @@
                
                 <form name="form_list" method="post">
                 
-                    <div id="theater_alter_small_wrap">
-                        <ul class="cinema_name_title_alter_list">
+                    <div id="theater_alter_small_wrap" class="information_wrap">
+                        <ul class="cinema_name_title_alter_list information_wrap">
                          
-                            <li>상영지점</li>
-                         
+                            <li>예매자</li>
+                            <li>예매지점</li>
+                            <li>예매영화</li>
+                            <li>상영시간</li>
+                            <li>예매인원</li>
+                            <li>예매좌석</li>
+                            <li>가격</li>
+	                         
                             
                         </ul>
                         <div id="theater_alter_list_wrap">

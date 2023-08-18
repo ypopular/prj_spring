@@ -110,7 +110,25 @@ WHERE
  				 WHERE 
  				  b.movie_name LIKE CONCAT('%',#{shKeyword},'%')
  				AND d.location_cinema_name LIKE CONCAT('%',#{shKeyword2},'%')
-   				AND	 a.delYN = 0;
+ 				AND a.date LIKE CONCAT('%',#{shKeyword3},'%') 		
+   			   <if test="shOption != null">
+   			    AND c.theater_number = #{shOption}
+   			    </if>
+   			     <if test="shOption2 != null">
+   			    AND c.cinema_type = #{shOption2}
+   			    </if>
+   			     <if test="shOption3 != null">
+   			AND (
+   			 (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('00:00', '%H:%i') AND #{shOption3} = '00:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('09:00', '%H:%i') AND #{shOption3} = '09:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('12:00', '%H:%i') AND #{shOption3} = '12:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('18:00', '%H:%i') AND #{shOption3} = '18:00')
+)
+   			    </if>
+				AND	 a.delYN = 0;
+   
+
+   				
     	   
     </select>
     

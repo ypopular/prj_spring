@@ -27,16 +27,23 @@ public class InformationController {
 	
 	
 	@RequestMapping("/admin_information")
-	public String admin_information(@ModelAttribute("vo")Running_timeVo vo,Model model) {
-		
-		vo.setShKeyword(vo.getShKeyword() == null?"":vo.getShKeyword());
-		 vo.setShKeyword2(vo.getShKeyword2() == null ? "" : vo.getShKeyword2()); // 새로 추가한 코드
-		
-		List<Running_time> list = service.selectList(vo);
-		System.out.println(list);
-		model.addAttribute("list",list);
-		return "admin/infra/information/admin_information";
-	}
+    public String admin_information(@ModelAttribute("vo") Running_timeVo vo, Model model) {
+
+        vo.setShKeyword(vo.getShKeyword() == null ? "" : vo.getShKeyword());
+        vo.setShKeyword2(vo.getShKeyword2() == null ? "" : vo.getShKeyword2());
+        vo.setShKeyword3(vo.getShKeyword3() == null ? "" : vo.getShKeyword3());
+        vo.setShOption(vo.getShOption() == null ? null : vo.getShOption());
+        vo.setShOption2(vo.getShOption2() == null ? null : vo.getShOption2());
+        vo.setShOption3(vo.getShOption3() == null ? null : vo.getShOption3());
+       
+        List<Running_time> list = service.selectList(vo);
+
+        model.addAttribute("list", list); // 수정된 부분
+        model.addAttribute("selectedShOption", vo.getShOption());
+        model.addAttribute("selectedShOption2", vo.getShOption2());
+        model.addAttribute("selectedShOption3", vo.getShOption3());
+        return "admin/infra/information/admin_information";
+    }
 	
 	
 	@RequestMapping("/admin_information_add_form")
