@@ -14,6 +14,7 @@ public interface Ticketing_detailService {
 	public List<Running_time2> selectList4(Running_time2Vo vo4);
 	public List<Running_time2> selectList5(Running_time2Vo vo5);
 	public List<Running_time2> selectList6(Running_time2Vo vo6);
+	public List<Running_time2> selectList7(Running_time2Vo vo7);
 	public Ticketing_detail selectOne(Ticketing_detailVo vo);
 	
 }

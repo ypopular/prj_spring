@@ -52,4 +52,10 @@ public class Ticketing_detailServiceImpl implements Ticketing_detailService {
 		// TODO Auto-generated method stub
 		return dao.selectList6(vo6);
 	}
+
+	@Override
+	public List<Running_time2> selectList7(Running_time2Vo vo7) {
+		// TODO Auto-generated method stub
+		return dao.selectList7(vo7);
+	}
 }

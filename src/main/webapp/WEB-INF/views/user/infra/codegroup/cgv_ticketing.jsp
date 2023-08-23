@@ -451,11 +451,14 @@
                         </div>
                     </div>
                     <div id="time_select">
+                    
                         <div class="ticketing_select_title">시간</div>
                         <div id="day_night">
                             <span>모닝</span>
                             <span>심야</span>
                         </div>
+                        
+                        <div id=time_select_wrap>
                         <div id="time_theater">
                             <span class="time_title">
                                 <span class="time_name">2D</span>
@@ -483,6 +486,9 @@
                                 </ul>
                             </div>
                         </div>
+						</div>
+
+
 
                     </div>
                 </div>
@@ -1015,6 +1021,10 @@
        $("#pick_movie").append(pTag2);
        $("#pick_movie").css("background","none");
    
+       $("#pick_theater").empty();
+       $("#time_select_wrap").hide();
+       $("#date1 a").removeClass("date_have");
+       $("#date1 a").removeClass("date_active");
  
        var selectedMoviename = $("#pick_movie p").text();
        var selectedMovietype = $("#pick_movie span").text();
@@ -1085,7 +1095,12 @@
    
    $(document).on("click", ".region span", function() {
 	  
-	   
+	   $("#time_select_wrap").hide();
+       $("#date1 a").removeClass("date_have");
+       $("#date1 a").removeClass("date_active");
+       $("#pick_theater").find("p").remove();
+       $("#pick_theater").find("span").remove();
+       $("#pick_theater").find("h4").remove();
 	   
 	   var selectedMoviename = $("#pick_movie p").text();
        var selectedMovietype = $("#pick_movie span").text();
@@ -1164,77 +1179,179 @@
 	    });
    });
    /* ----------------------------------------- */
-   /* 
+   
    $(document).on("click", ".region_detail a", function() {
-	   var selectedMoviename = $("#pick_movie p").text();
-       var selectedMovietype = $("#pick_movie span").text();
-       var selectedMoviecinema =$("#pick_theater p").text();
+        var selectedMoviename = $("#pick_movie p").text();
+        var selectedMovietype = $("#pick_movie span").text();
+        var selectedMoviecinema =$(this).text();
+       
+        $("#time_select_wrap").hide();
+        $("#date1 a").removeClass("date_have");
+        $("#date1 a").removeClass("date_active");
+        
+        $("#pick_theater").find("span").remove();
+        $("#pick_theater").find("h4").remove();
+        
+        
+        var movieType = selectedMovietype.trim();
+ 
+        var movieTypeValue;
+        switch (movieType) {
+            case "2D":
+                movieTypeValue = 1;
+                break;
+            case "4DX":
+                movieTypeValue = 2;
+                break;
+            case "IMAX":
+                movieTypeValue = 3;
+                break;
+            case "PRIVATE BOX":
+                movieTypeValue = 4;
+                break;
+            default:
+                movieTypeValue = 0; // 기본 값 또는 오류 처리
+                break;
+        }
+ 
       
+        
+ 
+         /* alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
+        alert(selectedMoviename);
+        alert(selectedMoviecinema);  */
+        $.ajax({
+             async: true,
+             cache: false,
+             type: "post",
+             url: "/ticketingProc3",
+             data: {
+                 "movie_name": selectedMoviename,
+                 "cinema_type":movieTypeValue,
+                 "location_cinema_name":selectedMoviecinema
+             },
+             success: function(response) {
+                 
+                 
+                 if (response.rt === "success") {
+                	 var matchingDates = response.rtTypes.map(function(item) {
+                         return item.date;
+                     });
 
-       var movieType = selectedMovietype.trim();
+                     $("#date1 a").removeClass("date_have"); // #date1 안에 있는 모든 a 태그에 클래스 초기화
+                     $("#date1 a").filter(function() {
+                         return matchingDates.includes($(this).attr("title"));
+                     }).addClass("date_have"); // 일치하는 a 태그에 클래스 추가
+                 }else {
+                     alert("상영타입 정보를 가져오는 데 실패했습니다.");
+                    
+                     
+                 }
+             },
+             error: function(jqXHR, textStatus, errorThrown) {
+                 alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+             }
+            });
+         });
+   		/* -------------------------------------- */
+   		 $(document).on("click", "#date1 a", function() {
+        var selectedMoviename = $("#pick_movie p").text();
+        var selectedMovietype = $("#pick_movie span").text();
+        var selectedMoviecinema = $("#pick_theater p").text();
+        var selectedMoviedate =$(this).attr("title");
+        $("#pick_theater").find("h4").remove();
+ 
+        var movieType = selectedMovietype.trim();
+ 
+        var movieTypeValue;
+        switch (movieType) {
+            case "2D":
+                movieTypeValue = 1;
+                break;
+            case "4DX":
+                movieTypeValue = 2;
+                break;
+            case "IMAX":
+                movieTypeValue = 3;
+                break;
+            case "PRIVATE BOX":
+                movieTypeValue = 4;
+                break;
+            default:
+                movieTypeValue = 0; // 기본 값 또는 오류 처리
+                break;
+        }
+ 
+      
+        
+ 
+         /*  alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
+        alert(selectedMoviename);
+        alert(selectedMoviecinema); 
+        alert(selectedMoviedate);   */
+        $.ajax({
+             async: true,
+             cache: false,
+             type: "post",
+             url: "/ticketingProc4",
+             data: {
+                 "movie_name": selectedMoviename,
+                 "cinema_type":movieTypeValue,
+                 "location_cinema_name":selectedMoviecinema,
+                 "date":selectedMoviedate
+             },
+             success: function(response) {
+                 
+                 
+                 if (response.rt === "success") {
+                	 var timeList = response.rtTypes;
+                     var $choiceTimeList = $("#choice_time ul").empty();
+                     
+                     for (var i = 0; i < timeList.length; i++) {
+                         var timeInfo = timeList[i];
+                         var cinemaType = getCinemaTypeString(timeInfo.cinema_type);
+                         var theaterNumber = timeInfo.theater_number + "관"; // theater_number 변경
+                         var seatCount = "(총" + timeInfo.seat_count + "석)"; // seat_count 변경
+                         var timeTitle = cinemaType + " " + theaterNumber + " " + seatCount;
+                         var seatRemain = timeInfo.seat_remain;
 
-       var movieTypeValue;
-       switch (movieType) {
-           case "2D":
-               movieTypeValue = 1;
-               break;
-           case "4DX":
-               movieTypeValue = 2;
-               break;
-           case "IMAX":
-               movieTypeValue = 3;
-               break;
-           case "PRIVATE BOX":
-               movieTypeValue = 4;
-               break;
-           default:
-               movieTypeValue = 0; // 기본 값 또는 오류 처리
-               break;
-       }
+                         var liHtml = '<li><a href="#" onclick="return false" title="' + theaterNumber +" "+ timeInfo.start_time+'"><div class="time_box">' + timeInfo.start_time + '</div><span>' + seatRemain + '석</span></a></li>';
+                         $choiceTimeList.append(liHtml);
+                     }
 
-     
-       
-
-        alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
-       alert(selectedMoviename);
-       alert(selectedMoviecinema); 
-       $.ajax({
-	        async: true,
-	        cache: false,
-	        type: "post",
-	        url: "/ticketingProc3",
-	        data: {
-	            "movie_name": selectedMoviename,
-	            "cinema_type":movieTypeValue,
-	            "location_cinema_name":selectedMoviecinema
-	        },
-	        success: function(response) {
-	        	
-	        	
-	            if (response.rt === "success") {
-	            	var types = response.rtTypes;
-	                
-	            	
-	                 }
-	              
-	               
-	            )} else {
-	                alert("상영타입 정보를 가져오는 데 실패했습니다.");
-	               
-	                
-	            }
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) {
-	            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
-	        }
-	    });
-       
-       
-     
-	    });
-    */
-   
-   
+                     // time_title 업데이트
+                     var $timeTitle = $(".time_title");
+                     $timeTitle.find(".time_name").text(cinemaType); // time_name에 cinema_type 값 설정
+                     $timeTitle.find(".time_floor").text(theaterNumber); // time_floor에 theater_number 값 설정
+                     $timeTitle.find(".time_seat").text(seatCount); // seat_count 값 설정
+                     $("#time_select_wrap").show();
+                 }else {
+                     alert("상영타입 정보를 가져오는 데 실패했습니다.");
+                    
+                     
+                 }
+             },
+             error: function(jqXHR, textStatus, errorThrown) {
+                 alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+             }
+            });
+         });
+   		
+   		
+   		function getCinemaTypeString(cinemaType) {
+   		    switch (cinemaType) {
+   		        case 1:
+   		            return "2D";
+   		        case 2:
+   		            return "4DX";
+   		        case 3:
+   		            return "IMAX";
+   		        case 4:
+   		            return "PRIVATE BOX";
+   		        default:
+   		            return "";
+   		    }
+   		}
   
   
   

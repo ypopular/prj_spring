@@ -349,22 +349,27 @@ $(".sp_hover").mouseover(function(){
        
 
         $("#date1 a").on("click",function(){
+			
+			 if (!$(this).hasClass("date_have")) {
+        alert("해당 날짜에 상영 일정이 없습니다.");
+        return;
+    }
+			
             var dateTitle = $(this).attr("title");
             var pTag4 =$("<span>").text(dateTitle);
             $("#pick_theater,#choice_detail").find("span:eq(0)").remove();
             $("#pick_theater,#choice_detail").append(pTag4);
             $("#pick_theater").css("background","none");
+              $(this).addClass("date_active");
+            $(this).parents().siblings().find("a").removeClass("date_active");
+            
+           
             dateTrue=true;
         });
         var dateTrue = false;
-        $("#date1 li").on("click",function(){
-            $(this).addClass("date_active");
-            $(this).siblings().removeClass("date_active");
-            $(this).find("a").addClass("date_a_active");
-            $(this).siblings().find("a").removeClass("date_a_active");
-        });
-
-        $("#choice_time a").on("click",function(){
+       
+ 		$(document).on("click", "#choice_time a", function() {
+        
             var timeTitle = $(this).attr("title");
             var pTag5 =$("<h4>").text(timeTitle);
             $("#pick_theater, #choice_detail").find("h4:eq(0)").remove();
@@ -373,7 +378,8 @@ $(".sp_hover").mouseover(function(){
             timeTrue=true;
         });
         var timeTrue =false;
-        $("#choice_time li").on("click",function(){
+        $(document).on("click", "#choice_time li", function() {
+      
             $(this).addClass("choice_active");
             $(this).siblings().removeClass("choice_active");
             $(this).find("span").addClass("choice_span_active");

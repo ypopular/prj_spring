@@ -1769,13 +1769,14 @@ video{
     padding-right: 15px;
     border: 1px solid #ccc;
    position: relative;
-    cursor: pointer;
+   
 }
 .region span{
 	 width: 120px;
     height: 30px;
 	text-align: end;
 	display:block;
+	 cursor: pointer;
 }
 .region_detail{
     width: 130px;
@@ -1866,18 +1867,22 @@ video{
     bottom: 4px;
 }
 .date_active{
-    background-color: #ccc;
+    background-color: #ccc !important;
     border-radius: 5px;
+     color: #fff !important;
 }
 .date_have{
 	 background-color: rgba(0, 240, 0, 0.18);
     border-radius: 5px;
 }
 .date_a_active{
-    color: #fff !important;
+   
 }
 #date1 .red_day{
     color: #ad2727 ;
+}
+#time_select_wrap{
+	display:none;
 }
 #time_select{
     width: 290px;
@@ -1885,6 +1890,7 @@ video{
     float: left;
     border-left: 2px solid #ccc;
     border-right: 2px solid #ccc;
+    
 }
 #day_night{
     width: 260px;

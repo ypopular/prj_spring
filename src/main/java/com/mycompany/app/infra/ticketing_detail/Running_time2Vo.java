@@ -7,9 +7,10 @@ public class Running_time2Vo {
 	public String start_time;
 	public String end_time;
 	public String date;
+	public Integer seat_remain;
 	public Integer delYN;
 	
-	
+	public Integer seat_count;
 	public String movie_seq;
 	public String cinema_theater_seq;
 	public String movie_name;
@@ -22,6 +23,18 @@ public class Running_time2Vo {
 	
 	
 	
+	public Integer getSeat_count() {
+		return seat_count;
+	}
+	public void setSeat_count(Integer seat_count) {
+		this.seat_count = seat_count;
+	}
+	public Integer getSeat_remain() {
+		return seat_remain;
+	}
+	public void setSeat_remain(Integer seat_remain) {
+		this.seat_remain = seat_remain;
+	}
 	public String getLocation() {
 		return location;
 	}

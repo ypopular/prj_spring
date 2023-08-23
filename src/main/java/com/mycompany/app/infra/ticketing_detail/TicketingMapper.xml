@@ -9,11 +9,33 @@
     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.ticketing_detail.Running_time2"></resultMap>
        
        
+        <select id="selectList7" resultMap="resultMapObj2">
+    
+    	      	select
+    	      		 a.seat_remain, 
+    	      		 a.start_time,
+					 c.theater_number,
+					 c.cinema_type,
+					 c.seat_count
+				from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+  				 join cinema e on e.seq = d.cinema_seq
+ 				 WHERE 1=1
+ 				 and 	movie_name = #{movie_name}
+ 				 and    cinema_type = #{cinema_type}
+ 				 and 	location_cinema_name = #{location_cinema_name}
+ 				 and 	date = #{date}
+ 				 and	a.delYN =0;
+				
+    </select> 
        
         <select id="selectList6" resultMap="resultMapObj2">
     
     	      	select 
-					 b.date
+					 a.date
 					
 				from
  					  running_time a
@@ -25,6 +47,7 @@
  				 and 	movie_name = #{movie_name}
  				 and    cinema_type = #{cinema_type}
  				 and 	location_cinema_name = #{location_cinema_name}
+ 				 and	a.delYN =0;
 				
     </select> 
        
@@ -43,6 +66,7 @@
  				 and 	movie_name = #{movie_name}
  				 and    cinema_type = #{cinema_type}
  				 and 	location = #{location}
+ 				 and	a.delYN =0;
 				
     </select> 
        
