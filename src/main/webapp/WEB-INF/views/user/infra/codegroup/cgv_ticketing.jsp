@@ -388,7 +388,7 @@
                                 <div id="select_special_theater_menu">
                                     <ul>
                                         <li>
-                                            <a href="#" onclick="return false" title="2DX">2DX</a>
+                                            <a href="#" onclick="return false" title="2D">2D</a>
                                         </li>
                                         <li>
                                             <a href="#" onclick="return false" title="4DX">4DX</a>
@@ -429,19 +429,9 @@
                          
                          
  <div id="region_left_wrap">
-					<c:forEach items="${list3}" var="list3" varStatus="status">
-                        <div class="region">
-                            <span><c:out value="${list3.location}"></c:out></span>
-                            <div class="region_detail">
-                                <ul>
-                                    <li>
-                                        <a href="#" onclick="return false" title=""></a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                       </c:forEach>
+					
+                        
+                      
 
 
 
@@ -990,7 +980,13 @@
     <div id="top_btn">
         <i class="fa-solid fa-arrow-up"></i>
     </div>
+    
+    
    <script>
+   
+   
+   
+   
    $("#btn_logout").on("click", function(){
 		$.ajax({
 			async: true 
@@ -1028,7 +1024,7 @@
 
        var movieTypeValue;
        switch (movieType) {
-           case "2DX":
+           case "2D":
                movieTypeValue = 1;
                break;
            case "4DX":
@@ -1048,8 +1044,7 @@
      
        
 
-       alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
-       alert(selectedMoviename);
+       
 	  
 	    $.ajax({
 	        async: true,
@@ -1062,24 +1057,24 @@
 	        },
 	        success: function(response) {
 	            if (response.rt === "success") {
-	            	 // "list3" 배열을 순회하며 HTML을 생성하는 부분
-	                var regionContainer = $("#regionContainer"); // HTML 컨테이너 요소 선택 (필요한 부분에 맞게 수정)
-	                for (var i = 0; i < types.length; i++) {
-	                    var regionDiv = $("<div>").addClass("region");
-	                    var span = $("<span>").text(types[i].location);
-	                    var regionDetailDiv = $("<div>").addClass("region_detail");
-	                    var ul = $("<ul>");
-	                    var li = $("<li>");
-	                    var anchor = $("<a>").attr("href", "#").attr("onclick", "return false").attr("title", "");
+	            	 var types = response.rtTypes;
+
+	                 var regionContainer = $("#region_left_wrap"); // HTML 컨테이너 요소 선택 (필요한 부분에 맞게 수정)
+	                 regionContainer.empty(); // 기존 내용 삭제
+
+	                 $.each(types, function(index, type) {
+	                     var regionDiv = $("<div>").addClass("region");
+	                     var span = $("<span>").text(type.location);
+	                     var regionDetailDiv = $("<div>").addClass("region_detail");
 	                    
-	                    li.append(anchor);
-	                    ul.append(li);
-	                    regionDetailDiv.append(ul);
-	                    regionDiv.append(span).append(regionDetailDiv);
-	                    regionContainer.append(regionDiv);
+	                     regionDiv.append(span).append(regionDetailDiv);
+	                     regionContainer.append(regionDiv);
+	                 }
 	               
-	            } else {
+	            )} else {
 	                alert("상영타입 정보를 가져오는 데 실패했습니다.");
+	                var regionContainer = $("#region_left_wrap");
+	                regionContainer.empty()
 	            }
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) {
@@ -1088,8 +1083,156 @@
 	    });
 	});
    
-   
-   
+   $(document).on("click", ".region span", function() {
+	  
+	   
+	   
+	   var selectedMoviename = $("#pick_movie p").text();
+       var selectedMovietype = $("#pick_movie span").text();
+       var selectedMovielocation =$(this).text();
+
+       // 선택된 span 요소의 텍스트 가져오기
+       var movieType = selectedMovietype.trim();
+
+       var movieTypeValue;
+       switch (movieType) {
+           case "2D":
+               movieTypeValue = 1;
+               break;
+           case "4DX":
+               movieTypeValue = 2;
+               break;
+           case "IMAX":
+               movieTypeValue = 3;
+               break;
+           case "PRIVATE BOX":
+               movieTypeValue = 4;
+               break;
+           default:
+               movieTypeValue = 0; // 기본 값 또는 오류 처리
+               break;
+       }
+
+     
+       
+
+      /*   alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
+       alert(selectedMoviename);
+       alert(selectedMovielocation);  */
+       $.ajax({
+	        async: true,
+	        cache: false,
+	        type: "post",
+	        url: "/ticketingProc2",
+	        data: {
+	            "movie_name": selectedMoviename,
+	            "cinema_type":movieTypeValue,
+	            "location":selectedMovielocation
+	        },
+	        success: function(response) {
+	        	
+	        	
+	            if (response.rt === "success") {
+	            	var types = response.rtTypes;
+	                
+	            	 $(".region_detail").empty();
+	                 $.each(types, function(index, type) {
+	                     
+	                	
+	                    
+	                     var ul = $("<ul>");
+	                     var li = $("<li>");
+	                     var anchor = $("<a>").attr("href", "#").attr("onclick", "return false").attr("title",type.location_cinema_name).text(type.location_cinema_name);
+
+	                     li.append(anchor);
+	                     ul.append(li);
+	                 
+	                     $(".region_detail").append(ul);
+	                     
+	                 }
+	              
+	               
+	            )} else {
+	                alert("상영타입 정보를 가져오는 데 실패했습니다.");
+	                $(".region_detail").empty();
+	                
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+	        }
+	    });
+   });
+   /* ----------------------------------------- */
+   /* 
+   $(document).on("click", ".region_detail a", function() {
+	   var selectedMoviename = $("#pick_movie p").text();
+       var selectedMovietype = $("#pick_movie span").text();
+       var selectedMoviecinema =$("#pick_theater p").text();
+      
+
+       var movieType = selectedMovietype.trim();
+
+       var movieTypeValue;
+       switch (movieType) {
+           case "2D":
+               movieTypeValue = 1;
+               break;
+           case "4DX":
+               movieTypeValue = 2;
+               break;
+           case "IMAX":
+               movieTypeValue = 3;
+               break;
+           case "PRIVATE BOX":
+               movieTypeValue = 4;
+               break;
+           default:
+               movieTypeValue = 0; // 기본 값 또는 오류 처리
+               break;
+       }
+
+     
+       
+
+        alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
+       alert(selectedMoviename);
+       alert(selectedMoviecinema); 
+       $.ajax({
+	        async: true,
+	        cache: false,
+	        type: "post",
+	        url: "/ticketingProc3",
+	        data: {
+	            "movie_name": selectedMoviename,
+	            "cinema_type":movieTypeValue,
+	            "location_cinema_name":selectedMoviecinema
+	        },
+	        success: function(response) {
+	        	
+	        	
+	            if (response.rt === "success") {
+	            	var types = response.rtTypes;
+	                
+	            	
+	                 }
+	              
+	               
+	            )} else {
+	                alert("상영타입 정보를 가져오는 데 실패했습니다.");
+	               
+	                
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+	        }
+	    });
+       
+       
+     
+	    });
+    */
    
    
   

@@ -10,10 +10,10 @@
        
        
        
-       <select id="selectList4" resultMap="resultMapObj2">
+        <select id="selectList6" resultMap="resultMapObj2">
     
-    	      	select DISTINCT
-					e.location
+    	      	select 
+					 b.date
 					
 				from
  					  running_time a
@@ -24,6 +24,44 @@
  				 WHERE 1=1
  				 and 	movie_name = #{movie_name}
  				 and    cinema_type = #{cinema_type}
+ 				 and 	location_cinema_name = #{location_cinema_name}
+				
+    </select> 
+       
+        <select id="selectList5" resultMap="resultMapObj2">
+    
+    	      	select DISTINCT
+					 d.location_cinema_name
+					
+				from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+  				 join cinema e on e.seq = d.cinema_seq
+ 				 WHERE 1=1
+ 				 and 	movie_name = #{movie_name}
+ 				 and    cinema_type = #{cinema_type}
+ 				 and 	location = #{location}
+				
+    </select> 
+       
+       <select id="selectList4" resultMap="resultMapObj2">
+    
+    	      	select DISTINCT
+					e.location
+					
+					
+				from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+  				 join cinema e on e.seq = d.cinema_seq
+ 				 WHERE 1=1
+ 				 and 	movie_name = #{movie_name}
+ 				 and    cinema_type = #{cinema_type}
+ 				 and	a.delYN=0;
 				
     </select>
        

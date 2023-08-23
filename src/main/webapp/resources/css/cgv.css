@@ -1765,11 +1765,17 @@ video{
     float: left;
     line-height: 30px;
     font-size: 14px;
-    text-align: end;
+    
     padding-right: 15px;
     border: 1px solid #ccc;
    position: relative;
     cursor: pointer;
+}
+.region span{
+	 width: 120px;
+    height: 30px;
+	text-align: end;
+	display:block;
 }
 .region_detail{
     width: 130px;
@@ -1861,6 +1867,10 @@ video{
 }
 .date_active{
     background-color: #ccc;
+    border-radius: 5px;
+}
+.date_have{
+	 background-color: rgba(0, 240, 0, 0.18);
     border-radius: 5px;
 }
 .date_a_active{

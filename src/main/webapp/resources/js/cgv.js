@@ -1,10 +1,16 @@
 $(function(){
-	 $(".region").on("click",function(){
+	
+	
+	
+	 $(document).on("click", ".region", function() {
         $(this).find(".region_detail").show();
         $(this).siblings().find(".region_detail").hide();
         $(this).addClass("region_active");
         $(this).siblings().removeClass("region_active");
       });
+      
+       
+
 	 
 	 
 	 
@@ -33,7 +39,7 @@ $(function(){
 
            for (let day = currentDay; day <= getDaysInMonth(currentYear, currentMonth); day++) {
                const dayOfWeek = (currentDayOfWeek + (day - currentDay)) % 7;
-               const title = `${currentYear}.${currentMonth.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} ${dayOfWeekNames[dayOfWeek]}`;
+               const title = `${currentYear}-${currentMonth.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
                const li = document.createElement('li');
                const a = document.createElement('a');
                const p = document.createElement('p');
@@ -75,7 +81,7 @@ $(function(){
 
            for (let day = 1; day <= daysInNextMonth; day++) {
                const dayOfWeek = (currentDayOfWeek + (day - 1) + getDaysInMonth(currentYear, currentMonth)) % 7;
-               const title = `${nextYear}.${nextMonth.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} ${dayOfWeekNames[dayOfWeek]}`;
+               const title = `${nextYear}-${nextMonth.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
                const li = document.createElement('li');
                const a = document.createElement('a');
                const p = document.createElement('p');
@@ -318,12 +324,9 @@ $(".sp_hover").mouseover(function(){
             $('#select_special_theater_menu').toggle();
         });
 
-        $("#select_special_theater_menu a").on("click",function(){
-           
-            specialTrue = true;
-        });
-        var specialTrue = false;
-        $(".region_detail a").on("click",function(){
+			var specialTrue = false;
+        $(document).on("click", ".region_detail a", function() {
+       
             var regionTitle = $(this).attr("title");
             var pTag3 =$("<p>").text(regionTitle);
             $("#pick_theater, #choice_detail").find("p:eq(0)").remove();
@@ -332,13 +335,18 @@ $(".sp_hover").mouseover(function(){
             regionTrue = true;
         });
         var regionTrue =false;
-        $(".region_detail li").on("click",function(){
-            $(this).addClass("region_active");
-            $(this).siblings().removeClass("region_active");
-            $(this).find("a").addClass("region_a_active");
-            $(this).siblings().find("a").removeClass("region_a_active");
+      $(document).on("click", ".region_detail li", function() {
+        $(this).addClass("region_active");
+        $(this).parent().siblings().find("li").removeClass("region_active");
+        $(this).find("a").addClass("region_a_active");
+        $(this).parent().siblings().find("a").removeClass("region_a_active");
+    });
+			
+        $("#select_special_theater_menu a").on("click",function(){
+           
+            specialTrue = true;
         });
-
+       
 
         $("#date1 a").on("click",function(){
             var dateTitle = $(this).attr("title");

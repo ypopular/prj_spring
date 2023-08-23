@@ -66,4 +66,53 @@ public class Ticketing_detailController {
 	    }
 	    return returnMap;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/ticketingProc2")
+	public Map<String, Object> cinemaProc2(@RequestParam("movie_name") String movie_name,
+	                                      @RequestParam("cinema_type") int cinema_type,
+	                                      @RequestParam("location") String location,
+	                                      Running_time2Vo vo5, HttpSession httpSession) {
+	    Map<String, Object> returnMap = new HashMap<>();
+
+	    Running_time2Vo vo = new Running_time2Vo();
+	    vo.setMovie_name(movie_name);
+	    vo.setCinema_type(cinema_type); // cinema_type 추가
+	    vo.setLocation(location);
+
+	    List<Running_time2> running_time2 = service.selectList5(vo);
+
+	    if (running_time2 != null && !running_time2.isEmpty()) {
+	        returnMap.put("rtTypes", running_time2);
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ticketingProc3")
+	public Map<String, Object> cinemaProc3(@RequestParam("movie_name") String movie_name,
+	                                      @RequestParam("cinema_type") int cinema_type,
+	                                      @RequestParam("location_cinema_name") String location_cinema_name,
+	                                      Running_time2Vo vo6, HttpSession httpSession) {
+	    Map<String, Object> returnMap = new HashMap<>();
+
+	    Running_time2Vo vo = new Running_time2Vo();
+	    vo.setMovie_name(movie_name);
+	    vo.setCinema_type(cinema_type); // cinema_type 추가
+	    vo.setLocation_cinema_name(location_cinema_name);
+
+	    List<Running_time2> running_time2 = service.selectList6(vo);
+
+	    if (running_time2 != null && !running_time2.isEmpty()) {
+	        returnMap.put("rtTypes", running_time2);
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
+	}
+	
 }
