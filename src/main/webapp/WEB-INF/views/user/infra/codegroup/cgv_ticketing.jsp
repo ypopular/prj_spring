@@ -21,6 +21,12 @@
         <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
         <script src="resources/js/jquery-3.6.4.min.js"></script>
         <script src="resources/js/cgv.js"></script>
+        
+        
+        
+       
+        
+        
     </head>
     <body>
         <header>
@@ -382,7 +388,7 @@
                                 <div id="select_special_theater_menu">
                                     <ul>
                                         <li>
-                                            <a href="#" onclick="return false" title="2D">2D</a>
+                                            <a href="#" onclick="return false" title="2DX">2DX</a>
                                         </li>
                                         <li>
                                             <a href="#" onclick="return false" title="4DX">4DX</a>
@@ -403,311 +409,54 @@
                         </div>
                         <div id="movie_list">
                             <ul>
+                             <c:forEach var="list2" items="${list2}">
                                 <li>
-                                    <a href="#" onclick="return false" title="범죄도시3">
+                                    <a href="#" onclick="return false" title="<c:out value="${list2.movie_name}"></c:out>">
                                         <i class="age_15">15</i>
-                                        <span>범죄도시3</span></a>
+                                        <span><c:out value="${list2.movie_name}"></c:out></span></a>
                                 </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="남은인생10년">
-                                        <i class="age_12">12</i>
-                                        <span>남은인생10년</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="SUGAAgustDTOURD-DAYinjapan">
-                                        <i class="age_12">12</i>
-                                        <span>SUGAAgustDTOURD-DAYinjapan</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="극장판 포켓몬스터DP 아르세우스">
-                                        <i class="age_all">all</i>
-                                        <span>극장판 포켓몬스터DP 아르세우스</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="가디언즈오브갤럭시-volume3">
-                                        <i class="age_12">12</i>
-                                        <span>가디언즈오브갤럭시-volume3</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="분노의 질주 라이드오어다이">
-                                        <i class="age_15">15</i>
-                                        <span>분노의 질주 라이드오어다이</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="라이드온">
-                                        <i class="age_12">12</i>
-                                        <span>라이드온</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="인어공주">
-                                        <i class="age_all">all</i>
-                                        <span>인어공주</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="스즈메의 문단속">
-                                        <i class="age_12">12</i>
-                                        <span>스즈메의 문단속</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="드림펠리스">
-                                        <i class="age_12">12</i>
-                                        <span>드림펠리스</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_15">15</i>
-                                        <span>메이플스토리 2023summer</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>탑건</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_all">all</i>
-                                        <span>말없는 소녀</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_all">all</i>
-                                        <span>엘리멘탈</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>메리마이데드바디</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_15">15</i>
-                                        <span>어퓨굿맨</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_all">all</i>
-                                        <span>아기공룡둘리-얼음별대모험리마스터</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>레인맨</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_15">15</i>
-                                        <span>슬픔의 삼각형</span></a>
-                                </li>
+                                
+                               </c:forEach>
                             </ul>
                         </div>
                         <div id="movie_list2">
-                            <ul>
-                                <li>
-                                    <a href="#" onclick="return false" title="가디언즈오브갤럭시-volume3">
-                                        <i class="age_12">12</i>
-                                        <span>가디언즈오브갤럭시-volume3</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="거신-바람의 아이">
-                                        <i class="age_all">all</i>
-                                        <span>거신-바람의 아이</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="그여름">
-                                        <i class="age_12">12</i>
-                                        <span>그여름</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="극장판 엄마까투리-도시로간까투리">
-                                        <i class="age_all">all</i>
-                                        <span>극장판 엄마까투리-도시로간까투리</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="극장판 짱구는 못말려-동물소환닌자">
-                                        <i class="age_all">all</i>
-                                        <span>극장판 짱구는 못말려-동물소환닌자</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="극장판포켓몬스터DP 아르세우스">
-                                        <i class="age_all">all</i>
-                                        <span>극장판포켓몬스터DP 아르세우스</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>남은인생10년</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>너의 이름은</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>스즈메의 문단속</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>더퍼스트슬램덩크</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>드림</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>드림팰리스</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>라이드온</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>레인맨</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>롱디</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_15">15</i>
-                                        <span>마루이비디오</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_all">all</i>
-                                        <span>말없는소녀</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_12">12</i>
-                                        <span>메리마이데드바디</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="age_15">15</i>
-                                        <span>메이플스토리2023summer</span></a>
-                                </li>
-                            </ul>
+                           
                         </div>
                     </div>
                     <div id="theater_select">
                         <div class="ticketing_select_title">극장</div>
                         <div class="boundary3"></div>
-                        <div id="region">경기</div>
-                        <div id="region_detail">
-                            <ul>
-                                <li>
-                                    <a href="#" onclick="return false" title="김포한강">김포한강</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="김포">김포</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="운양">운양</a>
-                                </li>
-                            </ul>
+                         
+                         
+ <div id="region_left_wrap">
+					<c:forEach items="${list3}" var="list3" varStatus="status">
+                        <div class="region">
+                            <span><c:out value="${list3.location}"></c:out></span>
+                            <div class="region_detail">
+                                <ul>
+                                    <li>
+                                        <a href="#" onclick="return false" title=""></a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
                         </div>
+                       </c:forEach>
+
+
+
+
+                    </div>                        
+                        
+                        
                     </div>
                     <div id="day_select">
                         <div class="ticketing_select_title">날짜</div>
                         <div id="date1">
                             <ul>
-                                <p class="year">2023</p>
-                                <p class="month">6</p>
-                                <li>
-                                    <a href="#" onclick="return false" title="2023.06.01 목">목
-                                        <span>1</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="return false" title="2023.06.02 금">금
-                                        <span>2</span></a>
-                                </li>
-                                <li>
-                                    <a href="" onclick="return false" title="2023.06.03 토">토
-                                        <span>3</span></a>
-                                </li>
-                                <li>
-                                    <a class="red_day" href="" onclick="return false" title="2023.06.04 일">일
-                                        <span >4</span></a>
-                                </li>
-                                <li>
-                                    <a href="">월
-                                        <span>5</span></a>
-                                </li>
-                                <li>
-                                    <a href="">화
-                                        <span>6</span></a>
-                                </li>
-                                <li>
-                                    <a href="">수
-                                        <span>7</span></a>
-                                </li>
-                                <li>
-                                    <a href="">목
-                                        <span>8</span></a>
-                                </li>
-                                <li>
-                                    <a href="">금
-                                        <span>9</span></a>
-                                </li>
-                                <li>
-                                    <a href="">토
-                                        <span>10</span></a>
-                                </li>
-                                <li>
-                                    <a class="red_day" href="">일
-                                        <span>11</span></a>
-                                </li>
-                                <li>
-                                    <a href="">월
-                                        <span>12</span></a>
-                                </li>
-                                <li>
-                                    <a href="">화
-                                        <span>13</span></a>
-                                </li>
-                                <li>
-                                    <a href="">수
-                                        <span>14</span></a>
-                                </li>
-                                <li>
-                                    <a href="">목
-                                        <span>15</span></a>
-                                </li>
-                                <li>
-                                    <a href="">금
-                                        <span>16</span></a>
-                                </li>
-                                <li>
-                                    <a href="">토
-                                        <span>17</span></a>
-                                </li>
-                                <li>
-                                    <a href="">일
-                                        <span>18</span></a>
-                                </li>
-                                <li>
-                                    <a href="">월
-                                        <span>19</span></a>
-                                </li>
-                                <li>
-                                    <a href="">화
-                                        <span>20</span></a>
-                                </li>
-                                <li>
-                                    <a href="">수
-                                        <span>21</span></a>
-                                </li>
+                                <p class="year"></p>
+                                <p class="month"></p>
+                                
                             </ul>
                         </div>
                     </div>
@@ -1206,6 +955,7 @@
     </div>
     <div id="select_total_wrap">
         <div id="select_total">
+        <form method=post>
             <div id="pick_movie"></div>
             <div class="boundary2"></div>
             <div id="pick_theater"></div>
@@ -1215,6 +965,7 @@
             <div id="go_seat_choice"></div>
             <div id="go_seat_choice2"></div>
             <div id="go_payment"></div>
+            </form>
         </div>
     </div>
 
@@ -1260,6 +1011,91 @@
 	});
    
   
+   
+   $("#select_special_theater_menu a").on("click",function(){
+	   var theaterTitle = $(this).attr("title");
+       var pTag2 =$("<span>").text(theaterTitle);
+       $("#pick_movie").find("span:eq(0)").remove();
+       $("#pick_movie").append(pTag2);
+       $("#pick_movie").css("background","none");
+   
+ 
+       var selectedMoviename = $("#pick_movie p").text();
+       var selectedMovietype = $("#pick_movie span").text();
+
+       // 선택된 span 요소의 텍스트 가져오기
+       var movieType = selectedMovietype.trim();
+
+       var movieTypeValue;
+       switch (movieType) {
+           case "2DX":
+               movieTypeValue = 1;
+               break;
+           case "4DX":
+               movieTypeValue = 2;
+               break;
+           case "IMAX":
+               movieTypeValue = 3;
+               break;
+           case "PRIVATE BOX":
+               movieTypeValue = 4;
+               break;
+           default:
+               movieTypeValue = 0; // 기본 값 또는 오류 처리
+               break;
+       }
+
+     
+       
+
+       alert(movieTypeValue); // 불필요한 alert, 이미 위에서 사용된 변수
+       alert(selectedMoviename);
+	  
+	    $.ajax({
+	        async: true,
+	        cache: false,
+	        type: "post",
+	        url: "/ticketingProc",
+	        data: {
+	            "movie_name": selectedMoviename,
+	            "cinema_type":movieTypeValue
+	        },
+	        success: function(response) {
+	            if (response.rt === "success") {
+	            	 // "list3" 배열을 순회하며 HTML을 생성하는 부분
+	                var regionContainer = $("#regionContainer"); // HTML 컨테이너 요소 선택 (필요한 부분에 맞게 수정)
+	                for (var i = 0; i < types.length; i++) {
+	                    var regionDiv = $("<div>").addClass("region");
+	                    var span = $("<span>").text(types[i].location);
+	                    var regionDetailDiv = $("<div>").addClass("region_detail");
+	                    var ul = $("<ul>");
+	                    var li = $("<li>");
+	                    var anchor = $("<a>").attr("href", "#").attr("onclick", "return false").attr("title", "");
+	                    
+	                    li.append(anchor);
+	                    ul.append(li);
+	                    regionDetailDiv.append(ul);
+	                    regionDiv.append(span).append(regionDetailDiv);
+	                    regionContainer.append(regionDiv);
+	               
+	            } else {
+	                alert("상영타입 정보를 가져오는 데 실패했습니다.");
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+	        }
+	    });
+	});
+   
+   
+   
+   
+   
+  
+  
+  
+
    </script>
 
 </body>

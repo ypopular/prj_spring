@@ -22,4 +22,17 @@ public class Ticketing_detailDao {
 	public List<Ticketing_detail> selectList(Ticketing_detailVo vo){ 
     	return sqlSession.selectList(namespace + ".selectList",vo); 
     	}
+	public List<Running_time2> selectList2(Running_time2Vo vo2){ 
+    	return sqlSession.selectList(namespace + ".selectList2",vo2); 
+    	}
+	public List<Running_time2> selectList3(Running_time2Vo vo3){ 
+    	return sqlSession.selectList(namespace + ".selectList3",vo3); 
+    	}
+	public List<Running_time2> selectList4(Running_time2Vo vo4){ 
+    	return sqlSession.selectList(namespace + ".selectList4",vo4); 
+    	}
+	public Ticketing_detail selectOne(Ticketing_detailVo vo) {
+		Ticketing_detail ticketing_detail =sqlSession.selectOne(namespace + ".selectOne", vo);
+		return ticketing_detail;
+	}
 }

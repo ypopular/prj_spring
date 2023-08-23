@@ -1,4 +1,115 @@
 $(function(){
+	 $(".region").on("click",function(){
+        $(this).find(".region_detail").show();
+        $(this).siblings().find(".region_detail").hide();
+        $(this).addClass("region_active");
+        $(this).siblings().removeClass("region_active");
+      });
+	 
+	 
+	 
+   const currentDate = new Date();
+   const currentYear = currentDate.getFullYear();
+   const currentMonth = currentDate.getMonth() + 1;
+   const currentDay = currentDate.getDate();
+   const currentDayOfWeek = currentDate.getDay();
+   const dayOfWeekNames = ['일', '월', '화', '수', '목', '금', '토'];
+
+   function updateDateAndDayOfWeek() {
+       const dateElement = document.getElementById('date1');
+       if (dateElement) {
+           const yearElement = dateElement.querySelector('.year');
+           const monthElement = dateElement.querySelector('.month');
+           
+           if (yearElement) {
+               yearElement.textContent = currentYear;
+           }
+           
+           if (monthElement) {
+               monthElement.textContent = currentMonth;
+           }
+
+           const dateList = dateElement.querySelector('ul');
+
+           for (let day = currentDay; day <= getDaysInMonth(currentYear, currentMonth); day++) {
+               const dayOfWeek = (currentDayOfWeek + (day - currentDay)) % 7;
+               const title = `${currentYear}.${currentMonth.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} ${dayOfWeekNames[dayOfWeek]}`;
+               const li = document.createElement('li');
+               const a = document.createElement('a');
+               const p = document.createElement('p');
+               const span = document.createElement('span');
+               
+               a.href = '#';
+               a.onclick = () => false;
+               a.title = title;
+
+               if (dayOfWeek === 0) {
+                   a.classList.add('red_day');
+               }
+
+               p.textContent = dayOfWeekNames[dayOfWeek];
+               span.textContent = day;
+               
+               a.appendChild(p);
+               a.appendChild(span);
+               li.appendChild(a);
+               dateList.appendChild(li);
+           }
+
+           // Add year and month for next month
+           const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+           const nextYear = currentMonth === 12 ? currentYear + 1 : currentYear;
+           
+           const nextMonthYearElement = document.createElement('p');
+           nextMonthYearElement.classList.add('year');
+           nextMonthYearElement.textContent = nextMonth === 1 ? nextYear : '';
+           dateList.appendChild(nextMonthYearElement);
+
+           const nextMonthMonthElement = document.createElement('p');
+           nextMonthMonthElement.classList.add('month');
+           nextMonthMonthElement.textContent = nextMonth;
+           dateList.appendChild(nextMonthMonthElement);
+
+           // Add dates for next month
+           const daysInNextMonth = getDaysInMonth(nextYear, nextMonth);
+
+           for (let day = 1; day <= daysInNextMonth; day++) {
+               const dayOfWeek = (currentDayOfWeek + (day - 1) + getDaysInMonth(currentYear, currentMonth)) % 7;
+               const title = `${nextYear}.${nextMonth.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} ${dayOfWeekNames[dayOfWeek]}`;
+               const li = document.createElement('li');
+               const a = document.createElement('a');
+               const p = document.createElement('p');
+               const span = document.createElement('span');
+               
+               a.href = '#';
+               a.onclick = () => false;
+               a.title = title;
+
+               if (dayOfWeek === 0) {
+                   a.classList.add('red_day');
+               }
+
+               p.textContent = dayOfWeekNames[dayOfWeek];
+               span.textContent = day;
+               
+               a.appendChild(p);
+               a.appendChild(span);
+               li.appendChild(a);
+               dateList.appendChild(li);
+           }
+       }
+   }
+
+   function getDaysInMonth(year, month) {
+       return new Date(year, month, 0).getDate();
+   }
+
+   updateDateAndDayOfWeek();
+	
+	
+	
+	
+	
     var carWidth = $(".wrap").width(); 
     var carLength = $(".column").length;    
     $(".inner").css({
@@ -208,15 +319,11 @@ $(".sp_hover").mouseover(function(){
         });
 
         $("#select_special_theater_menu a").on("click",function(){
-            var theaterTitle = $(this).attr("title");
-            var pTag2 =$("<span>").text(theaterTitle);
-            $("#pick_movie").find("span:eq(0)").remove();
-            $("#pick_movie").append(pTag2);
-            $("#pick_movie").css("background","none");
+           
             specialTrue = true;
         });
         var specialTrue = false;
-        $("#region_detail a").on("click",function(){
+        $(".region_detail a").on("click",function(){
             var regionTitle = $(this).attr("title");
             var pTag3 =$("<p>").text(regionTitle);
             $("#pick_theater, #choice_detail").find("p:eq(0)").remove();
@@ -225,7 +332,7 @@ $(".sp_hover").mouseover(function(){
             regionTrue = true;
         });
         var regionTrue =false;
-        $("#region_detail li").on("click",function(){
+        $(".region_detail li").on("click",function(){
             $(this).addClass("region_active");
             $(this).siblings().removeClass("region_active");
             $(this).find("a").addClass("region_a_active");
@@ -663,7 +770,6 @@ function drawChart()
     chart.draw(data, options);
 }
 */
-
 
 
 });

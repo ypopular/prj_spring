@@ -1,13 +1,69 @@
 package com.mycompany.app.infra.ticketing_detail;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
 
 @Controller
 public class Ticketing_detailController {
 
+	@Autowired
+	Ticketing_detailServiceImpl service;
+	
 	@RequestMapping(value="/admin_ticketing")
-	public String admin_ticketing() {
+	public String admin_ticketing(@ModelAttribute("vo")Ticketing_detailVo vo,Model model) {
+		
+		List<Ticketing_detail> list = service.selectList(vo);
+		model.addAttribute("list",list);
+		
 		return "admin/infra/ticketing_detail/admin_ticketing";
+	}
+	
+	@RequestMapping(value="/cgv_ticketing")
+	public String cgv_ticketing(@ModelAttribute("vo")Ticketing_detailVo vo,Running_time2Vo vo2,Running_time2Vo vo3,Model model) {
+		
+		List<Running_time2> list2 = service.selectList2(vo2);
+		model.addAttribute("list2",list2);
+		List<Running_time2> list3 = service.selectList3(vo3);
+		model.addAttribute("list3",list3);
+		return "user/infra/codegroup/cgv_ticketing";
+	}
+	
+	
+	
+	
+	@ResponseBody
+	@RequestMapping("/ticketingProc")
+	public Map<String, Object> cinemaProc(@RequestParam("movie_name") String movie_name,
+	                                      @RequestParam("cinema_type") int cinema_type,
+	                                      Running_time2Vo vo4, HttpSession httpSession) {
+	    Map<String, Object> returnMap = new HashMap<>();
+
+	    Running_time2Vo vo = new Running_time2Vo();
+	    vo.setMovie_name(movie_name);
+	    vo.setCinema_type(cinema_type); // cinema_type 추가
+
+	    List<Running_time2> running_time2 = service.selectList4(vo);
+
+	    if (running_time2 != null && !running_time2.isEmpty()) {
+	        returnMap.put("rtTypes", running_time2);
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
 	}
 }

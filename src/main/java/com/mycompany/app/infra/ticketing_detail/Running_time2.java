@@ -1,8 +1,8 @@
-package com.mycompany.app.infra.information;
+package com.mycompany.app.infra.ticketing_detail;
 
 import java.sql.Date;
 
-public class Running_time {
+public class Running_time2 {
 	public String seq;
 	public String start_time;
 	public String end_time;
@@ -16,11 +16,18 @@ public class Running_time {
 	public String location_cinema_name;
 	public Integer theater_number;
 	public Integer cinema_type;
+	public String location;
 	    
 	
 	
 	
 	
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public String getEnd_time() {
 		return end_time;
 	}

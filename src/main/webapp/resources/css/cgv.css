@@ -1753,39 +1753,48 @@ video{
     margin-top: 40px;
     margin-bottom: 10px;
 }
-#region{
+#region_left_wrap{
+    width: 130px;
+    height: 550px;
+    margin-left: 13px;
+    margin-top: 15px;
+}
+.region{
     width: 130px;
     height: 30px;
     float: left;
-    margin-left: 13px;
-    margin-top: 15px;
     line-height: 30px;
     font-size: 14px;
     text-align: end;
     padding-right: 15px;
     border: 1px solid #ccc;
+   position: relative;
+    cursor: pointer;
 }
-#region_detail{
+.region_detail{
     width: 130px;
     height: 400px;
-    float: left;
-    margin-top: 15px;
+   position: absolute;
+   right: -129px;
+   bottom: -371px;
     font-weight: 700;
+    display: none;
+   
     
 }
-#region_detail ul li{
+.region_detail ul li{
     width: 130px;
     height: 30px;
     line-height: 30px;
     font-size: 14px;
-    padding-left: 15px;
     border: 1px solid #ccc;
 }
-#region_detail ul li a{
+.region_detail ul li a{
     color: #000;
     width: 130px;
     height: 30px;
     display: block;
+    text-align: center;
 }
 .region_active{
     background-color: #ccc;
@@ -1833,10 +1842,22 @@ video{
     width: 70px;
     height: 30px;
     display: block;
+     position: relative;
 }
 #date1 ul li span{
     padding-left: 20px;
     font-weight: 700;
+    position: absolute;
+    right: 11px;
+    bottom: 4px;
+}
+#date1 ul li a p{
+    padding: 0;
+    width: 30px;
+    margin: 0;
+    position: absolute;
+    left: 8px;
+    bottom: 4px;
 }
 .date_active{
     background-color: #ccc;
@@ -3428,4 +3449,16 @@ video{
 }
 .information_insert{
 	right:10% !important;
+}
+.ticketing_ul li{
+	margin-right:30px;
+}
+.ticketing_wrap{
+	width:1200px !important;
+}
+.ticketing_page{
+	width:1350px !important;
+}
+.ticketing_list li{
+	 margin-right:30px !important; 
 }

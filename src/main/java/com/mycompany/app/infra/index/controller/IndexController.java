@@ -38,10 +38,7 @@ public class IndexController {
 	public String cgv_sign_up() {
 		return "user/infra/codegroup/cgv_sign_up";
 	}
-	@RequestMapping(value="/cgv_ticketing")
-	public String cgv_ticketing() {
-		return "user/infra/codegroup/cgv_ticketing";
-	}
+	
 	
 	
 	

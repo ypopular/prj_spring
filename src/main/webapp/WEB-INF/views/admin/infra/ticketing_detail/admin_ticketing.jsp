@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            <div id="master_wrap" class="information_page">
+            <div id="master_wrap" class="ticketing_page">
                 
                 <div id="master_title">
                     <span>관리자</span>
@@ -251,23 +251,47 @@
                
                 <form name="form_list" method="post">
                 
-                    <div id="theater_alter_small_wrap" class="information_wrap">
-                        <ul class="cinema_name_title_alter_list information_wrap">
+                    <div id="theater_alter_small_wrap" class="ticketing_wrap">
+                        <ul class="cinema_name_title_alter_list  ticketing_ul ticketing_wrap">
                          
                             <li>예매자</li>
                             <li>예매지점</li>
                             <li>예매영화</li>
-                            <li>상영시간</li>
-                            <li>예매인원</li>
+                            <li>상영타입</li>
+                            
+                            <li>시작시간</li>
+                            <li>종료시간</li>
+                            <li>상영관</li>
                             <li>예매좌석</li>
                             <li>가격</li>
+                            <li>상영날짜</li>
 	                         
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
                         
-                       
-                  
+                       <c:forEach items="${list}" var="list" varStatus="status">
+							 <ul class="theater_alter_list ticketing_wrap ticketing_list">
+						
+							  <li class="form-control"> <c:out value="${list.name}"></c:out></li>
+							    <li class="form-control"> <c:out value="${list.location_cinema_name}"></c:out></li>	
+							 <li class="form-control"><c:out value="${list.movie_name}"></c:out></li>
+							  <li class="form-control"><c:out value="${list.cinema_type}"></c:out></li>			
+						   
+						     <li class="form-control"> <c:out value="${list.start_time}"></c:out></li>
+						      <li class="form-control"> <c:out value="${list.end_time}"></c:out></li>
+						      <li class="form-control"> <c:out value="${list.theater_number}"></c:out></li>
+						      <li class="form-control"> <c:out value="${list.seat_name}"></c:out></li>
+						      <li class="form-control"> <c:out value="${list.payment_amount}"></c:out></li>
+						        <li class="form-control form_date" > <c:out value="${list.date}"></c:out></li>
+						    
+						     	
+
+						     <li><button type="button" class="list_alter_btn"><a href="admin_information_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+			
+						 </ul>
+					</c:forEach>
+                  	
                     </div>
                         
 
