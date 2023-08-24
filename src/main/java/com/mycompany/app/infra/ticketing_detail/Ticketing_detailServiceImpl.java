@@ -65,5 +65,11 @@ public class Ticketing_detailServiceImpl implements Ticketing_detailService {
 		return dao.insert(dto);
 	}
 
+	@Override
+	public List<Ticketing_detail> selectList8(Ticketing_detailVo vo8) {
+		// TODO Auto-generated method stub
+		return dao.selectList8(vo8);
+	}
+
 	
 }

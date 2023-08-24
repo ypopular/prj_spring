@@ -9,7 +9,7 @@ public class Ticketing_detail {
 	public Integer delYN;
 	public String member_seq;
 	public String running_time_seq;
-	
+	public String seat_name;
 	
 	
 	public String date;
@@ -19,7 +19,7 @@ public class Ticketing_detail {
 	public String location_cinema_name;
 	public Integer theater_number;
 	public Integer cinema_type;
-	public String seat_name;
+	
 	public String name;
 	
 	

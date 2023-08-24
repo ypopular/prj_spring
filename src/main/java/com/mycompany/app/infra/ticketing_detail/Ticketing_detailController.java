@@ -168,6 +168,37 @@ public class Ticketing_detailController {
 	    return returnMap;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/ticketingProc5")
+	public Map<String, Object> cinemaProc5(@RequestParam("movie_name") String movie_name,
+	                                      @RequestParam("cinema_type") int cinema_type,
+	                                      @RequestParam("location_cinema_name") String location_cinema_name,
+	                                      @RequestParam("theater_number") int theater_number,
+	                                      @RequestParam("start_time") String start_time,
+	                                      @RequestParam("date") String date,
+	                                      Ticketing_detailVo vo8, HttpSession httpSession) {
+	    Map<String, Object> returnMap = new HashMap<>();
+
+	    Ticketing_detailVo vo = new Ticketing_detailVo();
+	   vo.setMovie_name(movie_name);
+	   vo.setCinema_type(cinema_type);
+	   vo.setLocation_cinema_name(location_cinema_name);
+	   vo.setTheater_number(theater_number);
+	   vo.setStart_time(start_time);
+	   vo.setDate(date);
+	   
+
+	    List<Ticketing_detail> ticketing_detail = service.selectList8(vo);
+
+	    if (ticketing_detail != null) {
+	        returnMap.put("rtTypes", ticketing_detail);
+	        returnMap.put("rt", "success");
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    return returnMap;
+	}
+	
 	
 	
 	

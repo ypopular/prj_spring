@@ -521,7 +521,7 @@
                             <ul class="seat_line">
                                 <li>A</li>
                                 <li>
-                                    <a href="#" onclick="return false" title="A열 1번">1</a>
+                                    <a class=seat_disabled  href="#" onclick="return false" title="A열 1번">1</a>
                                 </li>
                                 <li>
                                     <a href="#" onclick="return false" title="A열 2번">2</a>
@@ -975,10 +975,10 @@
      
       <input type="text" class="form-control" id="seat_name" name="seat_name"
     required value="">
-     <input type="text" class="form-control" id="seat_name2" name="seat_name"
+      <input type="text" class="form-control" id="seat_name2" name="seat_name"
     required value="">
      <input type="text" class="form-control" id="seat_name3" name="seat_name"
-    required value="">
+    required value=""> 
      
     	  <button type="button" id="hidden_btn">추가</button>
 		</form>
@@ -1011,17 +1011,24 @@
     
    <script>
    
-   $("#hidden_btn").on("click",function(){
+   $("#go_payment").on("click",function(){
 		$("form[name=form_list]").attr("action","/ticketing_detailInsert").submit();
 	});
-  
+   
    
    $(document).on("click", "#go_seat_choice2", function() {
   
 		var Payment_amount =$("#go_seat1 p").text();
 		$("#payment_amount2").val(Payment_amount);
 		
-		var Seat_name = $("#go_seat1 h").text();
+		var Seat_name = $("#go_seat1 h3").text();
+		var Seat_name2 = $("#go_seat1 span").text();
+		var Seat_name3 = $("#go_seat1 h4").text();
+		$("#seat_name").val(Seat_name);
+		$("#seat_name2").val(Seat_name2);
+		$("#seat_name3").val(Seat_name3);
+		
+		
 		
 	});
    $(document).on("click", "#choice_time ul li a", function() {
@@ -1293,11 +1300,12 @@
    		/* -------------------------------------- */
    		 $(document).on("click", "#date1 a", function() {
         var selectedMoviename = $("#pick_movie p").text();
-        var selectedMovietype = $("#pick_movie span").text();
+       
         var selectedMoviecinema = $("#pick_theater p").text();
         var selectedMoviedate =$(this).attr("title");
         $("#pick_theater").find("h4").remove();
- 
+        
+        var selectedMovietype = $("#pick_movie span").text();
         var movieType = selectedMovietype.trim();
  
         var movieTypeValue;
@@ -1394,7 +1402,101 @@
    		    }
    		}
   
+  /* --------------------------------------------- */
   
+  $("#go_seat_choice").on("click",function(){
+	  var selectedMoviename = $("#pick_movie p").text();
+      var selectedMovietype = $("#pick_movie span").text();
+      var selectedMoviecinema = $("#pick_theater p").text();
+      var h4Content = $("#pick_theater h4").text(); // <h4> 요소의 텍스트 내용을 가져옴
+	var selectedMoviedate =$("#pick_theater span").text();
+      var parts = h4Content.split(" "); // 공백을 기준으로 문자열을 분리
+
+      if (parts.length >= 2) {
+          var selectedMovietheater = parseInt(parts[0]); // "1관" 부분
+          var selectedMovietime = parts[1]; // "12:00" 부분
+      }
+      
+      var movieType = selectedMovietype.trim();
+      
+      var movieTypeValue;
+      switch (movieType) {
+          case "2D":
+              movieTypeValue = 1;
+              break;
+          case "4DX":
+              movieTypeValue = 2;
+              break;
+          case "IMAX":
+              movieTypeValue = 3;
+              break;
+          case "PRIVATE BOX":
+              movieTypeValue = 4;
+              break;
+          default:
+              movieTypeValue = 0; // 기본 값 또는 오류 처리
+              break;
+      }
+     /*  alert(selectedMoviename);
+      alert(movieTypeValue);
+      alert(selectedMoviecinema);
+      alert(selectedMoviedate);
+      alert(selectedMovietheater);
+      alert(selectedMovietime) */
+      
+      $.ajax({
+	        async: true,
+	        cache: false,
+	        type: "post",
+	        url: "/ticketingProc5",
+	        data: {
+	            "movie_name": selectedMoviename,
+	            "cinema_type":movieTypeValue,
+	            "location_cinema_name":selectedMoviecinema,
+	            "theater_number":selectedMovietheater,
+	            "start_time":selectedMovietime,
+	            "date":selectedMoviedate
+	            
+	            
+	        },
+	        success: function(response) {
+	        	
+	        	
+	            if (response.rt === "success") {
+	            	 // 기존에 추가된 .seat_disabled 클래스 제거
+	                $('#seat_choice_detail ul.seat_line li a').removeClass('seat_disabled');
+
+	                var types = response.rtTypes;
+
+	                // a.seat_name 값을 얻어온 후 공백으로 분리합니다.
+	                var seatNames = [];
+
+	                types.forEach(function(type) {
+	                    // 쉼표로 분리된 좌석 이름들을 배열에 추가합니다.
+	                    var individualSeatNames = type.seat_name.split(',');
+	                    seatNames = seatNames.concat(individualSeatNames);
+	                });
+
+	                // 각 <a> 요소를 순회하면서 클래스를 추가합니다.
+	                $('#seat_choice_detail ul.seat_line li a').each(function() {
+	                    var seatTitle = $(this).attr('title');
+
+	                    if (seatNames.includes(seatTitle)) {
+	                        $(this).addClass('seat_disabled');
+	                    }
+	                });
+	            	
+	            	
+	            } else {
+	            	alert("실패")
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("ajaxUpdate " + textStatus + " : " + errorThrown);
+	        }
+	    }); 
+      
+  });
   
 
    </script>

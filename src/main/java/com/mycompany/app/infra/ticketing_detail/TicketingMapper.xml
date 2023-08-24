@@ -8,7 +8,31 @@
      <resultMap id="resultMapObj" type="com.mycompany.app.infra.ticketing_detail.Ticketing_detail"></resultMap>
     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.ticketing_detail.Running_time2"></resultMap>
    
-       
+       <select id="selectList8" resultMap="resultMapObj">
+    
+    	      select
+				
+                a.seat_name
+             
+			from
+				ticketing_detail a
+   				join running_time b on b.seq = a.running_time_seq
+  			    join movie c on c.seq = b.movie_seq
+   			    join cinema_theater e on e.seq = b.cinema_theater_seq
+  				join cinema_name d on d.seq = e.cinema_name_seq
+   				join member g on g.seq = a.member_seq 
+   		   where
+   		   		 	movie_name = #{movie_name}
+ 				 and    cinema_type = #{cinema_type}
+ 				 and 	location_cinema_name = #{location_cinema_name}
+ 				 and	theater_number = #{theater_number}
+ 				 and	start_time = #{start_time}
+ 				 and 	date = #{date}
+				 and		a.delYN =0;
+
+   				
+    	   
+    </select>
        
         <select id="selectList7" resultMap="resultMapObj2">
     
@@ -185,6 +209,7 @@
     INTO ticketing_detail
     (
     payment_amount,
+    seat_name,
     member_seq,
     running_time_seq,
     delYN
@@ -192,6 +217,7 @@
     VALUE
     	(
     	#{payment_amount},
+    	#{seat_name},
     	#{member_seq},
     	#{running_time_seq},
     	0
