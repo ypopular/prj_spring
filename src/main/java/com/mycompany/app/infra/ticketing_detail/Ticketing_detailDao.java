@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 
 
+
+
 @Repository
 public class Ticketing_detailDao {
 
@@ -44,4 +46,12 @@ public class Ticketing_detailDao {
 		Ticketing_detail ticketing_detail =sqlSession.selectOne(namespace + ".selectOne", vo);
 		return ticketing_detail;
 	}
+	
+	
+	 public int insert(Ticketing_detail dto) { 
+	    	return sqlSession.insert(namespace + ".insert", dto); 		 
+		}
+	
+	
+	
 }

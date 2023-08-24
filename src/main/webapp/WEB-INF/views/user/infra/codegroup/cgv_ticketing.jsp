@@ -935,11 +935,11 @@
                                         카카오페이
                                     </label>
 
-                                    <input class="input_margin" type="radio" value="toss" name="payment" id="toss">
+                                    <!-- <input class="input_margin" type="radio" value="toss" name="payment" id="toss">
 
                                     <label for="toss">
                                         토스
-                                    </label>
+                                    </label> -->
                                 </form>
                             </div>
                         </div>
@@ -964,6 +964,27 @@
             </form>
         </div>
     </div>
+
+
+	<div id="hidden_form">
+		<form method=post name=form_list>
+     <input type="text" class="form-control" id="running_time_seq" name="running_time_seq"
+    required value="">
+    <input type="text" class="form-control" id="payment_amount2" name="payment_amount"
+     required value="">
+     
+      <input type="text" class="form-control" id="seat_name" name="seat_name"
+    required value="">
+     <input type="text" class="form-control" id="seat_name2" name="seat_name"
+    required value="">
+     <input type="text" class="form-control" id="seat_name3" name="seat_name"
+    required value="">
+     
+    	  <button type="button" id="hidden_btn">추가</button>
+		</form>
+		
+	
+	</div>
 
     <div id="footer">
         <div id="footer_small">
@@ -990,8 +1011,24 @@
     
    <script>
    
+   $("#hidden_btn").on("click",function(){
+		$("form[name=form_list]").attr("action","/ticketing_detailInsert").submit();
+	});
+  
    
-   
+   $(document).on("click", "#go_seat_choice2", function() {
+  
+		var Payment_amount =$("#go_seat1 p").text();
+		$("#payment_amount2").val(Payment_amount);
+		
+		var Seat_name = $("#go_seat1 h").text();
+		
+	});
+   $(document).on("click", "#choice_time ul li a", function() {
+	   var time_seq =  $(this).find("input").val();
+	   $("#running_time_seq").val(time_seq);
+	  
+   });
    
    $("#btn_logout").on("click", function(){
 		$.ajax({
@@ -1313,10 +1350,14 @@
                          var theaterNumber = timeInfo.theater_number + "관"; // theater_number 변경
                          var seatCount = "(총" + timeInfo.seat_count + "석)"; // seat_count 변경
                          var timeTitle = cinemaType + " " + theaterNumber + " " + seatCount;
+                         var seq = timeInfo.seq;
                          var seatRemain = timeInfo.seat_remain;
-
-                         var liHtml = '<li><a href="#" onclick="return false" title="' + theaterNumber +" "+ timeInfo.start_time+'"><div class="time_box">' + timeInfo.start_time + '</div><span>' + seatRemain + '석</span></a></li>';
+                         var hiddenInputHtml = '';
+                         var liHtml = '<li><a href="#" onclick="return false" title="' + theaterNumber +" "+ timeInfo.start_time+'"><div class="time_box">' + timeInfo.start_time + '</div><span>' + seatRemain + '석</span><input type="hidden" name="selected_seq" value="' + seq + '"></a></li>';
+                      	
                          $choiceTimeList.append(liHtml);
+                       
+                        
                      }
 
                      // time_title 업데이트

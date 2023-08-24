@@ -104,7 +104,7 @@ public class MemberController {
 			
 			httpSession.setMaxInactiveInterval(60*60); // 60 min
 			httpSession.setAttribute("sessionId", vo.getId());
-			
+			 httpSession.setAttribute("sessionSeq", String.valueOf(rtMember.getSeq()));
 			returnMap.put("rtMember", rtMember);
 			returnMap.put("rt", "success");
 		}else {

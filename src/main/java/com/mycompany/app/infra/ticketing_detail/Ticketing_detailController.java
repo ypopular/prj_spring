@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
+
 @Controller
 public class Ticketing_detailController {
 
@@ -35,12 +37,36 @@ public class Ticketing_detailController {
 	@RequestMapping(value="/cgv_ticketing")
 	public String cgv_ticketing(@ModelAttribute("vo")Ticketing_detailVo vo,Running_time2Vo vo2,Running_time2Vo vo3,Model model) {
 		
+		
+		
 		List<Running_time2> list2 = service.selectList2(vo2);
 		model.addAttribute("list2",list2);
 		List<Running_time2> list3 = service.selectList3(vo3);
 		model.addAttribute("list3",list3);
+		
+		
 		return "user/infra/codegroup/cgv_ticketing";
 	}
+	
+	@RequestMapping("/ticketing_detailInsert")
+	public String ticketing_detailInsert(Ticketing_detail dto, HttpSession httpSession) {
+		 String loggedInUserSeq = (String) httpSession.getAttribute("sessionSeq");
+
+	    if (loggedInUserSeq != null) {
+	        dto.setMember_seq(loggedInUserSeq); // 세션에서 가져온 사용자 'seq' 값을 사용
+	       
+
+	        // 나머지 dto 속성은 form에서 넘어오는 값 또는 추가 작업에 따라 설정
+
+	        System.out.println("ticketing_detailInsert");
+	        service.insert(dto); // 데이터베이스에 추가
+	    } else {
+	        System.out.println("User not logged in.");
+	    }
+
+	    return "redirect:/cgv";
+	}
+	
 	
 	
 	
@@ -141,5 +167,11 @@ public class Ticketing_detailController {
 	    }
 	    return returnMap;
 	}
+	
+	
+	
+	
+	
+	
 	
 }

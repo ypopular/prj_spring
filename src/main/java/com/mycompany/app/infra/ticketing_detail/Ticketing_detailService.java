@@ -4,6 +4,8 @@ import java.util.List;
 
 
 
+
+
 public interface Ticketing_detailService {
 	
 	
@@ -16,5 +18,8 @@ public interface Ticketing_detailService {
 	public List<Running_time2> selectList6(Running_time2Vo vo6);
 	public List<Running_time2> selectList7(Running_time2Vo vo7);
 	public Ticketing_detail selectOne(Ticketing_detailVo vo);
+	
+	
+	public int insert(Ticketing_detail dto);
 	
 }

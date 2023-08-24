@@ -5,10 +5,12 @@ public class Ticketing_detail {
 	public String seq;
 	public Integer number_of_people;
 	public Integer price;
-	public Integer payment_amount;
+	public String payment_amount;
 	public Integer delYN;
 	public String member_seq;
 	public String running_time_seq;
+	
+	
 	
 	public String date;
 	public String start_time;
@@ -95,10 +97,10 @@ public class Ticketing_detail {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public Integer getPayment_amount() {
+	public String getPayment_amount() {
 		return payment_amount;
 	}
-	public void setPayment_amount(Integer payment_amount) {
+	public void setPayment_amount(String payment_amount) {
 		this.payment_amount = payment_amount;
 	}
 	public Integer getDelYN() {

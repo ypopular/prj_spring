@@ -3478,3 +3478,11 @@ video{
 .ticketing_list li{
 	 margin-right:30px !important; 
 }
+#hidden_form{
+	width : 300px;
+	height : 300px;
+	position: fixed;
+	right: 300px;
+	top : 300px;
+	background-color: #000;
+}

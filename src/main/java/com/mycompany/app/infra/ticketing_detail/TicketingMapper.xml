@@ -7,11 +7,13 @@
  
      <resultMap id="resultMapObj" type="com.mycompany.app.infra.ticketing_detail.Ticketing_detail"></resultMap>
     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.ticketing_detail.Running_time2"></resultMap>
+   
        
        
         <select id="selectList7" resultMap="resultMapObj2">
     
     	      	select
+    	      		a.seq,
     	      		 a.seat_remain, 
     	      		 a.start_time,
 					 c.theater_number,
@@ -135,7 +137,7 @@
                 d.location_cinema_name,
                 e.theater_number,
                 e.cinema_type,
-                f.seat_name,
+                a.seat_name,
                 g.name
 			from
 				ticketing_detail a
@@ -143,7 +145,7 @@
   			    join movie c on c.seq = b.movie_seq
    			    join cinema_theater e on e.seq = b.cinema_theater_seq
   				join cinema_name d on d.seq = e.cinema_name_seq
-  			    join number_reservations f on a.seq =f.ticketing_detail_seq
+  			   
    				join member g on g.seq = a.member_seq 
    		   where
 				a.delYN =0;
@@ -153,13 +155,50 @@
     </select>
     
 	<select id="selectOne" resultMap="resultMapObj">
-		SELECT *
+		SELECT 
+				a.seq,
+                a.payment_amount,
+                a.delYN,
+                b.date,
+                b.start_time,
+                c.movie_name,
+                d.location_cinema_name,
+                e.theater_number,
+                e.cinema_type,
+                a.seat_name,
+                g.name
 		FROM 
-			ticketing_detail
+			ticketing_detail a
+   				join running_time b on b.seq = a.running_time_seq
+  			    join movie c on c.seq = b.movie_seq
+   			    join cinema_theater e on e.seq = b.cinema_theater_seq
+  				join cinema_name d on d.seq = e.cinema_name_seq
+  			   
+   				join member g on g.seq = a.member_seq 
 		WHERE 1=1
 		AND
 			seq = #{seq}
 	</select>
+	
+	<insert id="insert">
+	 INSERT
+    INTO ticketing_detail
+    (
+    payment_amount,
+    member_seq,
+    running_time_seq,
+    delYN
+    )
+    VALUE
+    	(
+    	#{payment_amount},
+    	#{member_seq},
+    	#{running_time_seq},
+    	0
+    	)
+	</insert>
+	
+	
 	
 	
     
