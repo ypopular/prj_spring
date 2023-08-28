@@ -22,5 +22,5 @@ public interface Ticketing_detailService {
 	
 	
 	public int insert(Ticketing_detail dto);
-	
+	public int update(Running_time2 dto);
 }

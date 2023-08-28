@@ -71,5 +71,11 @@ public class Ticketing_detailServiceImpl implements Ticketing_detailService {
 		return dao.selectList8(vo8);
 	}
 
+	@Override
+	public int update(Running_time2 dto) {
+		// TODO Auto-generated method stub
+		return dao.update(dto);
+	}
+
 	
 }

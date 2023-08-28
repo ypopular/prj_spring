@@ -316,6 +316,7 @@
                             <li id="date_margin2">상영날짜</li>
                               <li>시작시간</li>
                               <li>종료시간</li>
+                               <li>남은좌석</li>
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
@@ -349,6 +350,7 @@
 						     <li class="form-control form_date" > <c:out value="${list.date}"></c:out></li>
 						     <li class="form-control"> <c:out value="${list.start_time}"></c:out></li>
 						      <li class="form-control"> <c:out value="${list.end_time}"></c:out></li>
+						      <li class="form-control"> <c:out value="${list.seat_remain}"></c:out></li>
 						    
 						     	
 

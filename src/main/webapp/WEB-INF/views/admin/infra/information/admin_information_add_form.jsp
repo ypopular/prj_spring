@@ -303,6 +303,7 @@
                             <li id="date_margin2">상영날짜</li>
                               <li>시작시간</li>
                             <li>종료시간</li>
+                             <li>남은좌석</li>
                         </ul>
                         <div id="theater_alter_list_wrap">
                        
@@ -347,6 +348,8 @@
                             required value="<c:out value="${item.start_time}"/>"> </li>
                              <li><input type="text" class="form-control" id="end_time" name="end_time"
                             required value="<c:out value="${item.end_time}"/>"> </li>
+                              <li><input type="text" class="form-control" id="seat_remain" name="seat_remain"
+                            required value="<c:out value="${item.seat_remain}"/>"> </li>
 							     
 							     
 							     

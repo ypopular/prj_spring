@@ -11,6 +11,8 @@ public class Running_timeVo {
 	public String movie_seq;
 	public String cinema_theater_seq;
 	
+	public Integer seat_remain;
+	
 	private String shKeyword;
 	private String shKeyword2;
 	private String shKeyword3;
@@ -21,6 +23,12 @@ public class Running_timeVo {
 	
 	
 	
+	public Integer getSeat_remain() {
+		return seat_remain;
+	}
+	public void setSeat_remain(Integer seat_remain) {
+		this.seat_remain = seat_remain;
+	}
 	public String getShOption3() {
 		return shOption3;
 	}

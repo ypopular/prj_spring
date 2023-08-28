@@ -101,7 +101,8 @@ WHERE
 					b.movie_name,
 					d.location_cinema_name,
 					c.theater_number,
-					c.cinema_type
+					c.cinema_type,
+					a.seat_remain
 				from
  					  running_time a
  				 join movie b on b.seq = a.movie_seq
@@ -150,7 +151,8 @@ WHERE
 					b.movie_name,
 					d.location_cinema_name,
 					c.theater_number,
-					c.cinema_type
+					c.cinema_type,
+					a.seat_remain
 				from
  					  running_time a
  				 join movie b on b.seq = a.movie_seq
@@ -192,6 +194,7 @@ WHERE
     start_time,
     end_time,
     date,
+    seat_remain,
     movie_seq,
     cinema_theater_seq,
     delYN
@@ -201,6 +204,7 @@ WHERE
     	#{start_time},
     	#{end_time},
     	#{date},
+    	#{seat_remain},
     	#{movie_seq},
     	#{cinema_theater_seq},
     	0

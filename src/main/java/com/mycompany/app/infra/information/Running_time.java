@@ -9,6 +9,8 @@ public class Running_time {
 	public String date;
 	public Integer delYN;
 	
+	public Integer seat_remain;
+	
 	
 	public String movie_seq;
 	public String cinema_theater_seq;
@@ -21,6 +23,12 @@ public class Running_time {
 	
 	
 	
+	public Integer getSeat_remain() {
+		return seat_remain;
+	}
+	public void setSeat_remain(Integer seat_remain) {
+		this.seat_remain = seat_remain;
+	}
 	public String getEnd_time() {
 		return end_time;
 	}

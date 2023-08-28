@@ -521,7 +521,7 @@
                             <ul class="seat_line">
                                 <li>A</li>
                                 <li>
-                                    <a class=seat_disabled  href="#" onclick="return false" title="A열 1번">1</a>
+                                    <a href="#" onclick="return false" title="A열 1번">1</a>
                                 </li>
                                 <li>
                                     <a href="#" onclick="return false" title="A열 2번">2</a>
@@ -983,6 +983,15 @@
     	  <button type="button" id="hidden_btn">추가</button>
 		</form>
 		
+		<div id="hidden_form2">
+			<form method=post name="form_list2">
+			 <input type="text" class="form-control" id="seq2" name="seq"
+    required value="">
+    <input type="text" class="form-control" id="seat_remain" name="seat_remain"
+     required value="">
+			
+			</form>		
+		</div>
 	
 	</div>
 
@@ -1011,10 +1020,19 @@
     
    <script>
    
-   $("#go_payment").on("click",function(){
+    $("#go_payment").on("click",function(){
 		$("form[name=form_list]").attr("action","/ticketing_detailInsert").submit();
+		
+	}); 
+	
+	
+	$("#go_payment").on("click", function() {
+	  
 	});
    
+  
+  
+  
    
    $(document).on("click", "#go_seat_choice2", function() {
   
@@ -1028,12 +1046,37 @@
 		$("#seat_name2").val(Seat_name2);
 		$("#seat_name3").val(Seat_name3);
 		
+		var seatCount = $("#seat_choice_detail a:not(.seat_active2):not(.seat_disabled)").length;
+	    // 이제 seatCount에 클래스 없는 <a> 태그의 개수가 저장됩니다.
+	   
+	    $("#seat_remain").val(seatCount);
+	    
+	    
+	    
+	    $.ajax({
+	        type: "POST",
+	        url: "/ticketing_detailUpdate", // 업데이트를 처리할 URL
+	        data: $("form[name=form_list2]").serialize(),
+	        success: function(response) {
+	            if (response.success) {
+	              
+	                // 업데이트 결과에 따른 추가 작업
+	            } else {
+	               
+	            }
+	        },
+	        error: function(error) {
+	           
+	        }
+	    });
 		
 		
 	});
    $(document).on("click", "#choice_time ul li a", function() {
 	   var time_seq =  $(this).find("input").val();
 	   $("#running_time_seq").val(time_seq);
+	   $("#seq2").val(time_seq);
+	  
 	  
    });
    

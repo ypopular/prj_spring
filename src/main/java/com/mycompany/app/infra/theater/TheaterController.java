@@ -31,6 +31,9 @@ public class TheaterController {
 	public String admin_theater_list(@ModelAttribute("vo")Cinema_theater2Vo vo,Model model) {
 		List<Cinema_theater2> list = service.selectList(vo);
 		model.addAttribute("list",list);
+		
+		
+		
 		model.addAttribute("seq1",vo.getCinema_name_seq());
 		System.out.println(vo.getCinema_name_seq());
 		return "admin/infra/theater/admin_theater_list";

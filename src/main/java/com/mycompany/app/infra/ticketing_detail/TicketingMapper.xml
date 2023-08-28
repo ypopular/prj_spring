@@ -8,6 +8,18 @@
      <resultMap id="resultMapObj" type="com.mycompany.app.infra.ticketing_detail.Ticketing_detail"></resultMap>
     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.ticketing_detail.Running_time2"></resultMap>
    
+   
+   <update id="update">
+        UPDATE    running_time
+        SET     
+        		seat_remain = #{seat_remain}
+        WHERE  1=1
+        AND
+           seq = #{seq}  
+    </update>
+   
+   
+   
        <select id="selectList8" resultMap="resultMapObj">
     
     	      select

@@ -7,9 +7,11 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,6 +46,8 @@ public class Ticketing_detailController {
 		List<Running_time2> list3 = service.selectList3(vo3);
 		model.addAttribute("list3",list3);
 		
+		model.addAttribute("seq2",vo2.getSeq());
+		
 		
 		return "user/infra/codegroup/cgv_ticketing";
 	}
@@ -67,7 +71,22 @@ public class Ticketing_detailController {
 	    return "redirect:/cgv";
 	}
 	
+	/*
+	 * @RequestMapping("/ticketing_detailUpdate") public String
+	 * ticketing_detailUpdate(Running_time2 dto) {
+	 * System.out.println("ticketing_detailUpdate"); service.update(dto); return
+	 * "redirect:/cgv"; }
+	 */
 	
+	@PostMapping("/ticketing_detailUpdate")
+    public ResponseEntity<Object> ticketing_detailUpdate(@ModelAttribute Running_time2 dto) {
+        try {
+            service.update(dto);
+            return ResponseEntity.ok().body("{\"success\": true}");
+        } catch (Exception e) {
+            return ResponseEntity.ok().body("{\"success\": false}");
+        }
+    }
 	
 	
 	
