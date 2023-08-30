@@ -1026,9 +1026,7 @@
 	}); 
 	
 	
-	$("#go_payment").on("click", function() {
-	  
-	});
+	
    
   
   

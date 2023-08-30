@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.app.infra.codegroup.CodeGroupVo;
+
 
 @Repository
 public class InformationDao {
@@ -64,5 +66,9 @@ public class InformationDao {
 	    public List<Movie2> selectList8(Movie2Vo vo8){ 
 	    	return sqlSession.selectList(namespace + ".selectList8",vo8); 
 	    	}
+	    
+	    
+	    
+	    public int selectOneCount(Running_timeVo vo){ return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 		
 }

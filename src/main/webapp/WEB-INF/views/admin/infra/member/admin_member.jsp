@@ -57,10 +57,7 @@
         
 
         <div id="master_page">
-            <div id="master_search_wrap">
-                
-               
-            </div>
+           
             <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
                     <div id="age_chart_title">
@@ -255,83 +252,57 @@
             <div id="theater_alter_wrap">
                
                 <form name="form_list" method="post">
-                 <div id="detail_search">
-                    <input  type="text" placeholder="상영지점">
-                   <input name="shKeyword" value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
-                    <input  id="datepicker" type="text" placeholder="상영일">
-                   <select name="shOption">
-                    <option selected disabled value="0">상영관</option>
-                    <option value="1">1관</option>
-                    <option value="2">2관</option>
-                    <option value="3">3관</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영종류</option>
-                    <option value="2D">2D</option>
-                    <option value="4DX">4DX</option>
-                    <option value="IMAX">IMAX</option>
-                    <option value="PRIVATE BOX">PRIVATE BOX</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영시작시간</option>
-                    <option value="9:00">9:00~</option>
-                    <option value="12:00">12:00~</option>
-                    <option value="18:00">18:00~</option>
-                   </select>
-                 
-                    <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
                 
-                </div>
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
-                            <li>상영지점</li>
-                            <li>영화제목</li>
-                            <li>상영관</li>
-                            <li>상영종류</li>
-                            <li>상영시간</li>
+                            <li>아이디</li>
+                            <li>이름</li>
+                            <li>성별</li>
+                            <li class="tel-li">전화번호</li>
+                            
                         </ul>
                         <div id="theater_alter_list_wrap">
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><button type="button" class="list_alter_btn">변경</button></li>
-                        </ul>
-                         <c:choose>
-				<c:when test="${fn:length(list) eq 0}">
-					<tr>
-							<td class="text-cneter" colspan="9">There is no data</td>
-					</tr>
-				</c:when>
-						<c:otherwise>
+                       
+                        
+			
 				<c:forEach items="${list}" var="list" varStatus="status">
 							 <ul class="theater_alter_list">
-							<li><a href="admin_member_form?seq=<c:out value="${list.seq}"/>"><c:out value="${list.seq}"></c:out></a>	</li>			
-						   <li> <c:out value="${list.id}"></c:out></li>
-						   <li> <c:out value="${list.password}"></c:out></li>
-						   <li> <c:out value="${list.name}"></c:out></li>
-						   <li> <c:out value="${list.gender}"></c:out></li>
-						   <li> <c:out value="${list.tel}"></c:out></li>
-						   <li> <c:out value="${list.tel_type}"></c:out></li>	
+							
+						   <li class="form-control"> <c:out value="${list.id}"></c:out></li>
+						 
+						   <li class="form-control"> <c:out value="${list.name}"></c:out></li>
+						   <li class="form-control">
+                        
+    <c:choose>
+            <c:when test="${list.gender == 0}">
+                남성
+            </c:when>
+             <c:when test="${list.gender == 1}">
+                여성
+            </c:when>
+             
+            <c:otherwise>
+                <c:out value="${list.gender}"/>
+            </c:otherwise>
+        </c:choose>
+                            </li>
+						   <li class="form-control tel-form"> <c:out value="${list.tel}"></c:out></li>
+						  
 						   	
  						
  			
-						     <li><button type="button" class="list_alter_btn"><a href="admin_cinema_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+						     <li><button type="button" class="list_alter_btn"><a href="admin_member_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
 			
 						 </ul>
 					</c:forEach>
-				</c:otherwise>
-					</c:choose>	
+			
                     </div>
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_member_form'">추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_list">메인으로</a></button>
-                    <button type="submit" class="master_alter_button">등록</button>
+ 					
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_member">메인으로</a></button>
+                  
                 </form>
             </div>
         </div>

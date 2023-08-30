@@ -24,6 +24,10 @@ public class MemberDao {
 		Member member = sqlSession.selectOne(namespace + ".selectOne", vo); 
 		return member;
 	}
+    public Member selectOne2(MemberVo vo2) { 
+		Member member = sqlSession.selectOne(namespace + ".selectOne2", vo2); 
+		return member;
+	}
     public int update(Member dto) { 
     	return sqlSession.update(namespace + ".update", dto); 		 
 	}

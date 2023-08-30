@@ -248,7 +248,7 @@
             </div>
             
             <div id="theater_alter_wrap">
-               <form name="form_list" method="post">
+              <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
               
                 	<div id="master_movie_wrap">
              		   <div class="master_movie_form">
@@ -317,18 +317,19 @@
                     <div id="master_movie_wrap2">
                     <div class="master_movie_form_img">
                   
-                            <div class="movie_title">파일첨부</div>
-                             <span id=insert_img_btn>첨부하기</span>
-                            <input type="text" class="movie_img_insert form-control" 
-                            required readonly value="">
                            
-                            
                             <div class="movie_title">미리보기</div>
                                  <span id=insert_img_btn>첨부하기</span>
                            <div class="movie_img_insert form-control" >
-                         	
-       
-			  					
+                           
+                          
+                                
+                          
+                          
+                          
+                          
+                          
+                          
                            </div>
                            </div>
                            </div>

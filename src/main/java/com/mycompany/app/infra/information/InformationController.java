@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.app.infra.codegroup.CodeGroup;
+
 
 
 
@@ -36,12 +38,29 @@ public class InformationController {
         vo.setShOption2(vo.getShOption2() == null ? null : vo.getShOption2());
         vo.setShOption3(vo.getShOption3() == null ? null : vo.getShOption3());
        
-        List<Running_time> list = service.selectList(vo);
-
-        model.addAttribute("list", list); // 수정된 부분
-        model.addAttribute("selectedShOption", vo.getShOption());
-        model.addAttribute("selectedShOption2", vo.getShOption2());
-        model.addAttribute("selectedShOption3", vo.getShOption3());
+        vo.setParamsPaging(service.selectOneCount(vo));
+		
+      
+        
+		if(vo.getTotalRows() > 0) {
+//			List<CodeGroup> list = service.selectList(vo);
+//			model.addAttribute("list", list);
+//			model.addAttribute("vo", vo);
+			 List<Running_time> list = service.selectList(vo);
+			   model.addAttribute("list", list); // 수정된 부분
+			   model.addAttribute("selectedShOption", vo.getShOption());
+		        model.addAttribute("selectedShOption2", vo.getShOption2());
+		        model.addAttribute("selectedShOption3", vo.getShOption3());
+		} else {
+//			by pass
+		}
+        
+        
+        
+//        List<Running_time> list = service.selectList(vo);
+//
+//        model.addAttribute("list", list); // 수정된 부분
+       
         return "admin/infra/information/admin_information";
     }
 	

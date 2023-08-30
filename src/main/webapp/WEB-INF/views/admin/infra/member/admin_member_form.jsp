@@ -57,10 +57,7 @@
         
 
         <div id="master_page">
-            <div id="master_search_wrap">
-                
-                
-            </div>
+           
             <!-- <div id="chart_big_wrap">
                 <div id="age_chart_wrap">
                     <div id="age_chart_title">
@@ -255,66 +252,40 @@
             <div id="theater_alter_wrap">
                
                 <form name="form" method="post">
-                <div id="detail_search">
-                    <input  type="text" placeholder="상영지점">
-                   <input name="shKeyword" value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
-                    <input  id="datepicker" type="text" placeholder="상영일">
-                   <select name="shOption">
-                    <option selected disabled value="0">상영관</option>
-                    <option value="1">1관</option>
-                    <option value="2">2관</option>
-                    <option value="3">3관</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영종류</option>
-                    <option value="2D">2D</option>
-                    <option value="4DX">4DX</option>
-                    <option value="IMAX">IMAX</option>
-                    <option value="PRIVATE BOX">PRIVATE BOX</option>
-                   </select>
-                   <select>
-                    <option selected disabled>상영시작시간</option>
-                    <option value="9:00">9:00~</option>
-                    <option value="12:00">12:00~</option>
-                    <option value="18:00">18:00~</option>
-                   </select>
-                 
-                    <button type="submit" id="master_search_btn" class="master_search_btn"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                    <button type="button" class="master_search_btn"><i class="fa-sharp fa-solid fa-rotate-right"></i></button>
-                
-                </div>
+              
                     <div id="theater_alter_small_wrap">
                         <ul class="title_alter_list">
-                            <li>상영지점</li>
-                            <li>영화제목</li>
-                            <li>상영관</li>
-                            <li>상영종류</li>
-                            <li>상영시간</li>
+                             <li>아이디</li>
+                            <li>이름</li>
+                            <li>성별</li>
+                            <li class="tel-li">전화번호</li>
+                            
                         </ul>
                         <div id="theater_alter_list_wrap">
-                        <ul class="theater_alter_list">
-                            <li>김포한강</li>
-                            <li>범죄도시3</li>
-                            <li>3관</li>
-                            <li>2DX</li>
-                            <li>23.06.01 09:00</li>
-                            <li><button type="button" class="list_alter_btn">변경</button></li>
-                        </ul>
+                        
                          <ul class="theater_alter_list">
-                		  <li><input type="text" class="form-control" id="seq" name="seq" placeholder="seq" required readonly value="<c:out value="${item.seq}"/>"></li>
- 						  <li><input type="text" class="form-control" id="id" name="id" placeholder="id" required value="<c:out value="${item.id}"/>"></li>
- 						  <li><input type="text" class="form-control" id="password" name="password" placeholder="password" required value="<c:out value="${item.password}"/>"></li>
- 						  <li><input type="text" class="form-control" id="name" name="name" placeholder="name" required value="<c:out value="${item.name}"/>"></li>
- 						   <li><input type="text" class="form-control" id="gender" name="gender" placeholder="gender" required value="<c:out value="${item.gender}"/>"></li>
- 						    <li><input type="text" class="form-control" id="tel" name="tel" placeholder="tel" required value="<c:out value="${item.tel}"/>"></li>
- 						     <li><input type="text" class="form-control" id="tel_type" name="tel_type" placeholder="tel_type"required value="<c:out value="${item.tel_type}"/>"></li>
+                		 <input type="hidden" class="form-control" id="seq" name="seq"  required value="<c:out value="${item2.seq}"/>">
+ 						  <li><input type="text" class="form-control" id="id" name="id" placeholder="id" required value="<c:out value="${item2.id}"/>"></li>
+ 						
+ 						  <li><input type="text" class="form-control" id="name" name="name" placeholder="name" required value="<c:out value="${item2.name}"/>"></li>
+ 						   <li class="form-control in_select">
+ 						    <select  id="gender" name="gender" required>
+     <option value="">성별</option>
+    <option value="0" <c:if test="${item2.gender == '0'}">selected</c:if>>남성</option>
+    <option value="1" <c:if test="${item2.gender == '1'}">selected</c:if>>여성</option>
+    
+</select>
+ 						   
+ 						   
+ 						   </li>
+ 						    <li><input type="text" class="form-control tel-form" id="tel" name="tel" placeholder="tel" required value="<c:out value="${item2.tel}"/>"></li>
+ 						   
  					
  						     
  						  
- 			    	      <button type="button" id="list_save_btn2">변경저장</button>
- 			        	  <button type="button" id="list_delete_btn">삭제</button>
- 			              <button type="button" id="list_del_check_btn">삭제확인</button>
- 			              <button type="button" id="list_insert_btn">추가 저장</button>
+ 			    	      <button type="button" id="list_save_btn2">변경</button>
+ 			        	  <button type="button" id="list_del_check_btn">삭제</button>
+ 			           
                         </ul>
                     </div>
                         
@@ -322,7 +293,7 @@
                     </div>
 
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_member">메인으로</a></button>
-                    <button type="submit" class="master_alter_button">등록</button>
+                  
                 </form>
             </div>
         </div>

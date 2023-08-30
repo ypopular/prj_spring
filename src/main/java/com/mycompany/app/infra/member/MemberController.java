@@ -41,12 +41,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/admin_member_form")
-	public String admin_member_form(MemberVo vo, Model model) {
+	public String admin_member_form(MemberVo vo,MemberVo vo2, Model model) {
 		
 		Member member = service.selectOne(vo);
-		
+		Member member2 = service.selectOne2(vo2);
 		model.addAttribute("item", member);
-		
+		model.addAttribute("item2", member2);
 		return "admin/infra/member/admin_member_form";
 	}
 	@RequestMapping("/memberUpdt")

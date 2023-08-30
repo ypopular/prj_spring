@@ -7,8 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.mycompany.app.infra.cinema.Cinema;
-import com.mycompany.app.infra.cinema.CinemaVo;
+
 
 @Repository
 public class MovieDao {

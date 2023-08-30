@@ -6,13 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.mycompany.app.infra.cinema.Cinema;
-import com.mycompany.app.infra.cinema.CinemaServiceImpl;
-import com.mycompany.app.infra.cinema.CinemaVo;
-import com.mycompany.app.infra.cinema.Cinema_name;
-import com.mycompany.app.infra.cinema.Cinema_nameVo;
-import com.mycompany.app.infra.cinema.Cinema_theater;
+
 
 
 
@@ -69,19 +65,21 @@ public class MovieController {
 	/**
 	 * @param dto
 	 * @return
+	 * @throws Exception 
 	 */
 	@RequestMapping("/movieInsert")
-	public String movieInsert(Movie dto) {
-		
+	public String movieInsert(Movie dto) throws Exception {
 		System.out.println("movieInsert");
 		service.insert(dto);
 		return "redirect:/admin_movie";
 	}
-	
 	@RequestMapping("/movieUelete")
 	public String movieUelete(Movie dto) {
+		System.out.println("movieUelete");
 		service.uelete(dto);
 		return "redirect:/admin_movie";
 	}
+
+	
 	
 }

@@ -40,15 +40,13 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public int insert(Movie dto) {
-		// TODO Auto-generated method stub
-//		dao.insert(dto);
-		
-		// 포스터 파일 첨부
-//		uploadFiles()
-//		
-//		return 1;
-		return dao.insert(dto);
+	public int insert(Movie dto) throws Exception {
+		dao.insert(dto);
+		System.out.println(dto.getTableName());
+		uploadFiles(dto.getUploadImg(), dto, "uploaded", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
+		System.out.println(dto.getTableName());
+	return 1;	
+
 	}
 
 	@Override
@@ -59,7 +57,7 @@ public class MovieServiceImpl implements MovieService {
 	
 	
 //	-----------------------------------------------------
-public void uploadFiles(MultipartFile[] multipartFiles, Movie dto, String Movie, int type, int maxNumber) throws Exception {
+public void uploadFiles(MultipartFile[] multipartFiles, Movie dto, String tableName, int type, int maxNumber) throws Exception {
 		
 		for(int i=0; i<multipartFiles.length; i++) {
     	
@@ -76,13 +74,10 @@ public void uploadFiles(MultipartFile[] multipartFiles, Movie dto, String Movie,
 				String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
 				String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
 				
-			
-				
-				
 				File uploadPath = new File(path);
 				
 				if (!uploadPath.exists()) {
-					uploadPath.mkdirs();
+					uploadPath.mkdir();
 				} else {
 					// by pass
 				}
@@ -95,7 +90,7 @@ public void uploadFiles(MultipartFile[] multipartFiles, Movie dto, String Movie,
 				dto.setExt(ext);
 				dto.setSize(multipartFiles[i].getSize());
 				
-				
+				dto.setTableName(tableName);
 				dto.setType(type);
 //				dto.setDefaultNy();
 				dto.setSort(maxNumber + i);

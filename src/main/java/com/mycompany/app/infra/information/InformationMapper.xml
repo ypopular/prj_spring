@@ -10,6 +10,80 @@
       <resultMap id="resultMapObj3" type="com.mycompany.app.infra.information.Movie2"></resultMap>
        <resultMap id="resultMapObj4" type="com.mycompany.app.infra.information.Cinema_theater2"></resultMap>
        
+    
+       
+         <sql id ="selectCommon">
+   		 select 
+					a.seq,
+					a.start_time,
+					a.end_time,
+					a.date,
+					a.delYN,
+					b.movie_name,
+					d.location_cinema_name,
+					c.theater_number,
+					c.cinema_type,
+					a.seat_remain
+				from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+ 				 WHERE 
+ 				  b.movie_name LIKE CONCAT('%',#{shKeyword},'%')
+ 				AND d.location_cinema_name LIKE CONCAT('%',#{shKeyword2},'%')
+ 				AND a.date LIKE CONCAT('%',#{shKeyword3},'%') 		
+   			   <if test="shOption != null">
+   			    AND c.theater_number = #{shOption}
+   			    </if>
+   			     <if test="shOption2 != null">
+   			    AND c.cinema_type = #{shOption2}
+   			    </if>
+   			     <if test="shOption3 != null">
+   			AND (
+   			 (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('00:00', '%H:%i') AND #{shOption3} = '00:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('09:00', '%H:%i') AND #{shOption3} = '09:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('12:00', '%H:%i') AND #{shOption3} = '12:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('18:00', '%H:%i') AND #{shOption3} = '18:00')
+)
+   			    </if>
+				AND	 a.delYN = 0
+				 <if test="shKeyword != null and !shKeyword.equals('')">AND Name LIKE CONCAT('%',#{shKeyword},'%')</if>
+			
+    </sql>
+
+   	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		from
+ 					  running_time a
+ 				 join movie b on b.seq = a.movie_seq
+  				 join cinema_theater c on c.seq = a.cinema_theater_seq
+  				 join cinema_name d on d.seq = c.cinema_name_seq
+ 				 WHERE 
+ 				  b.movie_name LIKE CONCAT('%',#{shKeyword},'%')
+ 				AND d.location_cinema_name LIKE CONCAT('%',#{shKeyword2},'%')
+ 				AND a.date LIKE CONCAT('%',#{shKeyword3},'%') 		
+   			   <if test="shOption != null">
+   			    AND c.theater_number = #{shOption}
+   			    </if>
+   			     <if test="shOption2 != null">
+   			    AND c.cinema_type = #{shOption2}
+   			    </if>
+   			     <if test="shOption3 != null">
+   			AND (
+   			 (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('00:00', '%H:%i') AND #{shOption3} = '00:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('09:00', '%H:%i') AND #{shOption3} = '09:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('12:00', '%H:%i') AND #{shOption3} = '12:00') OR
+    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('18:00', '%H:%i') AND #{shOption3} = '18:00')
+)
+   			    </if>
+				AND	 a.delYN = 0
+				 <if test="shKeyword != null and !shKeyword.equals('')">AND Name LIKE CONCAT('%',#{shKeyword},'%')</if>
+	</select> 
+       
+       
+       
+       
        
        <select id="selectList8" resultMap="resultMapObj3">
    SELECT
@@ -92,44 +166,13 @@ WHERE
    
      <select id="selectList" resultMap="resultMapObj">
     
-    	      	select
-					a.seq,
-					a.start_time,
-					a.end_time,
-					a.date,
-					a.delYN,
-					b.movie_name,
-					d.location_cinema_name,
-					c.theater_number,
-					c.cinema_type,
-					a.seat_remain
-				from
- 					  running_time a
- 				 join movie b on b.seq = a.movie_seq
-  				 join cinema_theater c on c.seq = a.cinema_theater_seq
-  				 join cinema_name d on d.seq = c.cinema_name_seq
- 				 WHERE 
- 				  b.movie_name LIKE CONCAT('%',#{shKeyword},'%')
- 				AND d.location_cinema_name LIKE CONCAT('%',#{shKeyword2},'%')
- 				AND a.date LIKE CONCAT('%',#{shKeyword3},'%') 		
-   			   <if test="shOption != null">
-   			    AND c.theater_number = #{shOption}
-   			    </if>
-   			     <if test="shOption2 != null">
-   			    AND c.cinema_type = #{shOption2}
-   			    </if>
-   			     <if test="shOption3 != null">
-   			AND (
-   			 (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('00:00', '%H:%i') AND #{shOption3} = '00:00') OR
-    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('09:00', '%H:%i') AND #{shOption3} = '09:00') OR
-    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('12:00', '%H:%i') AND #{shOption3} = '12:00') OR
-    (STR_TO_DATE(a.start_time, '%H:%i') >= STR_TO_DATE('18:00', '%H:%i') AND #{shOption3} = '18:00')
-)
-   			    </if>
-				AND	 a.delYN = 0;
-   
-
-   				
+    	    SELECT aa.* FROM (   	
+	   		
+				
+	   			<include refid="selectCommon" />
+		) aa
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+				
     	   
     </select>
     

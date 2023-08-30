@@ -323,6 +323,8 @@
 					</c:forEach>
 				</c:otherwise>
 					</c:choose>	
+					
+					
                         <div class="container-fluid px-0 mt-2">
     <div class="row">
         <div class="col">
@@ -350,6 +352,8 @@
         </div>
     </div>
 </div>
+
+
                     </div>
                         
 

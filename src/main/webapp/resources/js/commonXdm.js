@@ -1,5 +1,5 @@
-document.write("<script src='/resources/xdm/v1/js/constantsXdm.js'></script>");
-document.write("<script src='/resources/xdm/v1/js/validationXdm.js'></script>");
+/*document.write("<script src='/resources/js/ConstantsXdm.js'></script>");
+document.write("<script src='/resources/js/validationXdm.js'></script>");*/
 
 
 $.datepicker.setDefaults({

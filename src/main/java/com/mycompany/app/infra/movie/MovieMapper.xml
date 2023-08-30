@@ -88,6 +88,10 @@
     #{movie_chart},
     0
     )
+    <selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		 </selectKey>
+    
     </insert>
     
      <update id="uelete">
@@ -102,8 +106,8 @@
     
   <!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
   <!-- uploaded s -->
-	<!-- <insert id="insertUploaded">
-		INSERT INTO ${uploaded} (
+	   <insert id="insertUploaded">
+		INSERT INTO ${tableName} (
 			type
 			,defaultYN
 			,sort
@@ -112,8 +116,8 @@
 			,uuidName
 			,ext
 			,size
-			,delYN
-			<include refid="Base.insertRegColumn" />
+			,delYN2
+			<!-- <include refid="Base.insertRegColumn" /> -->
 			,pseq
 		) values (
 			#{type}
@@ -125,11 +129,11 @@
 			,#{ext}
 			,#{size}
 			,0
-			<include refid="Base.insertRegValue" />
-			,#{pseq}
+			<!-- <include refid="Base.insertRegValue" /> -->
+			,#{seq}
 		)
 	</insert>
-	<sql id="Base.insertRegColumn">
+	<!-- <sql id="Base.insertRegColumn">
     , regDate
     , modDate
     , createdBy
@@ -141,6 +145,6 @@
     , #{modDate}
     , #{createdBy}
     , #{modifiedBy}
-</sql>
-	 -->
+</sql>  -->
+	  
 </mapper>

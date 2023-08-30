@@ -19,9 +19,7 @@ public class Running_time {
 	public Integer theater_number;
 	public Integer cinema_type;
 	    
-	
-	
-	
+
 	
 	public Integer getSeat_remain() {
 		return seat_remain;

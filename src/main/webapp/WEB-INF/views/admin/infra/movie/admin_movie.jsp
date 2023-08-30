@@ -260,7 +260,7 @@
 							 <ul class="theater_alter_list">
 						   <li class="form-control movie_title_name"> <c:out value="${list.movie_name}"></c:out></li>	
  						
- 			    				  <button type="button" class="list_alter_btn2"><a href="admin_cinema_location_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button>
+ 			    				  <button type="button" class="list_alter_btn2"><a href="admin_movie_add_form?seq=<c:out value="${list.seq}"/>">변경</a></button>
 						     <li><button type="button" class="list_alter_btn"><a href="admin_movie_detail?seq=<c:out value="${list.seq}"/>">상세</a></button></li>
 			 </ul>
 						

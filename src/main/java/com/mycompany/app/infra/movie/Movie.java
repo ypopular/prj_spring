@@ -19,15 +19,17 @@ public class Movie {
 	private String release_date;
 	private String description_movie;
 	private Integer movie_chart;
-	
-	
+	private Integer delYN;
+//	----------------------------------------
 	private MultipartFile[] uploadImg;
 	private Integer uploadImgType;	
 	private Integer uploadImgMaxNumber;
 	private String[] uploadImgDeleteSeq;
 	private String[] uploadImgDeletePathFile;	
 	
-//	private String seq;
+	private String tableName;
+	
+	private String img_seq;
 	private Integer type;
 	private Integer defaultYN;
 	private Integer sort;
@@ -36,8 +38,32 @@ public class Movie {
 	private String uuidName;
 	private String ext;
 	private long size;
-	private Integer delYN;
+	private Integer delYN2;
 	private String pseq;
+	
+	
+	
+	
+	
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	public Integer getDelYN2() {
+		return delYN2;
+	}
+	public void setDelYN2(Integer delYN2) {
+		this.delYN2 = delYN2;
+	}
+	
+	public String getImg_seq() {
+		return img_seq;
+	}
+	public void setImg_seq(String img_seq) {
+		this.img_seq = img_seq;
+	}
 	public String getSeq() {
 		return seq;
 	}

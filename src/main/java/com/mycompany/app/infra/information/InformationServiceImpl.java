@@ -95,6 +95,12 @@ public class InformationServiceImpl implements InformationService{
 		return dao.selectList8(vo8);
 	}
 
+	@Override
+	public int selectOneCount(Running_timeVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
+
 	
 
 	

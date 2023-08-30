@@ -259,8 +259,8 @@
           <form name="form_list" method="post">
                 <!----------------------  -->
                 
-                 <%--  <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> --%>
+                   <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> 
                   <div id="detail_search">
                     <input name="shKeyword2"  value="<c:out value="${vo.shKeyword2 }"/>" type="text" placeholder="상영지점"> 
                    <input name="shKeyword"  value="<c:out value="${vo.shKeyword }"/>"type="text" placeholder="영화제목">
@@ -358,7 +358,34 @@
 			
 						 </ul>
 					</c:forEach>
-						
+					
+						<div class="container-fluid px-0 mt-2">
+    <div class="row">
+        <div class="col">
+            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+            <ul class="pagination justify-content-center mb-0  paging_wrap">
+                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+<c:if test="${vo.startPage gt vo.pageNumToShow}">
+                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+</c:if>
+<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+	<c:choose>
+		<c:when test="${i.index eq vo.thisPage}">
+                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+		</c:when>
+		<c:otherwise>             
+                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+		</c:otherwise>
+	</c:choose>
+</c:forEach>                
+<c:if test="${vo.endPage ne vo.totalPages}">                
+                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+</c:if>
+                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
 					
 				
 				
@@ -418,6 +445,13 @@ $("#list_delete_btn").on("click",function(){
 $("#list_del_check_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaUelete").submit();
 });
+
+goList = function(thisPage) {
+	$("input:hidden[name=thisPage]").val(thisPage);
+	$("form[name=form_list]").attr("action", "admin_information").submit();
+}
+	
+
 
 
 document.getElementById('search_reset').addEventListener('click', function() {

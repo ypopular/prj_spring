@@ -17,6 +17,17 @@ public class MovieVo {
 	private String release_date;
 	private String description_movie;
 	private Integer movie_chart;
+	private Integer delYN;
+	
+	
+	
+	
+	public Integer getDelYN() {
+		return delYN;
+	}
+	public void setDelYN(Integer delYN) {
+		this.delYN = delYN;
+	}
 	public String getSeq() {
 		return seq;
 	}

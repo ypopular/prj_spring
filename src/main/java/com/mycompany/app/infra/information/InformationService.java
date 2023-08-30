@@ -2,6 +2,8 @@ package com.mycompany.app.infra.information;
 
 import java.util.List;
 
+import com.mycompany.app.infra.codegroup.CodeGroupVo;
+
 
 
 public interface InformationService {
@@ -27,5 +29,7 @@ public List<Running_time> selectList(Running_timeVo vo);
 	public List<Cinema_theater2> selectList6(Cinema_theater2Vo vo6);
 	public List<Movie2> selectList7(Movie2Vo vo7);
 	public List<Movie2> selectList8(Movie2Vo vo8);
+	
+	public int selectOneCount(Running_timeVo vo);
 	
 }

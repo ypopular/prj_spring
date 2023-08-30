@@ -10,13 +10,21 @@
     	SELECT *
     	FROM
     		member
-    	WHERE 1=1
-    	AND
-    	 name LIKE CONCAT('%',#{shKeyword},'%')
-    	 AND	delYN = 0
+    	WHERE
+    		delYN = 0
     		
     
     </select>
+    
+    <select id="selectOne2" resultMap="resultMapObj">
+		SELECT 
+			*
+		FROM 
+			member
+		WHERE 1=1
+		AND
+	   		seq = #{seq}
+	</select>
     
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT 
@@ -35,12 +43,12 @@
 	<update id="update">
         UPDATE     member
         SET     id = #{id},
-       			password = #{password},
+       			
        			name = #{name},
        			gender = #{gender},
-       			tel = #{tel},
-       			tel_type = #{tel_type},
-				delYN=#{delYN}        	
+       			tel = #{tel}
+       			
+				       	
         WHERE  1=1
         AND
            seq = #{seq}  

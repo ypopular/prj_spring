@@ -2916,7 +2916,7 @@ video{
 }
 .title_alter_list li{
     float: left;
-    margin-right: 70px;
+    margin-right: 50px;
     width:80px;
     height:30px;
     text-align:center;
@@ -3493,4 +3493,14 @@ video{
 }
 #hidden_form2{
 	display:none;
+}
+.tel-form{
+	width:100px !important;
+	font-size:12px !important; 	
+}
+.tel-li{
+	width:100px !important;
+}
+.paging_wrap{
+	position:absoulte;
 }
