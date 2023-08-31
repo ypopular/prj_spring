@@ -77,5 +77,11 @@ public class Ticketing_detailServiceImpl implements Ticketing_detailService {
 		return dao.update(dto);
 	}
 
+	@Override
+	public int uelete(Ticketing_detail dto) {
+		// TODO Auto-generated method stub
+		return dao.uelete(dto);
+	}
+
 	
 }

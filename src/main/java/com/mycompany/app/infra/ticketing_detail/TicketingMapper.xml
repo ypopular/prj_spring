@@ -147,7 +147,8 @@
     
     	      	select DISTINCT
 					
-					b.movie_name
+					b.movie_name,
+					b.view_age
 				
 				from
  					  running_time a
@@ -197,6 +198,7 @@
                 a.delYN,
                 b.date,
                 b.start_time,
+                b.end_time,
                 c.movie_name,
                 d.location_cinema_name,
                 e.theater_number,
@@ -211,9 +213,9 @@
   				join cinema_name d on d.seq = e.cinema_name_seq
   			   
    				join member g on g.seq = a.member_seq 
-		WHERE 1=1
-		AND
-			seq = #{seq}
+		WHERE
+		
+			a.seq = #{seq}
 	</select>
 	
 	<insert id="insert">
@@ -236,6 +238,15 @@
     	)
 	</insert>
 	
+	 <update id="uelete">
+        UPDATE 
+        	ticketing_detail
+        SET 
+        	delYN = 1
+        WHERE 1=1
+        AND
+        	seq = #{seq}
+    </update>
 	
 	
 	

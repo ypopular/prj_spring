@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
+
 
 
 
@@ -28,7 +28,9 @@ public class MovieController {
 	@RequestMapping(value="/admin_movie_detail")
 	public String admin_movie_detail(@ModelAttribute("vo")MovieVo vo,Model model) {
 		Movie movie = service.selectOne(vo);
+		Movie movie2 = service.selectOne2(vo);
 		model.addAttribute("item", movie);
+		model.addAttribute("item2", movie2);
 		return "admin/infra/movie/admin_movie_detail";
 	}
 //--------------------------------------------------------------------------

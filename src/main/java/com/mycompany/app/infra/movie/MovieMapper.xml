@@ -5,6 +5,10 @@
 <mapper namespace="com.mycompany.app.infra.movie.MovieMapper">
 <resultMap id="resultMapObj" type="com.mycompany.app.infra.movie.Movie"></resultMap>
 
+
+
+
+
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT *
 		FROM
@@ -13,6 +17,15 @@
 			delYN=0
 	</select>
 	
+	
+	<select id="selectOne2" resultMap="resultMapObj">
+		SELECT *
+		FROM 
+			uploaded
+		WHERE 1=1
+		AND
+			pseq = #{seq}
+	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT *
@@ -35,6 +48,7 @@
         		casting_actor = #{casting_actor},
         		genre = #{genre},
         		view_age = #{view_age},
+        		movie_time =#{movie_time},
         		made_country = #{made_country},
         		release_date = #{release_date},
         		description_movie = #{description_movie},
@@ -70,6 +84,7 @@
     release_date,
     description_movie,
     movie_chart,
+    movie_time,
     delYN
     )
     VALUE (
@@ -86,6 +101,7 @@
     #{release_date},
     #{description_movie},
     #{movie_chart},
+    #{movie_time},
     0
     )
     <selectKey resultType="String" keyProperty="seq" order="AFTER">

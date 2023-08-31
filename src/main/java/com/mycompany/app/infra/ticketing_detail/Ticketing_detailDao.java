@@ -54,6 +54,9 @@ public class Ticketing_detailDao {
 	 public int insert(Ticketing_detail dto) { 
 	    	return sqlSession.insert(namespace + ".insert", dto); 		 
 		}
+	 public int uelete(Ticketing_detail dto) { 
+	    	return sqlSession.update(namespace + ".uelete", dto); 		 
+		}
 	 public int update(Running_time2 dto) { 
 	    	return sqlSession.update(namespace + ".update", dto); 		 
 		}

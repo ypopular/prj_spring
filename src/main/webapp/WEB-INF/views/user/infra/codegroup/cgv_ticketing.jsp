@@ -366,14 +366,14 @@
                         <a href="#">혜택</a>
                     </li>
                 </ul>
-                <from>
+                <form>
                     <div id="search">
                         <input type="text">
                         <button type="button">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </div>
-                </from>
+                </form>
             </div>
         </div>
 
@@ -412,7 +412,23 @@
                              <c:forEach var="list2" items="${list2}">
                                 <li>
                                     <a href="#" onclick="return false" title="<c:out value="${list2.movie_name}"></c:out>">
-                                        <i class="age_15">15</i>
+                                        <c:choose>
+  <c:when test="${list2.view_age == 15}">
+    <i class="age_15">15</i>
+    <c:set var="numberVisible" value="false" />
+  </c:when>
+  <c:when test="${list2.view_age == 0}">
+    <i class="age_all">0</i>
+    <c:set var="numberVisible" value="false" />
+  </c:when>
+  <c:when test="${list2.view_age == 12}">
+    <i class="age_12">12</i>
+    <c:set var="numberVisible" value="false" />
+  </c:when>
+  <c:otherwise>
+    <c:set var="numberVisible" value="true" />
+  </c:otherwise>
+</c:choose>
                                         <span><c:out value="${list2.movie_name}"></c:out></span></a>
                                 </li>
                                 

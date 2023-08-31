@@ -303,7 +303,7 @@
                             required value="<c:out value="${item.made_country}"/>">
                         </div>
                         <div class="master_movie_form">
-                            <div class="movie_title">나라</div>
+                            <div class="movie_title">개봉일</div>
                             <input type="text" name="release_date" class="movie_name form-control" 
                             required value="<c:out value="${item.release_date}"/>">
                         </div>
@@ -320,7 +320,7 @@
                   
                             
                             <div class="movie_title">이미지</div>
-                                 <span id=insert_img_btn>첨부하기</span>
+                                
                            <div class="movie_img_insert form-control" >
                            
                            <div class="col-sm-6 mt-3 mt-sm-0">
@@ -350,7 +350,7 @@
                          
                            </div>
                            </div>
-                           <button type="button" id="list_del_check_btn">삭제</button>
+                        
                             <button type="button" id="go_insert_movie">추가 저장</button>
                             </form>
                         </div>

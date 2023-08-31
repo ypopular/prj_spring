@@ -359,7 +359,7 @@
 						 </ul>
 					</c:forEach>
 					
-						<div class="container-fluid px-0 mt-2">
+						<div class="container-fluid px-0">
     <div class="row">
         <div class="col">
             <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->

@@ -287,7 +287,7 @@
 						    
 						     	
 
-						     <li><button type="button" class="list_alter_btn"><a href="admin_information_alter_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
+						     <li><button type="button" class="list_alter_btn"><a href="admin_ticketing_form?seq=<c:out value="${list.seq}"/>">변경</a></button></li>
 			
 						 </ul>
 					</c:forEach>

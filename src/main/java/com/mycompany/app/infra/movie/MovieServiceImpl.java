@@ -101,6 +101,12 @@ public void uploadFiles(MultipartFile[] multipartFiles, Movie dto, String tableN
 		}
 	}
 
+@Override
+public Movie selectOne2(MovieVo vo) {
+	// TODO Auto-generated method stub
+	return dao.selectOne2(vo);
+}
+
 
 
 

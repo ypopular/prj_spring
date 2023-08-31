@@ -1654,6 +1654,14 @@ video{
     overflow: hidden;
     overflow-y: scroll;
 }
+#movie_list i{
+	width:17px;
+	height:20px;
+	 display:inline-block;
+	 position: absolute;
+	 left:5px;
+	 bottom:8px;
+}
 #movie_list ul li{
     width: 250px;
     height: 40px;
@@ -1667,6 +1675,7 @@ video{
     height: 40px;
     display: block;
     color: #000;
+     position: relative;
 }
 #movie_list ul li span{
     color: #000;
@@ -1674,6 +1683,9 @@ video{
     line-height: 40px;
     font-weight: 700;
     font-size: 13px;
+    position: absolute;
+	 left:20px;
+	 bottom:-2px;
 }
 .p_none{
     display: none;
@@ -1721,6 +1733,7 @@ video{
     border-radius: 2px;
     color: transparent;
     line-height: 40px;
+   
 }
 .age_12{
     width: 20px;
@@ -1737,6 +1750,7 @@ video{
     border-radius: 2px;
     color: transparent;
     line-height: 40px;
+   
 }
 
 #theater_select{
@@ -2151,6 +2165,7 @@ video{
     background: url(../img/tnb_buttons.png) no-repeat 0 -546px;
     display: none;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------select_seat */
@@ -2752,7 +2767,7 @@ video{
 }
 #master_movie_wrap2 .movie_img_insert{
     width: 450px !important;
-    height: 100px !important;
+    height: 289px !important;
     border: 1px solid #ccc;
     float: left;
     margin-top: 5px;
@@ -3502,5 +3517,23 @@ video{
 	width:100px !important;
 }
 .paging_wrap{
-	position:absoulte;
+	 position: absolute;
+	left:37%;
+	bottom:25%;
+	width:300px !important;
+}
+.page-item{
+	overflow:visible !important;
+	margin-right:0px !important;
+}
+#theater_alter_wrap .page-item a{
+	color:#ccc ;
+}
+.pagination{
+	--bs-pagination-active-border-color: #3b3a3a;
+	--bs-pagination-active-bg:#3b3a3a;
+}
+.movie_img_insert img{
+	width:214px;
+	height:270px;
 }

@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>admin_movie</title>
+        <title>admin_ticketing</title>
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -38,7 +38,8 @@
                 </div>
             
           
-             <div id="master_banner">
+           
+               <div id="master_banner">
                 <ul>
                     <li id="go_main">
                         <a href="cgv"><i class="fa-solid fa-house"></i> CGV메인</a>
@@ -89,7 +90,7 @@
                 </div>
             </div>
 
-            <div id="master_wrap">
+            <div id="master_wrap" class="ticketing_page">
                 
                 <div id="master_title">
                     <span>관리자</span>
@@ -250,29 +251,52 @@
                
                 <form name="form_list" method="post">
                 
-                    <div id="theater_alter_small_wrap">
-                        <ul class="title_alter_list">
-                            <li class="movie_top_title">영화제목</li>
+                    <div id="theater_alter_small_wrap" class="ticketing_wrap">
+                        <ul class="cinema_name_title_alter_list  ticketing_ul ticketing_wrap">
+                         
+                            <li>예매자</li>
+                            <li>예매지점</li>
+                            <li>예매영화</li>
+                            <li>상영타입</li>
+                            
+                            <li>시작시간</li>
+                            <li>종료시간</li>
+                            <li>상영관</li>
+                            <li>예매좌석</li>
+                            <li>가격</li>
+                            <li>상영날짜</li>
+	                         
                             
                         </ul>
                         <div id="theater_alter_list_wrap">
-                       <c:forEach items="${list}"  var="list"  varStatus="status">
-							 <ul class="theater_alter_list">
-						   <li class="form-control movie_title_name"> <c:out value="${list.movie_name}"></c:out></li>	
- 						
- 			    				  <button type="button" class="list_alter_btn2"><a href="admin_movie_detail?seq=<c:out value="${list.seq}"/>">변경</a></button>
-						     <li><button type="button" class="list_alter_btn"><a href="admin_movie_detail?seq=<c:out value="${list.seq}"/>">상세</a></button></li>
-			 </ul>
-						
-					</c:forEach>
+                        
                        
+							 <ul class="theater_alter_list ticketing_wrap ticketing_list">
+						<input type="hidden" class="form-control"  name="seq" value="<c:out value="${item.seq}"/>">
+							  <li><input type="text" class="form-control"  name="name" value="<c:out value="${item.name}"/>"></li>
+							  <li><input type="text" class="form-control"  name="location_cinema_name" value="<c:out value="${item.location_cinema_name}"/>"></li>
+							  <li><input type="text" class="form-control" name="movie_name" value="<c:out value="${item.movie_name}"/>"></li>
+							  <li><input type="text" class="form-control"  name="cinema_type" value="<c:out value="${item.cinema_type}"/>"></li>
+						      <li><input type="text" class="form-control"  name="name" value="<c:out value="${item.start_time}"/>"></li>
+							  <li><input type="text" class="form-control"  name="name" value="<c:out value="${item.end_time}"/>"></li>
+						      <li><input type="text" class="form-control"  name="name" value="<c:out value="${item.theater_number}"/>"></li>
+						      <li><input type="text" class="form-control"  name="name" value="<c:out value="${item.seat_name}"/>"></li>
+							  <li><input type="text" class="form-control"  name="name" value="<c:out value="${item.payment_amount}"/>"></li>
+							  <li><input type="text" class="form-control form_date"  name="name" value="<c:out value="${item.date}"/>"></li>
+						    
+						     	
+  							
+						     <li><button type="button" class="list_alter_btn">삭제</button></li>
+			
+						 </ul>
+					
+                  	
                     </div>
                         
 
                     </div>
- 					<button type="button" id="go_insert" onclick="location.href='admin_movie_add_form'">영화 추가</button>
-                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_movie">메인으로</a></button>
-             
+ 					
+                    <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_theater">메인으로</a></button>
                 </form>
             </div>
         </div>
@@ -300,18 +324,15 @@ $("#master_search_btn").on("click",function(){
 	$("form[name=form_list]").attr("method","get");
 	
 });
-$("#list_save_btn2").on("click",function(){
-		$("form[name=form]").attr("action","/cinemaUpdt").submit();
-		
-});
+
 $("#list_insert_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaInsert").submit();
 });
 $("#list_delete_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaDelete").submit();
 });
-$("#list_del_check_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaUelete").submit();
+$(".list_alter_btn").on("click",function(){
+	$("form[name=form_list]").attr("action","/ticketing_detailUelete").submit();
 });
 
 

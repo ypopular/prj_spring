@@ -249,67 +249,68 @@
             
             <div id="theater_alter_wrap">
               <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
-              
+                <input type="hidden" name=seq class="movie_name form-control" 
+                            required value="<c:out value="${item.seq}"/>">
                 	<div id="master_movie_wrap">
              		   <div class="master_movie_form">
                             <div class="movie_title">영화이름</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.movie_name}"/>">
+                            <input type="text" name="movie_name" class="movie_name form-control" 
+                             value="<c:out value="${item.movie_name}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">영어이름</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.movie_en_name}"/>">
+                            <input type="text" name="movie_en_name" class="movie_name form-control" 
+                            value="<c:out value="${item.movie_en_name}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">상영상태</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.reservation_in_progress}"/>">
+                            <input type="text" name="reservation_in_progress"  class="movie_name form-control" 
+                            value="<c:out value="${item.reservation_in_progress}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">예매율</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.reservation_rate}"/>">
+                            <input type="text" name="reservation_rate"  class="movie_name form-control" 
+                            value="<c:out value="${item.reservation_rate}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">감독</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.director}"/>">
+                            <input type="text" name="director"  class="movie_name form-control" 
+                             value="<c:out value="${item.director}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">배우</div>
-                           <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.casting_actor}"/>">
+                           <input type="text" name="casting_actor"  class="movie_name form-control" 
+                            value="<c:out value="${item.casting_actor}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">장르</div>
-                           <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.genre}"/>">
+                           <input type="text" name="genre"  class="movie_name form-control" 
+                            value="<c:out value="${item.genre}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나이</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.view_age}"/>">
+                            <input type="text" name="view_age"  class="movie_name form-control" 
+                            value="<c:out value="${item.view_age}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">상영시간</div>
-                           <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.movie_time}"/>">
+                           <input type="text" name="movie_time"  class="movie_name form-control" 
+                            value="<c:out value="${item.movie_time}"/>">
                         </div>
                         <div class="master_movie_form">
                             <div class="movie_title">나라</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.made_country}"/>">
+                            <input type="text" name="made_country"  class="movie_name form-control" 
+                            value="<c:out value="${item.made_country}"/>">
                         </div>
                         <div class="master_movie_form">
-                            <div class="movie_title">나라</div>
-                            <input type="text" class="movie_name form-control" 
-                            required readonly value="<c:out value="${item.release_date}"/>">
+                            <div class="movie_title">개봉일</div>
+                            <input type="text" name="release_date"  class="movie_name form-control" 
+                            value="<c:out value="${item.release_date}"/>">
                         </div>
                         <div class="master_movie_form_story">
                             <div class="movie_title">줄거리</div>
-                            <input type="text" class="movie_name_story form-control" 
-                            required readonly value="<c:out value="${item.description_movie}"/>">
+                            <input type="text" name="description_movie"  class="movie_name_story form-control" 
+                            r value="<c:out value="${item.description_movie}"/>">
                         </div>
                     </div>
                    
@@ -319,14 +320,16 @@
                   
                            
                             <div class="movie_title">미리보기</div>
-                                 <span id=insert_img_btn>첨부하기</span>
+                                
                            <div class="movie_img_insert form-control" >
                            
                           
                                 
                           
-                          
-                          
+                        <img src="<c:out value="${item2.path }"/><c:out value="${item2.uuidName }"/>"
+											alt="Image">
+											
+											
                           
                           
                           
@@ -335,7 +338,8 @@
                            </div>
                             </form>
                         </div>
-                        <button type="button" id="go_insert_movie">추가 저장</button>
+                           <button type="button" id="list_del_check_btn">삭제</button>
+                        <button type="button" id="go_insert_movie">변경 저장</button>
                     <button type="button" id="theater_alter_main_go" class="go_menu_button"><a href="admin_movie">메인으로</a></button>
                         
                     </div>
@@ -375,18 +379,16 @@ $("#master_search_btn").on("click",function(){
 	$("form[name=form_list]").attr("method","get");
 	
 });
-$("#list_save_btn2").on("click",function(){
-		$("form[name=form]").attr("action","/cinemaUpdt").submit();
+$("#go_insert_movie").on("click",function(){
+		$("form[name=form]").attr("action","/movieUpdt").submit();
 		
 });
-$("#go_insert_movie").on("click",function(){
-	$("form[name=form_list]").attr("action","/movieInsert").submit();
-});
+
 $("#list_delete_btn").on("click",function(){
 	$("form[name=form]").attr("action","/cinemaDelete").submit();
 });
 $("#list_del_check_btn").on("click",function(){
-	$("form[name=form]").attr("action","/cinemaUelete").submit();
+	$("form[name=form]").attr("action","/movieUelete").submit();
 });
 
 upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {

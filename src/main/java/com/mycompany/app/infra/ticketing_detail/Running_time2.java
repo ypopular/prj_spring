@@ -18,11 +18,17 @@ public class Running_time2 {
 	public Integer theater_number;
 	public Integer cinema_type;
 	public String location;
-	    
+	public Integer view_age;
 	
 	
 	
 	
+	public Integer getView_age() {
+		return view_age;
+	}
+	public void setView_age(Integer view_age) {
+		this.view_age = view_age;
+	}
 	public Integer getSeat_count() {
 		return seat_count;
 	}

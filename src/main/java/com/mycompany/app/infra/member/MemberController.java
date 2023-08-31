@@ -74,7 +74,7 @@ public class MemberController {
 		
 		System.out.println("memberInsert");
 		service.insert(dto);
-		return "redirect:/admin_member";
+		return "redirect:/cgv";
 	}
 	
 	@RequestMapping("/memberUelete")

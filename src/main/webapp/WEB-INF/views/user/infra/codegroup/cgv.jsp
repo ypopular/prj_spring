@@ -431,7 +431,7 @@
                                 <div class="chart_img_wrap">
                                     <img src="resources/img/chart/1.jpg" alt="">
                                     <div class="secret_movie_detail">
-                                        <a href="cgv_movie_detail">상세보기</a>
+                                        <a href="cgv_movie_detail" title="범죄도시3">상세보기</a>
                                     </div>
                                     <div class="secret_movie_ticketing">
                                         <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>

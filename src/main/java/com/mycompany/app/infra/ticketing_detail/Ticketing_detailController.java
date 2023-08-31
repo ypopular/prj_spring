@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.app.infra.information.Running_time;
+
 
 
 
@@ -35,6 +37,25 @@ public class Ticketing_detailController {
 		
 		return "admin/infra/ticketing_detail/admin_ticketing";
 	}
+	
+	@RequestMapping(value="/admin_ticketing_form")
+	public String admin_ticketing_form(@ModelAttribute("vo")Ticketing_detailVo vo,Model model) {
+		
+		Ticketing_detail ticketing_detail = service.selectOne(vo);
+		model.addAttribute("item", ticketing_detail);
+		
+		return "admin/infra/ticketing_detail/admin_ticketing_form";
+	}
+	
+	
+	@RequestMapping("/ticketing_detailUelete")
+	public String ticketing_detailUelete(Ticketing_detail dto) {
+		System.out.println("ticketing_detailUelete");
+		service.uelete(dto);
+		return "redirect:/admin_ticketing";
+	}
+	
+	
 	
 	@RequestMapping(value="/cgv_ticketing")
 	public String cgv_ticketing(@ModelAttribute("vo")Ticketing_detailVo vo,Running_time2Vo vo2,Running_time2Vo vo3,Model model) {
