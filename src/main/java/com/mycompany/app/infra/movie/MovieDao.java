@@ -29,6 +29,10 @@ public class MovieDao {
     	Movie movie = sqlSession.selectOne(namespace + ".selectOne2", vo); 
 		return movie;
 	}
+    public Movie selectOne3(MovieVo vo) { 
+    	Movie movie = sqlSession.selectOne(namespace + ".selectOne3", vo); 
+		return movie;
+	}
 
     public int update(Movie dto) { 
     	return sqlSession.update(namespace + ".update", dto); 		 

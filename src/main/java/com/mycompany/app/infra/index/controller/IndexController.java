@@ -26,10 +26,7 @@ public class IndexController {
 	public String cgv_movie_chart() {
 		return "user/infra/codegroup/cgv_movie_chart";
 	}
-	@RequestMapping(value="/cgv_movie_detail")
-	public String cgv_movie_detail() {
-		return "user/infra/codegroup/cgv_movie_detail";
-	}
+	
 	@RequestMapping(value="/cgv_movie_theater")
 	public String cgv_movie_theater() {
 		return "user/infra/codegroup/cgv_movie_theater";

@@ -10,6 +10,7 @@ public interface MovieService {
 	
 	public Movie selectOne(MovieVo vo);
 	public Movie selectOne2(MovieVo vo);
+	public Movie selectOne3(MovieVo vo);
 	public int update(Movie dto);
 	public int delete(Movie dto);
 	public int insert(Movie dto) throws Exception;

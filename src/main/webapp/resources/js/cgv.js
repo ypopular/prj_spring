@@ -817,4 +817,31 @@ function drawChart()
 });
 
 
+function submitSearch() {
+    var searchInput = document.getElementById("searchInput").value;
+    if (searchInput.trim() === "") {
+        return false; // 빈 입력은 제출하지 않음
+    }
+    
+    var movieName = encodeURIComponent(searchInput);
+    var url = "cgv_movie_detail?movie_name=" + movieName;
+    window.location.href = url;
+    return false; // 폼 제출 막기
+    
+    
+}
+
+
+function submitSearch2() {
+    var searchInput2 = document.getElementById("searchInput2").value;
+    if (searchInput2.trim() === "") {
+        return false; // 빈 입력은 제출하지 않음
+    }
+    
+    var movieName2 = encodeURIComponent(searchInput2);
+    var url = "cgv_movie_detail?movie_name=" + movieName2;
+    window.location.href = url;
+    return false; // 폼 제출 막기
+}
+
 

@@ -107,6 +107,12 @@ public Movie selectOne2(MovieVo vo) {
 	return dao.selectOne2(vo);
 }
 
+@Override
+public Movie selectOne3(MovieVo vo) {
+	// TODO Auto-generated method stub
+	return dao.selectOne3(vo);
+}
+
 
 
 

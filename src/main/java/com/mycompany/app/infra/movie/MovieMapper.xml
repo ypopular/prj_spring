@@ -6,7 +6,16 @@
 <resultMap id="resultMapObj" type="com.mycompany.app.infra.movie.Movie"></resultMap>
 
 
-
+<select id="selectOne3" resultMap="resultMapObj">
+		SELECT *
+		FROM 
+			movie
+		WHERE 1=1
+		AND
+			movie_name LIKE CONCAT('%',#{movie_name},'%')
+		AND
+			delYN =0;	
+	</select>
 
 
 	<select id="selectList" resultMap="resultMapObj">
@@ -52,6 +61,7 @@
         		made_country = #{made_country},
         		release_date = #{release_date},
         		description_movie = #{description_movie},
+        		
         		movie_chart = #{movie_chart}
         		
         WHERE  1=1

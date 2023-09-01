@@ -172,14 +172,14 @@
                             <a href="#">혜택</a>
                         </li>
                     </ul>
-                    <from>
+                    <form id="searchForm2" onsubmit="return submitSearch2()">
                         <div id="search2">
-                            <input type="text">
-                            <button type="button">
+                            <input type="text" id="searchInput2"  value="범죄도시3">
+                            <button type="submit">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
-                    </from>
+                    </form>
                 </div>
             </div>
         </header>
@@ -373,23 +373,23 @@
                         <a href="#">혜택</a>
                     </li>
                 </ul>
-                <from>
+                <form id="searchForm" onsubmit="return submitSearch()">
                     <div id="search">
-                        <input type="text">
-                        <button type="button">
+                        <input type="text" id="searchInput"  value="범죄도시3">
+                        <button type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </div>
-                </from>
+                </form>
             </div>
         </div>
         <div id="movie_trailer">
 
             <div id="movie_trailer_small">
                 <div id="explain">
-                    <h1>트랜스포머 비스트의 서막</h1>
-                    <h2>"함께해라 새로운 시작을"<br>
-                        변신의 진화! 2차 예고편
+                    <h1>범죄도시3</h1>
+                    <h2>"시원하게 싹 쓸어버린다"<br>
+                        2차 예고편
                         <i class="fa-solid fa-play"></i>
                     </h2>
                     <div id="detail">
@@ -409,7 +409,7 @@
 
             <video id="video_obj" autoplay="autoplay" muted="muted">
                 <source
-                    src="https://adimg.cgv.co.kr/images/202305/Transformers7/TF7_1080x608.mp4"
+                    src="http://h.vod.cgv.co.kr/vodCGVa/87045/87045_214895_1200_128_960_540.mp4"
                     type="video/mp4">
 
             </div>
@@ -431,7 +431,7 @@
                                 <div class="chart_img_wrap">
                                     <img src="resources/img/chart/1.jpg" alt="">
                                     <div class="secret_movie_detail">
-                                        <a href="cgv_movie_detail" title="범죄도시3">상세보기</a>
+                                       <a href='cgv_movie_detail?movie_name=범죄도시3' title="범죄도시3">상세보기</a>
                                     </div>
                                     <div class="secret_movie_ticketing">
                                         <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
@@ -921,7 +921,25 @@
                     <i class="fa-solid fa-arrow-up"></i>
                 </div>
 
+
+
+
+
+
+
+
 <script>
+
+
+
+
+
+
+
+
+
+
+
 function checkLogin(pageName) {
     <c:choose>
         <c:when test="${sessionId == null}">

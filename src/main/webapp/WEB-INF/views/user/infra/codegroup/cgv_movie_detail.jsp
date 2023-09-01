@@ -21,6 +21,8 @@
    <script src="resources/js/cgv.js"></script>
 </head>
 <body>
+
+   
     <header>
         <div id="main_nav2">
             <div id="secret_nav2">
@@ -199,36 +201,44 @@
         <div id="detail_small">
             <div id="detail_top">
                 <div id="detail_img">
-                    <img src="resources/img/detail_img.jpg" width="100%" height="100%" alt="">
+                    <img src="<c:out value="${item2.path }"/><c:out value="${item2.uuidName }"/>" width="100%" height="100%" alt="">
                 </div>
                 <div id="detail_title">
                     <div id="detail_title_top">
-                        <strong>범죄도시3</strong>
-                        <div id="title_ticketing">예매중</div>
-                        <p>THE ROUNDUP : NO WAY OUT</p>
-                        <div id="ticketing_score"><span>예매율 76.1%</span><div id="egg_wrap3"><img class="egg" src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png"><span>99%</span></div>
+                        <strong><c:out value="${item.movie_name}"></c:out></strong>
+                        <div id="title_ticketing"><c:choose>
+    <c:when test="${item.reservation_in_progress == 0}">
+        예매중
+    </c:when>
+    <c:when test="${item.reservation_in_progress == 1}">
+        개봉대기
+    </c:when>
+    <c:otherwise>
+        기타 상태
+    </c:otherwise>
+</c:choose></div>
+                        <p><c:out value="${item.movie_en_name}"></c:out></p>
+                        <div id="ticketing_score"><span>예매율 <c:out value="${item.reservation_rate}"></c:out></span><div id="egg_wrap3"><img class="egg" src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png"><span>99%</span></div>
                     </div>
                     </div>
                     <div id="detail_title_bottom">
-                        <p>감독 : 이상용 / 배우 : 
-                            마동석 ,  이준혁 ,  아오키 무네타카 ,  이범수 ,  김민재 ,  전석호 ,  고규필</p>
-                        <p>장르 : 범죄, 액션 / 기본 : 
-                                15, 105분, 한국</p>
+                        <p>감독 : <c:out value="${item.director}"></c:out> / 배우 : 
+                            <c:out value="${item.casting_actor}"></c:out></p>
+                        <p>장르 : <c:out value="${item.genre}"></c:out> / 기본 : 
+                                <c:out value="${item.view_age}"></c:out>, <c:out value="${item.movie_time}"></c:out>분, <c:out value="${item.made_country}"></c:out></p>
                         <p>개봉 : 
-                                    2023.05.31</p>
+                                   <c:out value="${item.release_date}"></c:out></p>
                         <div id="ticketing_go"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')"></a></div>
                     </div>
                 </div>
             </div>
             <div id="detail_content">
-                
-                <p class="p_weight">대체불가 괴물형사 마석도, 서울 광수대로 발탁!</p>
-                <p>베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다.</p>
-                <p>사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다.</p>
-                <p>한편, 마약 사건의 배후인 '주성철'(이준혁)은 계속해서 판을 키워가고</p>
-                <p>약을 유통하던 일본 조직과 '리키'(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데...</p>
-                <p class="p_weight">나쁜 놈들 잡는 데 이유 없고 제한 없다</p>
-                <p class="p_weight">커진 판도 시원하게 싹 쓸어버린다!</p>
+             <p id="description_paragraph"></p>
+               
+   
+    <script>
+      
+    </script>
             
             </div>
 
@@ -278,6 +288,16 @@
     <div id="top_btn"><i class="fa-solid fa-arrow-up"></i></div>
     
     <script >
+    
+    
+    
+    var descriptionFromDatabase = "${item.description_movie}";
+  
+   
+    var descriptionParagraph = document.getElementById("description_paragraph");
+    descriptionParagraph.innerHTML = descriptionFromDatabase;
+    
+    
     function checkLogin(pageName) {
         <c:choose>
             <c:when test="${sessionId == null}">

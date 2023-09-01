@@ -46,6 +46,22 @@ public class MovieController {
 	
 		return "admin/infra/movie/ex";
 	}
+// -----------------------------------------------
+	@RequestMapping(value="/cgv_movie_detail")
+	public String cgv_movie_detail(MovieVo vo, Model model) {
+		
+		
+		Movie movie = service.selectOne3(vo);
+		String seq = movie.getSeq(); // selectOne3 메서드로부터 받아온 seq 값
+
+		vo.setSeq(seq); 
+	
+		Movie movie2 = service.selectOne2(vo);
+		model.addAttribute("item", movie);
+		model.addAttribute("item2", movie2);
+		return "user/infra/codegroup/cgv_movie_detail";
+	}
+	
 	
 //	-----------------------------------------------
 	@RequestMapping("/movieUpdt")
