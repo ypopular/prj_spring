@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.app.infra.information.Running_time;
+
 
 
 @Controller
@@ -32,11 +34,18 @@ public class MemberController {
 		System.out.println("controller: vo.getShKeyword():" + vo.getShKeyword());
 		
 		vo.setShKeyword(vo.getShKeyword() == null?"":vo.getShKeyword());
+		 vo.setParamsPaging(service.selectOneCount(vo));
+	
+	if(vo.getTotalRows() > 0) {
+
+		List<Member> list = service.selectList(vo);
+		   model.addAttribute("list", list); 
+		   model.addAttribute("selectedShOption", vo.getShOption());
+	       
+	} else {
+//		by pass
+	}
 		
-	List<Member> list = service.selectList(vo);
-		
-		model.addAttribute("list",list);
-//		model.addAttribute("vo",vo);
 		return "admin/infra/member/admin_member";
 	}
 	

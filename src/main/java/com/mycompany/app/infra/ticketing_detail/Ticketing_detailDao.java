@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 
 
+
+
 @Repository
 public class Ticketing_detailDao {
 
@@ -61,6 +63,6 @@ public class Ticketing_detailDao {
 	    	return sqlSession.update(namespace + ".update", dto); 		 
 		}
 	
-	
+	   public int selectOneCount(Ticketing_detailVo vo){ return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
 }

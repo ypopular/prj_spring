@@ -49,6 +49,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.selectOne2(vo2);
 	}
+	@Override
+	public int selectOneCount(MemberVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
 	
 	
 	

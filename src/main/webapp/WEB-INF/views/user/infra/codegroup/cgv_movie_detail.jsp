@@ -218,7 +218,7 @@
     </c:otherwise>
 </c:choose></div>
                         <p><c:out value="${item.movie_en_name}"></c:out></p>
-                        <div id="ticketing_score"><span>예매율 <c:out value="${item.reservation_rate}"></c:out></span><div id="egg_wrap3"><img class="egg" src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png"><span>99%</span></div>
+                        <div id="ticketing_score"><span>예매율 <c:out value="${item.reservation_rate}"></c:out>%</span><div id="egg_wrap3"><img class="egg" src="https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png"><span>99%</span></div>
                     </div>
                     </div>
                     <div id="detail_title_bottom">

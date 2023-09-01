@@ -6,6 +6,8 @@ import java.util.List;
 
 
 
+
+
 public interface Ticketing_detailService {
 	
 	
@@ -25,4 +27,5 @@ public interface Ticketing_detailService {
 	public int uelete(Ticketing_detail dto);
 	public int update(Running_time2 dto);
 	
+	public int selectOneCount(Ticketing_detailVo vo);
 }

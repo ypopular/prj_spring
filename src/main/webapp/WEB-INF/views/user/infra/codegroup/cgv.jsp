@@ -452,7 +452,7 @@
                                 <div class="chart_img_wrap">
                                     <img src="resources/img/chart/2.jpg" alt="">
                                     <div class="secret_movie_detail">
-                                        <a href="cgv_movie_detail">상세보기</a>
+                                       <a href='cgv_movie_detail?movie_name=인어공주'>상세보기</a>
                                     </div>
                                     <div class="secret_movie_ticketing">
                                         <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
@@ -472,7 +472,7 @@
                                     <div class="chart_img_wrap">
                                         <img src="resources/img/chart/3.jpg" alt="">
                                         <div class="secret_movie_detail">
-                                            <a href="cgv_movie_detail">상세보기</a>
+                                            <a href='cgv_movie_detail?movie_name=분노의 질주-라이드 오어 다이'>상세보기</a>
                                         </div>
                                         <div class="secret_movie_ticketing">
                                             <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
@@ -493,7 +493,7 @@
                                         <div class="chart_img_wrap">
                                             <img src="resources/img/chart/4.jpg" alt="">
                                             <div class="secret_movie_detail">
-                                                <a href="cgv_movie_detail">상세보기</a>
+                                                 <a href='cgv_movie_detail?movie_name=가디언즈 오브 갤럭시'>상세보기</a>
                                             </div>
                                             <div class="secret_movie_ticketing">
                                                 <a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a>
@@ -513,7 +513,7 @@
                                         <li>
                                             <div class="chart_img_wrap">
                                                 <img  src="resources/img/chart/5.jpg" alt="">
-                                                <div class="secret_movie_detail"><a href="cgv_movie_detail">상세보기</a></div>
+                                                <div class="secret_movie_detail"> <a href='cgv_movie_detail?movie_name=남은 인생 10년'>상세보기</a></div>
                                                 <div class="secret_movie_ticketing"><a href="javascript:void(0);" onclick="checkLogin('cgv_ticketing')">예매하기</a></div>
                                                 <span>5</span>
                                                 </div>

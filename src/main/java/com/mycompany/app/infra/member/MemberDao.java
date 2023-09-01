@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.app.infra.information.Running_timeVo;
+
 @Repository
 public class MemberDao {
 
@@ -46,7 +48,7 @@ public class MemberDao {
     
     
     
-    
+    public int selectOneCount(MemberVo vo){ return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	
 
    

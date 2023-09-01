@@ -9,6 +9,48 @@
     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.ticketing_detail.Running_time2"></resultMap>
    
    
+   
+   <sql id ="selectCommon">
+   		  select
+				a.seq,
+                a.payment_amount,
+                a.delYN,
+                b.date,
+                b.start_time,
+                b.end_time,
+                c.movie_name,
+                d.location_cinema_name,
+                e.theater_number,
+                e.cinema_type,
+                a.seat_name,
+                g.name
+			from
+				ticketing_detail a
+   				join running_time b on b.seq = a.running_time_seq
+  			    join movie c on c.seq = b.movie_seq
+   			    join cinema_theater e on e.seq = b.cinema_theater_seq
+  				join cinema_name d on d.seq = e.cinema_name_seq
+   				join member g on g.seq = a.member_seq 
+   		   where
+				a.delYN =0
+    </sql>
+
+   	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		from
+				ticketing_detail a
+   				join running_time b on b.seq = a.running_time_seq
+  			    join movie c on c.seq = b.movie_seq
+   			    join cinema_theater e on e.seq = b.cinema_theater_seq
+  				join cinema_name d on d.seq = e.cinema_name_seq
+   				join member g on g.seq = a.member_seq 
+   		   where
+				a.delYN =0
+	</select> 
+       
+   
+   
+   
    <update id="update">
         UPDATE    running_time
         SET     
@@ -162,32 +204,12 @@
       
    
      <select id="selectList" resultMap="resultMapObj">
-    
-    	      select
-				a.seq,
-                a.payment_amount,
-                a.delYN,
-                b.date,
-                b.start_time,
-                b.end_time,
-                c.movie_name,
-                d.location_cinema_name,
-                e.theater_number,
-                e.cinema_type,
-                a.seat_name,
-                g.name
-			from
-				ticketing_detail a
-   				join running_time b on b.seq = a.running_time_seq
-  			    join movie c on c.seq = b.movie_seq
-   			    join cinema_theater e on e.seq = b.cinema_theater_seq
-  				join cinema_name d on d.seq = e.cinema_name_seq
-  			   
-   				join member g on g.seq = a.member_seq 
-   		   where
-				a.delYN =0;
-
-   				
+      SELECT aa.* FROM (   	
+	   		
+				
+	   			<include refid="selectCommon" />
+		) aa
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
     	   
     </select>
     

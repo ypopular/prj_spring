@@ -2,7 +2,6 @@ package com.mycompany.app.infra.information;
 
 import java.util.List;
 
-import com.mycompany.app.infra.codegroup.CodeGroupVo;
 
 
 

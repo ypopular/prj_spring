@@ -6,12 +6,40 @@
 
     <resultMap id="resultMapObj" type="com.mycompany.app.infra.member.Member"></resultMap>
    
-    <select id="selectList" resultMap="resultMapObj">
-    	SELECT *
-    	FROM
+   <sql id ="selectCommon">
+   		SELECT *
+   		FROM
     		member
     	WHERE
     		delYN = 0
+			
+    </sql>
+     	<select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		FROM
+    		member
+    	WHERE
+    		delYN = 0
+	</select> 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    <select id="selectList" resultMap="resultMapObj">
+    	SELECT aa.*FROM(
+    	<include refid="selectCommon" />
+    	) aa
+    	LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+    	
     		
     
     </select>

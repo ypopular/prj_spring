@@ -2,6 +2,8 @@ package com.mycompany.app.infra.member;
 
 import java.util.List;
 
+
+
 public interface MemberService {
 
 	public List<Member> selectList(MemberVo vo);
@@ -16,4 +18,5 @@ public interface MemberService {
 	
 	public int selectOneCheckId(MemberVo vo);
 
+	public int selectOneCount(MemberVo vo);
 }

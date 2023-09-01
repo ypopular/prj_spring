@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mycompany.app.infra.information.Running_time;
+
+
+
 
 
 
@@ -31,9 +33,17 @@ public class Ticketing_detailController {
 	
 	@RequestMapping(value="/admin_ticketing")
 	public String admin_ticketing(@ModelAttribute("vo")Ticketing_detailVo vo,Model model) {
+		 vo.setParamsPaging(service.selectOneCount(vo));
 		
-		List<Ticketing_detail> list = service.selectList(vo);
-		model.addAttribute("list",list);
+		 if(vo.getTotalRows() > 0) {
+				List<Ticketing_detail> list = service.selectList(vo);
+				   model.addAttribute("list", list); 
+				  
+			} else {
+//				by pass
+			}
+		
+		
 		
 		return "admin/infra/ticketing_detail/admin_ticketing";
 	}

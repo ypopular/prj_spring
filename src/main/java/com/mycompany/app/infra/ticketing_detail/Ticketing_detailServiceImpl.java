@@ -83,5 +83,11 @@ public class Ticketing_detailServiceImpl implements Ticketing_detailService {
 		return dao.uelete(dto);
 	}
 
+	@Override
+	public int selectOneCount(Ticketing_detailVo vo) {
+		// TODO Auto-generated method stub
+		return dao.selectOneCount(vo);
+	}
+
 	
 }
