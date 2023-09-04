@@ -19,12 +19,39 @@ public class Ticketing_detail {
 	public String location_cinema_name;
 	public Integer theater_number;
 	public Integer cinema_type;
-	
+	public String id;
 	public String name;
 	
+
+private String pseq;
+private String path;
+private String uuidName;
 	
 	
-	
+	public String getPseq() {
+	return pseq;
+}
+public void setPseq(String pseq) {
+	this.pseq = pseq;
+}
+public String getPath() {
+	return path;
+}
+public void setPath(String path) {
+	this.path = path;
+}
+public String getUuidName() {
+	return uuidName;
+}
+public void setUuidName(String uuidName) {
+	this.uuidName = uuidName;
+}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getDate() {
 		return date;
 	}

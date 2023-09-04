@@ -18,6 +18,7 @@ public class Ticketing_detailVo {
 	public Integer cinema_type;
 	public String seat_name;
 	public String name;
+	public String id;
 //	----------------------------------------------------------------
 //	paging
 	private int thisPage = 1;									// 현재 페이지
@@ -40,7 +41,36 @@ public class Ticketing_detailVo {
 	
 	
 
+private String pseq;
+private String path;
+private String uuidName;
+
+
 	
+	public String getPseq() {
+	return pseq;
+}
+public void setPseq(String pseq) {
+	this.pseq = pseq;
+}
+public String getPath() {
+	return path;
+}
+public void setPath(String path) {
+	this.path = path;
+}
+public String getUuidName() {
+	return uuidName;
+}
+public void setUuidName(String uuidName) {
+	this.uuidName = uuidName;
+}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getThisPage() {
 		return thisPage;
 	}

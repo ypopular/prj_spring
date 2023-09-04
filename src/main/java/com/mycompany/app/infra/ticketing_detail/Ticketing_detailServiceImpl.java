@@ -89,5 +89,17 @@ public class Ticketing_detailServiceImpl implements Ticketing_detailService {
 		return dao.selectOneCount(vo);
 	}
 
+	@Override
+	public List<Ticketing_detail> selectList9(Ticketing_detailVo vo9) {
+		// TODO Auto-generated method stub
+		return dao.selectList9(vo9);
+	}
+
+	@Override
+	public Ticketing_detail selectOne2(Ticketing_detailVo vo9) {
+		// TODO Auto-generated method stub
+		return dao.selectOne2(vo9);
+	}
+
 	
 }

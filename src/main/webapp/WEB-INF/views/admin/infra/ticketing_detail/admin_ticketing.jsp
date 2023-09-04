@@ -277,7 +277,23 @@
 							  <li class="form-control"> <c:out value="${list.name}"></c:out></li>
 							    <li class="form-control"> <c:out value="${list.location_cinema_name}"></c:out></li>	
 							 <li class="form-control"><c:out value="${list.movie_name}"></c:out></li>
-							  <li class="form-control"><c:out value="${list.cinema_type}"></c:out></li>			
+							  <li class="form-control"><c:choose>
+            <c:when test="${list.cinema_type == 1}">
+                2D
+            </c:when>
+             <c:when test="${list.cinema_type == 2}">
+                4DX
+            </c:when>
+             <c:when test="${list.cinema_type == 3}">
+                IMAX
+            </c:when>
+             <c:when test="${list.cinema_type == 4}">
+                PRIVATE BOX
+            </c:when>
+            <c:otherwise>
+                <c:out value="${list.cinema_type}"/>
+            </c:otherwise>
+        </c:choose></li>			
 						   
 						     <li class="form-control"> <c:out value="${list.start_time}"></c:out></li>
 						      <li class="form-control"> <c:out value="${list.end_time}"></c:out></li>

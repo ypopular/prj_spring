@@ -64,8 +64,21 @@ public class Ticketing_detailController {
 		service.uelete(dto);
 		return "redirect:/admin_ticketing";
 	}
+//	-------------------------------------------
 	
-	
+	@RequestMapping("/cgv_my_page")
+	public String cgv_my_page(@ModelAttribute("vo") Ticketing_detailVo vo9,Ticketing_detailVo vo, Model model, HttpSession httpSession) {
+		 String loggedInUserSeq = (String) httpSession.getAttribute("sessionSeq");
+	    // 사용자 seq를 문자열에서 숫자로 변환하여 vo9에 설정
+	  System.out.println(loggedInUserSeq);
+	    vo9.setMember_seq(loggedInUserSeq);
+	  
+		Ticketing_detail ticketing_detail = service.selectOne2(vo9);
+	    List<Ticketing_detail> list9 = service.selectList9(vo9);
+	    model.addAttribute("list9", list9);
+		model.addAttribute("item", ticketing_detail);
+	    return "user/infra/codegroup/cgv_my_page";
+	}
 	
 	@RequestMapping(value="/cgv_ticketing")
 	public String cgv_ticketing(@ModelAttribute("vo")Ticketing_detailVo vo,Running_time2Vo vo2,Running_time2Vo vo3,Model model) {

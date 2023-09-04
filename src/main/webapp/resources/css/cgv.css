@@ -1617,6 +1617,7 @@ video{
     left: 0;
     bottom: -140px;
     display: none;
+     z-index: 1000;
 }
 #select_special_theater_menu a{
   width: 66px;
@@ -3536,4 +3537,139 @@ video{
 .movie_img_insert img{
 	width:214px;
 	height:270px;
+}
+/* ---------------------------- */
+#mypage_big_wrap{
+    width: 100%;
+    height: 700px;
+}
+#mypage_wrap{
+    width: 1000px;
+    height: 285px;
+    margin: auto;
+    background-color: #f5f4f4;
+    border-bottom: 1px solid #e1e1e1;
+}
+#mypage_wrap2{
+    width: 1000px;
+    height: 415px;
+    margin: auto;
+    overflow-y: auto; /* 가로축 스크롤 활성화 */
+}
+#mypage_img{
+    width: 135px;
+    height: 135px;
+    float: left;
+    margin-left: 70px;
+    margin-top: 70px;
+}
+#mypage_img img{
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+}
+#mypage_text{
+    width: 500px;
+    height: 53px;
+    float: left;
+    border-bottom: 1px solid #e1e1e1;
+    margin-top: 80px;
+    margin-left: 30px;
+}
+#mypage_text2{
+    width: 500px;
+    height: 53px;
+    float: left;
+    margin-left: 30px;
+}
+#mypage_text2 p{
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+#mypage_text h4{
+    width: 120px;
+    height: 35px;
+    float: left;
+    font-size: 28px;
+    font-weight: 700;
+    color: #342929;
+}
+#mypage_text span{
+    float: left;
+    margin-top: 10px;
+}
+#mypage_menu{
+    width: 160px;
+    height: 35px;
+    background-color: #fb4357;
+    color: #fff;
+    float: left;
+   font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    margin-top: 15px;
+}
+#mypage_ticketing_wrap{
+    width: 983px;
+    height: 150px;
+    background-color: #f5f4f4;
+    float: left;
+    border-bottom: 1px solid #e1e1e1;
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+}
+#mypage_movie_img{
+    width: 100px;
+    height: 118px;
+    background-color: #0D203D;
+    float: left;
+    margin-left: 61px;
+    margin-top: 16px;
+}
+#mypage_ticketing_wrap p{
+    position: absolute;
+    left: 198px;
+    bottom: 76px;
+}
+#mypage_ticketing_wrap span{
+    position: absolute;
+    left: 199px;
+    bottom: 35px;
+}
+#mypage_ticketing_wrap h4{
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    left: 321px;
+    bottom: 87px;
+}
+#mypage_ticketing_wrap h3{
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    left: 321px;
+    bottom: 30px;
+}
+#mypage_ticketing_wrap h2{
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    left: 435px;
+    bottom: 88px;
+}
+#mypage_ticketing_wrap h1{
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    left: 435px;
+    bottom: 30px;
+}
+#mypage_ticketing_wrap #mypage_pay{
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    left: 539px;
+    bottom: 94px;
 }

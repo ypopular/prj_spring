@@ -20,8 +20,9 @@ public interface Ticketing_detailService {
 	public List<Running_time2> selectList6(Running_time2Vo vo6);
 	public List<Running_time2> selectList7(Running_time2Vo vo7);
 	public List<Ticketing_detail> selectList8(Ticketing_detailVo vo8);
+	public List<Ticketing_detail> selectList9(Ticketing_detailVo vo9);
 	public Ticketing_detail selectOne(Ticketing_detailVo vo);
-	
+	public Ticketing_detail selectOne2(Ticketing_detailVo vo9);
 	
 	public int insert(Ticketing_detail dto);
 	public int uelete(Ticketing_detail dto);

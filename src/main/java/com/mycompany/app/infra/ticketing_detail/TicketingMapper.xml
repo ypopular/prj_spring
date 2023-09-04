@@ -8,7 +8,51 @@
      <resultMap id="resultMapObj" type="com.mycompany.app.infra.ticketing_detail.Ticketing_detail"></resultMap>
     <resultMap id="resultMapObj2" type="com.mycompany.app.infra.ticketing_detail.Running_time2"></resultMap>
    
-   
+   <select id="selectOne2" resultMap="resultMapObj">
+		SELECT DISTINCT
+				
+                g.name,
+                g.id
+		FROM 
+			ticketing_detail a
+   				join running_time b on b.seq = a.running_time_seq
+  			    join movie c on c.seq = b.movie_seq
+   			    join cinema_theater e on e.seq = b.cinema_theater_seq
+  				join cinema_name d on d.seq = e.cinema_name_seq
+   				join member g on g.seq = a.member_seq 
+		WHERE
+			a.member_seq = #{member_seq}
+			and a.delYN =0
+	</select>
+    
+	<select id="selectList9" resultMap="resultMapObj">
+		SELECT 
+				a.seq,
+                a.payment_amount,
+                a.delYN,
+                b.date,
+                b.start_time,
+                b.end_time,
+                c.movie_name,
+                d.location_cinema_name,
+                e.theater_number,
+                e.cinema_type,
+                a.seat_name,
+                g.name,
+                h.path,
+                h.uuidName
+		FROM 
+			ticketing_detail a
+   				join running_time b on b.seq = a.running_time_seq
+  			    join movie c on c.seq = b.movie_seq
+   			    join cinema_theater e on e.seq = b.cinema_theater_seq
+  				join cinema_name d on d.seq = e.cinema_name_seq
+   				join member g on g.seq = a.member_seq 
+   				join uploaded h on h.pseq = c.seq
+		WHERE
+			a.member_seq = #{member_seq}
+			and a.delYN =0
+	</select>
    
    <sql id ="selectCommon">
    		  select

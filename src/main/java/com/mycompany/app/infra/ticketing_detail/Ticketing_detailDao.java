@@ -47,8 +47,15 @@ public class Ticketing_detailDao {
 	public List<Ticketing_detail> selectList8(Ticketing_detailVo vo8){ 
     	return sqlSession.selectList(namespace + ".selectList8",vo8); 
     	}
+	public List<Ticketing_detail> selectList9(Ticketing_detailVo vo9){ 
+    	return sqlSession.selectList(namespace + ".selectList9",vo9); 
+    	}
 	public Ticketing_detail selectOne(Ticketing_detailVo vo) {
 		Ticketing_detail ticketing_detail =sqlSession.selectOne(namespace + ".selectOne", vo);
+		return ticketing_detail;
+	}
+	public Ticketing_detail selectOne2(Ticketing_detailVo vo9) {
+		Ticketing_detail ticketing_detail =sqlSession.selectOne(namespace + ".selectOne2", vo9);
 		return ticketing_detail;
 	}
 	

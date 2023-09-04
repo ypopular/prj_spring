@@ -224,7 +224,7 @@
                             <span>회원가입</span></a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="cgv_my_page">
                             <i class="fa-solid fa-user"></i>
                             <span>MY CGV</span></a>
                     </li>
@@ -393,7 +393,7 @@
                         <i class="fa-solid fa-play"></i>
                     </h2>
                     <div id="detail">
-                        <a href="https://www.youtube.com/watch?v=Ef1TBzqgLk4">상세보기
+                        <a href="https://www.youtube.com/watch?v=4p7WZmM3Bk8">상세보기
                             <i class="fa-solid fa-chevron-right"></i>
                         </a>
                     </div>

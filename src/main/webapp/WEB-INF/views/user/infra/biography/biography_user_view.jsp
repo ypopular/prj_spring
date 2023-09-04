@@ -61,9 +61,10 @@
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+            <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-         
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        
           
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
@@ -80,6 +81,70 @@
   </section><!-- End Hero -->
 
   <main id="main">
+  
+   <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>제가 진행한 프로젝트입니다.<br> CGV는 개인프로젝트로 혼자서 진행하였고, 회원가입, 예매 및 조회가 가능하게 구현하였습니다. <br>ASIANA_AIRPORT는 3명의 인원으로 진행하다 한명의 인원이 입원하게 되고 저도 코로나에 걸려 시간이 부족하여 부득이하게 다 완성하지 못하여 ui랑 자바스크립트로 기본기능만 가능하게 구현하였습니다.</p>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-web">Web</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+             
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+
+       
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="resources/assets/img/cgv.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="biography_user_view_detail" title="More Details"><i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap asiana_wrap">
+              <img src="resources/assets/img/Asiana_Airlines_logo.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="http://13.125.145.195:82/asiana_main" target="_blank" title="More Details">미완성<i class="bx bx-plus"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+          
+
+       
+
+          
+          
+          
+
+       
+
+      </div>
+    </section><!-- End Portfolio Section -->
+    
+    
+    
+    
+    
+    
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
@@ -87,7 +152,7 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p></p>
         </div>
 
         <div class="row">
@@ -95,32 +160,30 @@
             <img src="resources//assets/img/profile_img2.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>UI/UX Designer &amp; Web Developer.</h3>
+            <h3>풀스택 개발 지망자</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+             
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>생일:</strong> <span>1997.12.25</span></li>
+            
+                  <li><i class="bi bi-chevron-right"></i> <strong>전화번호:</strong> <span>010-9033-9265</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>거주지역:</strong> <span>경기도 김포</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>나이:</strong> <span>25세</span></li>
+                  
+                  <li><i class="bi bi-chevron-right"></i> <strong>이메일:</strong> <span>dbsdlsrl25@naver.com</span></li>
+                 
                 </ul>
               </div>
             </div>
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+             안녕하십니까 저는 개발자를 지망하는 "윤인기"라고 합니다. 4년제 세명대학교에서 "정보통신학부"를 전공 및 졸업하였고, 졸업 후 6개월 풀스택 자바반을 수료하였으며, 자격증은 컴활2급이랑 "정보처리기사" 자격증을 취득하였습니다.
             </p>
           </div>
         </div>
@@ -197,44 +260,7 @@
       </div>
     </section><!-- End Resume Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-web">Web</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-             
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-       
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="resources/assets/img/cgv.png" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="biography_user_view_detail" title="More Details"><i class="bx bx-plus"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
+   
 
   
 

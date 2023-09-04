@@ -242,7 +242,7 @@
             
             </div>
 
-            <div class="detail_img_wrap">
+           <!--  <div class="detail_img_wrap">
                 <h3>스틸컷</h3>
                 <div class="detail_img_carousel">
                     <div class="detail_img_inner">
@@ -256,7 +256,7 @@
                 </div>
                 <button class="detail_btn detail_prev">&lt;</button>
                 <button class="detail_btn detail_next">&gt;</button>
-            </div>
+            </div> -->
                 
         </div>
     </div>
