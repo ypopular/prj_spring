@@ -366,10 +366,10 @@
                         <a href="#">혜택</a>
                     </li>
                 </ul>
-                <form>
+              <form id="searchForm" onsubmit="return submitSearch()">
                     <div id="search">
-                        <input type="text">
-                        <button type="button">
+                        <input type="text" id="searchInput"  value="범죄도시3">
+                        <button type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </div>
@@ -1036,9 +1036,11 @@
     
    <script>
    
+   document.getElementById("kakaopay").checked = true;
+   
     $("#go_payment").on("click",function(){
 		$("form[name=form_list]").attr("action","/ticketing_detailInsert").submit();
-		
+		alert("예매가 완료되었습니다.");
 	}); 
 	
 	
@@ -1183,7 +1185,7 @@
 	                 }
 	               
 	            )} else {
-	                alert("상영타입 정보를 가져오는 데 실패했습니다.");
+	                alert("상영중인 해당 타입의 극장이 없습니다");
 	                var regionContainer = $("#region_left_wrap");
 	                regionContainer.empty()
 	            }

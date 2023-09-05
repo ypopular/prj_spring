@@ -9,10 +9,33 @@ $(function(){
         $(this).siblings().removeClass("region_active");
       });
       
-       
-
+        $("#go_seat_choice2").on("click",function(){   
+           if(seatOn !=true){
+                alert("좌석을 선택하세요")
+           }else{
+            $("#select_seat").hide();
+            $("#go_seat_choice2").hide();
+            $("#ready_payment").show();
+            $("#go_payment").show();
+         }
+        });
+var personnelOn = false;
+var seatOn =false;
+	$("#personnel li").on("click",function(){
+		personnelOn = true;
+	});
 	 
+	 $("#seat_choice_detail").on("click",function(){
+		if(personnelOn == false){
+			alert("관람 인원을 선택해주세요");
+		}else{
+			seatOn =true;
+		}
+	 });
 	 
+	
+	 
+	
 	 
    const currentDate = new Date();
    const currentYear = currentDate.getFullYear();
@@ -408,16 +431,7 @@ $(".sp_hover").mouseover(function(){
             
         }
         });
-        $("#go_seat_choice2").on("click",function(){   
-           if(personnelOn !=true){
-                alert("좌석을 선택하세요")
-           }else{
-            $("#select_seat").hide();
-            $("#go_seat_choice2").hide();
-            $("#ready_payment").show();
-            $("#go_payment").show();
-         }
-        });
+       
         // ----------------------------------------------------------
         var personnel01Click = function() {
             $("#go_seat1").css("background","none");

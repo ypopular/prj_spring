@@ -120,7 +120,7 @@
             <div class="portfolio-wrap asiana_wrap">
               <img src="resources/assets/img/Asiana_Airlines_logo.png" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="http://13.125.145.195:82/asiana_main" target="_blank" title="More Details">미완성<i class="bx bx-plus"></i></a>
+                <a href="http://13.125.145.195:82/asiana_main" target="_blank" title="More Details">진행중<i class="bx bx-plus"></i></a>
               </div>
             </div>
           </div>

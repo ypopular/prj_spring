@@ -188,12 +188,14 @@
                 <li><a href="#">이벤트</a></li>
                 <li><a href="#">혜택</a></li>
             </ul>
-            <from>
-                <div id="search">
-                <input type="text">
-                <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            </from>
+            <form id="searchForm" onsubmit="return submitSearch()">
+                    <div id="search">
+                        <input type="text" id="searchInput"  value="범죄도시3">
+                        <button type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </form>
         </div>
     </div>
     
